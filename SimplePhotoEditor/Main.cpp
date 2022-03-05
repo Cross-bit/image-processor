@@ -7,29 +7,24 @@
 #include <memory>
 #include <string>
 #include <fstream>
-#include "UserMenu.cpp"
+#include "UserMenu.h"
 
 using namespace std;
 
 
 int main(int argv, char ** argc) 
 {
-	UserMenu menu;
+	/*UserMenu menu;
 
 	auto welcomeGroup = std::make_unique<WelcomeMenuGroup>();
 
-
 	std::unique_ptr<MenuOption> goSecond = std::make_unique<GoSecondMenu>(menu);
+
 	welcomeGroup->AddMenuOption("a", std::move(goSecond));
 
+	menu.SetNewMenuItem(std::move(welcomeGroup));*/
 
-
-	menu.SetNewMenuItem(std::move(welcomeGroup));
-
-	unique_ptr<MenuItemGroup> aha = std::make_unique<SecondMenuGroup>();
-
-	//menu.Render();
-
+	UserMenu menu;
 	menu.Update();
 
 

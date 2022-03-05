@@ -16,30 +16,65 @@
     <Filter Include="Source Files\UserMenu">
       <UniqueIdentifier>{04b152de-81df-4c08-b916-1fe64af89c4b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UserMenu\MenuGroups">
+    <Filter Include="Header Files\UserMenu">
+      <UniqueIdentifier>{66366e7d-e090-419e-8f9d-f98c28484564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UserMenu\IdleMenuGroup">
+      <UniqueIdentifier>{ff17fcf2-c6c9-440c-8714-4a56da568fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UserMenu\IdleMenuGroup">
       <UniqueIdentifier>{25698811-ec54-4120-91a0-b9e907871c86}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UserMenu\WelcomeMenuOptions">
-      <UniqueIdentifier>{435513e3-e7fd-4b71-bfff-2d6f2fdbc144}</UniqueIdentifier>
+    <Filter Include="Source Files\UserMenu\SecondMenuGroup.cpp">
+      <UniqueIdentifier>{dfb2b4ea-538f-44f5-af81-9420a4e4039b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\NewFilter1">
-      <UniqueIdentifier>{e651073c-da34-4130-85c5-252a0a564939}</UniqueIdentifier>
+    <Filter Include="Source Files\UserMenu\UserMenuFactory">
+      <UniqueIdentifier>{704be516-356c-4351-a409-782f3f76a492}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserMenu.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MenuItemGroupBase.cpp">
+      <Filter>Source Files\UserMenu</Filter>
     </ClCompile>
-    <ClCompile Include="WelcomeMenuGroup.cpp">
-      <Filter>Source Files\UserMenu\MenuGroups</Filter>
+    <ClCompile Include="UserMenu.cpp">
+      <Filter>Source Files\UserMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondMenuGroup.cpp">
+      <Filter>Source Files\UserMenu\SecondMenuGroup.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondMenuOption.cpp">
+      <Filter>Source Files\UserMenu\IdleMenuGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleMenuGroup.cpp">
+      <Filter>Source Files\UserMenu\IdleMenuGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectIdleMenuGroup.cpp">
+      <Filter>Source Files\UserMenu\SecondMenuGroup.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="UserMenuFactory.cpp">
+      <Filter>Source Files\UserMenu\UserMenuFactory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="inp.txt">
       <Filter>Source Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MenuOptionBase.cpp">
+      <Filter>Source Files\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="UserMenu.h">
+      <Filter>Header Files\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuItemGroup.h">
+      <Filter>Header Files\UserMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuOption.h">
+      <Filter>Header Files\UserMenu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -139,12 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SecondMenuOption.cpp" />
+    <ClCompile Include="SelectIdleMenuGroup.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuItemGroupBase.cpp" />
+    <ClCompile Include="SecondMenuGroup.cpp" />
     <ClCompile Include="UserMenu.cpp" />
-    <ClCompile Include="WelcomeMenuGroup.cpp" />
+    <ClCompile Include="IdleMenuGroup.cpp" />
+    <ClCompile Include="UserMenuFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="inp.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MenuItemGroup.h" />
+    <ClInclude Include="MenuOption.h" />
+    <ClInclude Include="MenuOptionBase.cpp" />
+    <ClInclude Include="UserMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
