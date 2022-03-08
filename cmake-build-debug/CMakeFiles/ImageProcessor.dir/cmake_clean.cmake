@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj"
+  "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj.d"
+  "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj"
+  "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj.d"
   "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoIdleMenuOption.cpp.obj"
   "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoIdleMenuOption.cpp.obj.d"
   "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoSecondMenuOption.cpp.obj"

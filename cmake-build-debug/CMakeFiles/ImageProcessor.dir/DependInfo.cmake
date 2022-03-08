@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/kriz/CLionProjects/ImageProcessor/ImagesLibrary/ImageData.cpp" "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj" "gcc" "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj.d"
+  "C:/Users/kriz/CLionProjects/ImageProcessor/ImagesLibrary/ImagesLibrary.cpp" "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj" "gcc" "CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj.d"
   "C:/Users/kriz/CLionProjects/ImageProcessor/UserMenu/MenuCommands/GoIdleMenuOption.cpp" "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoIdleMenuOption.cpp.obj" "gcc" "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoIdleMenuOption.cpp.obj.d"
   "C:/Users/kriz/CLionProjects/ImageProcessor/UserMenu/MenuCommands/GoSecondMenuOption.cpp" "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoSecondMenuOption.cpp.obj" "gcc" "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoSecondMenuOption.cpp.obj.d"
   "C:/Users/kriz/CLionProjects/ImageProcessor/UserMenu/MenuGroups/IdleMenuGroup/IdleMenuGroup.cpp" "CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/IdleMenuGroup/IdleMenuGroup.cpp.obj" "gcc" "CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/IdleMenuGroup/IdleMenuGroup.cpp.obj.d"

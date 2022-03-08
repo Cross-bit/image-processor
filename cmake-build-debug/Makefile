@@ -128,6 +128,54 @@ ImageProcessor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/build
 .PHONY : ImageProcessor/fast
 
+ImagesLibrary/ImageData.obj: ImagesLibrary/ImageData.cpp.obj
+.PHONY : ImagesLibrary/ImageData.obj
+
+# target to build an object file
+ImagesLibrary/ImageData.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj
+.PHONY : ImagesLibrary/ImageData.cpp.obj
+
+ImagesLibrary/ImageData.i: ImagesLibrary/ImageData.cpp.i
+.PHONY : ImagesLibrary/ImageData.i
+
+# target to preprocess a source file
+ImagesLibrary/ImageData.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.i
+.PHONY : ImagesLibrary/ImageData.cpp.i
+
+ImagesLibrary/ImageData.s: ImagesLibrary/ImageData.cpp.s
+.PHONY : ImagesLibrary/ImageData.s
+
+# target to generate assembly for a file
+ImagesLibrary/ImageData.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.s
+.PHONY : ImagesLibrary/ImageData.cpp.s
+
+ImagesLibrary/ImagesLibrary.obj: ImagesLibrary/ImagesLibrary.cpp.obj
+.PHONY : ImagesLibrary/ImagesLibrary.obj
+
+# target to build an object file
+ImagesLibrary/ImagesLibrary.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj
+.PHONY : ImagesLibrary/ImagesLibrary.cpp.obj
+
+ImagesLibrary/ImagesLibrary.i: ImagesLibrary/ImagesLibrary.cpp.i
+.PHONY : ImagesLibrary/ImagesLibrary.i
+
+# target to preprocess a source file
+ImagesLibrary/ImagesLibrary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.i
+.PHONY : ImagesLibrary/ImagesLibrary.cpp.i
+
+ImagesLibrary/ImagesLibrary.s: ImagesLibrary/ImagesLibrary.cpp.s
+.PHONY : ImagesLibrary/ImagesLibrary.s
+
+# target to generate assembly for a file
+ImagesLibrary/ImagesLibrary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessor.dir\build.make CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.s
+.PHONY : ImagesLibrary/ImagesLibrary.cpp.s
+
 UserMenu/MenuCommands/GoIdleMenuOption.obj: UserMenu/MenuCommands/GoIdleMenuOption.cpp.obj
 .PHONY : UserMenu/MenuCommands/GoIdleMenuOption.obj
 
@@ -353,6 +401,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ImageProcessor
+	@echo ... ImagesLibrary/ImageData.obj
+	@echo ... ImagesLibrary/ImageData.i
+	@echo ... ImagesLibrary/ImageData.s
+	@echo ... ImagesLibrary/ImagesLibrary.obj
+	@echo ... ImagesLibrary/ImagesLibrary.i
+	@echo ... ImagesLibrary/ImagesLibrary.s
 	@echo ... UserMenu/MenuCommands/GoIdleMenuOption.obj
 	@echo ... UserMenu/MenuCommands/GoIdleMenuOption.i
 	@echo ... UserMenu/MenuCommands/GoIdleMenuOption.s

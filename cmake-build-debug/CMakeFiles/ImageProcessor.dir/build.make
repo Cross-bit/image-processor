@@ -194,6 +194,34 @@ CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/MenuGroupFactory.cpp.s: cmake_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/MenuGroupFactory.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\kriz\CLionProjects\ImageProcessor\UserMenu\MenuGroups\MenuGroupFactory.cpp -o CMakeFiles\ImageProcessor.dir\UserMenu\MenuGroups\MenuGroupFactory.cpp.s
 
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj: CMakeFiles/ImageProcessor.dir/flags.make
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj: ../ImagesLibrary/ImagesLibrary.cpp
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj: CMakeFiles/ImageProcessor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\kriz\CLionProjects\ImageProcessor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj -MF CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImagesLibrary.cpp.obj.d -o CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImagesLibrary.cpp.obj -c C:\Users\kriz\CLionProjects\ImageProcessor\ImagesLibrary\ImagesLibrary.cpp
+
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\kriz\CLionProjects\ImageProcessor\ImagesLibrary\ImagesLibrary.cpp > CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImagesLibrary.cpp.i
+
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\kriz\CLionProjects\ImageProcessor\ImagesLibrary\ImagesLibrary.cpp -o CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImagesLibrary.cpp.s
+
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj: CMakeFiles/ImageProcessor.dir/flags.make
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj: ../ImagesLibrary/ImageData.cpp
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj: CMakeFiles/ImageProcessor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\kriz\CLionProjects\ImageProcessor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj -MF CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImageData.cpp.obj.d -o CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImageData.cpp.obj -c C:\Users\kriz\CLionProjects\ImageProcessor\ImagesLibrary\ImageData.cpp
+
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\kriz\CLionProjects\ImageProcessor\ImagesLibrary\ImageData.cpp > CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImageData.cpp.i
+
+CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\kriz\CLionProjects\ImageProcessor\ImagesLibrary\ImageData.cpp -o CMakeFiles\ImageProcessor.dir\ImagesLibrary\ImageData.cpp.s
+
 # Object files for target ImageProcessor
 ImageProcessor_OBJECTS = \
 "CMakeFiles/ImageProcessor.dir/main.cpp.obj" \
@@ -204,7 +232,9 @@ ImageProcessor_OBJECTS = \
 "CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/IdleMenuGroup/IdleMenuGroup.cpp.obj" \
 "CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/SecondMenuGroup/SecondMenuGroup.cpp.obj" \
 "CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoSecondMenuOption.cpp.obj" \
-"CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/MenuGroupFactory.cpp.obj"
+"CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/MenuGroupFactory.cpp.obj" \
+"CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj" \
+"CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj"
 
 # External object files for target ImageProcessor
 ImageProcessor_EXTERNAL_OBJECTS =
@@ -218,11 +248,13 @@ ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/IdleMenuGr
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/SecondMenuGroup/SecondMenuGroup.cpp.obj
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/UserMenu/MenuCommands/GoSecondMenuOption.cpp.obj
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/UserMenu/MenuGroups/MenuGroupFactory.cpp.obj
+ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImagesLibrary.cpp.obj
+ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/ImagesLibrary/ImageData.cpp.obj
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/build.make
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/linklibs.rsp
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/objects1.rsp
 ImageProcessor.exe: CMakeFiles/ImageProcessor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\kriz\CLionProjects\ImageProcessor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable ImageProcessor.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\kriz\CLionProjects\ImageProcessor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable ImageProcessor.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ImageProcessor.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

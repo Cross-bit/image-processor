@@ -84,6 +84,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/kriz/CLionProjects/ImageProcessor/ImagesLibrary/ImageData.cpp">
+			<Option target="ImageProcessor"/>
+		</Unit>
+		<Unit filename="C:/Users/kriz/CLionProjects/ImageProcessor/ImagesLibrary/ImageData.h">
+			<Option target="ImageProcessor"/>
+		</Unit>
+		<Unit filename="C:/Users/kriz/CLionProjects/ImageProcessor/ImagesLibrary/ImagesLibrary.cpp">
+			<Option target="ImageProcessor"/>
+		</Unit>
+		<Unit filename="C:/Users/kriz/CLionProjects/ImageProcessor/ImagesLibrary/ImagesLibrary.h">
+			<Option target="ImageProcessor"/>
+		</Unit>
 		<Unit filename="C:/Users/kriz/CLionProjects/ImageProcessor/UserMenu/MenuCommands/GoIdleMenuOption.cpp">
 			<Option target="ImageProcessor"/>
 		</Unit>
