@@ -7,8 +7,6 @@
 
 
 int main() {
-    // tada comment
-    //
     UserMenu userMenu;
     userMenu.Update();
 
