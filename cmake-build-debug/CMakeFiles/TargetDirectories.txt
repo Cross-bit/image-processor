@@ -1,3 +1,0 @@
-C:/Users/kriz/CLionProjects/ImageProcessor/cmake-build-debug/CMakeFiles/ImageProcessor.dir
-C:/Users/kriz/CLionProjects/ImageProcessor/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/kriz/CLionProjects/ImageProcessor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
