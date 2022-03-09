@@ -4,8 +4,6 @@
 
 #include "UserMenu/MenuCommands/GoIdleMenuOption.h"
 
-
-
 int main() {
 
     UserMenu userMenu;

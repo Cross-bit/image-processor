@@ -6,10 +6,12 @@
 #define MAIN_CPP_IMAGEDATA_H
 
 
-class ImageData {
-public:
+#include <iostream>
+#include <vector>
 
-
+struct ImageData {
+    int Width;
+    int Height;
 };
 
 
