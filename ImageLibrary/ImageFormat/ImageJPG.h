@@ -8,9 +8,7 @@
 
 #include "../ImageFormat.h"
 
-class ImageJPG : ImageFormat {
-
-
+class ImageJPG : public ImageFormat {
 
 };
 

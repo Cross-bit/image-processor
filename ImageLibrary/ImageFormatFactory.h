@@ -6,7 +6,7 @@
 #define MAIN_CPP_IMAGEFORMATFACTORY_H
 
 #include "ImageFormat.h"
-
+#include "ImageFormat/ImageJPG.h"
 class ImageFormatFactory {
 public:
     ImageFormatFactory() noexcept;
@@ -17,9 +17,14 @@ public:
     ImageFormatFactory(const ImageFormatFactory&&) = delete;
 
 private:
-    template<typename  TFormat>
-    void RegisterFormat(std::string formatType);
 
+    template<typename  TFormat>
+    void RegisterFormat(std::string formatType) {
+        static_assert(!std::is_same<ImageFormat, TFormat>::value, "Invalid image format type!");
+        _imageFormatClassMapping.insert(std::make_pair(formatType, std::make_unique<TFormat>));
+    }
+
+    std::unordered_map<std::string, std::unique_ptr<ImageFormat>> _aha;
     std::unordered_map<std::string, std::function<std::unique_ptr<ImageFormat>()>> _imageFormatClassMapping;
 
 };
