@@ -11,16 +11,21 @@
 #include <vector>
 #include <functional>
 
-struct ImageFormat {
-    int Width;
-    int Height;
+class ImageFormat {
+public:
+    const int Width;
+    const int Height;
+    const int Size;
 
-    std::string GetFormat();
+    ImageFormat(std::string fileName);
+    ImageFormat(const ImageFormat& other);
+    ~ImageFormat();
+
+    std::string GetFormat() const;
 
 private:
-    uint8_t data;
-
-
+    void LoadImageData();
+    void WriteImageData();
 };
 
 
