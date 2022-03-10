@@ -9,15 +9,16 @@
 
 class ImageFormatFactory {
 public:
-    ImageFormatFactory() = default;
+    ImageFormatFactory() noexcept;
 
     std::unique_ptr<ImageFormat> CreateImageFormat(const std::string &fileName);
 
+    ImageFormatFactory(const ImageFormatFactory&) = delete;
+    ImageFormatFactory(const ImageFormatFactory&&) = delete;
+
 private:
     template<typename  TFormat>
-    void RegisterFormat();
-
-    //std::unique_ptr<ImageFormat> Create(const std::string &fileName);
+    void RegisterFormat(std::string formatType);
 
     std::unordered_map<std::string, std::function<std::unique_ptr<ImageFormat>()>> _imageFormatClassMapping;
 

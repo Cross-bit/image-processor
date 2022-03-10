@@ -15,6 +15,8 @@ struct ImageFormat {
     int Width;
     int Height;
 
+    std::string GetFormat();
+
 private:
     uint8_t data;
 
