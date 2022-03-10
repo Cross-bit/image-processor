@@ -12,6 +12,12 @@
 struct ImageData {
     int Width;
     int Height;
+
+
+private:
+    uint8_t data;
+
+
 };
 
 

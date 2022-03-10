@@ -20,4 +20,4 @@ add_executable(
         UserMenu/MenuGroups/SecondMenuGroup/SecondMenuGroup.h
         UserMenu/MenuCommands/GoSecondMenuOption.cpp
         UserMenu/MenuCommands/GoSecondMenuOption.h
-        UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h Imagesibrary/ImagesLibrary.cpp Imagesibrary/ImagesLibrary.h Imagesibrary/ImageData.cpp Imagesibrary/ImageData.h)
+        UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageData.cpp ImageLibrary/ImageData.h)

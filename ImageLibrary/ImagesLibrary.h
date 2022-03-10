@@ -14,14 +14,13 @@ class ImagesLibrary {
 public:
 
     void AddNewPathToLibrary();
+    void RemovePathFromLibrary();
 
+    void ClearLibrary();
     void GetAllImages();
-
-
 
 private:
     std::vector<std::string> loadedImagesPaths;
-
 };
 
 
