@@ -13,15 +13,15 @@
 
 class ImageFormat {
 public:
-    const int Width;
-    const int Height;
-    const int Size;
-
-    ImageFormat(std::string fileName);
+    int Width;
+    int Height;
+    int Size;
+    //ImageFormat() = default;
+    /*ImageFormat(std::string fileName);
     ImageFormat(const ImageFormat& other);
-    ~ImageFormat();
+    ~ImageFormat();*/
 
-    std::string GetFormat() const;
+    //std::string GetFormat() const;
 
 private:
     void LoadImageData();

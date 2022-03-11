@@ -3,6 +3,7 @@
 //
 
 #include "ImageFormatFactory.h"
+#include "ImageFormat/ImageJPG.h"
 
 ImageFormatFactory::ImageFormatFactory() noexcept {
     RegisterFormat<ImageJPG>("jpg");

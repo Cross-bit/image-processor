@@ -10,7 +10,6 @@
 
 class ImageJPG : public ImageFormat {
 
-
 };
 
 

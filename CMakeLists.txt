@@ -21,3 +21,11 @@ add_executable(
         UserMenu/MenuCommands/GoSecondMenuOption.cpp
         UserMenu/MenuCommands/GoSecondMenuOption.h
         UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageFormat.cpp ImageLibrary/ImageFormat.h ImageLibrary/ImageFormat/ImageJPG.cpp ImageLibrary/ImageFormat/ImageJPG.h ImageLibrary/ImageFormatFactory.cpp ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp ImageLibrary/ImageFormat/ImagePNG.h)
+
+
+
+find_library(JPEG_LIB libjpeg External/lib)
+target_link_libraries(ImageProcessor LINK_PUBLIC ${JPEG_LIB})
+
+
+

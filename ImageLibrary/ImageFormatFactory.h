@@ -7,6 +7,7 @@
 
 #include "ImageFormat.h"
 #include "ImageFormat/ImageJPG.h"
+
 class ImageFormatFactory {
 public:
     ImageFormatFactory() noexcept;
@@ -24,7 +25,6 @@ private:
         _imageFormatClassMapping.insert(std::make_pair(formatType, std::make_unique<TFormat>));
     }
 
-    std::unordered_map<std::string, std::unique_ptr<ImageFormat>> _aha;
     std::unordered_map<std::string, std::function<std::unique_ptr<ImageFormat>()>> _imageFormatClassMapping;
 
 };
