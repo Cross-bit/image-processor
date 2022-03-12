@@ -9,7 +9,9 @@
 #include "../ImageFormat.h"
 
 class ImageJPG : public ImageFormat {
-
+public:
+    ImageData LoadImageData(const std::string &inpFileName) const override;
+    bool SaveImageData(const ImageData &dataToSave, const std::string &outFileName) const override;
 };
 
 

@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 2.4)
 project(ImageProcessor)
 
 set(CMAKE_CXX_STANDARD 14)
+
+#set(CMAKE_STATIC_LINKER_FLAGS "-l, External/lib/jpeg.lib")
 
 add_executable(
         ImageProcessor
@@ -20,12 +22,37 @@ add_executable(
         UserMenu/MenuGroups/SecondMenuGroup/SecondMenuGroup.h
         UserMenu/MenuCommands/GoSecondMenuOption.cpp
         UserMenu/MenuCommands/GoSecondMenuOption.h
-        UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageFormat.cpp ImageLibrary/ImageFormat.h ImageLibrary/ImageFormat/ImageJPG.cpp ImageLibrary/ImageFormat/ImageJPG.h ImageLibrary/ImageFormatFactory.cpp ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp ImageLibrary/ImageFormat/ImagePNG.h)
+        UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageFormat.cpp ImageLibrary/ImageFormat.h ImageLibrary/ImageFormat/ImageJPG.cpp ImageLibrary/ImageFormat/ImageJPG.h ImageLibrary/ImageFormatFactory.cpp ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp ImageLibrary/ImageFormat/ImagePNG.h
+        ImageLibrary/Image/ImageData.cpp ImageLibrary/Image/ImageData.h)
+
+#find_package (jpeg REQUIRED)
+
+#find_package(libjpeg REQUIRED)
+#find_library(JPEG_LIB libjpeg)
+#target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libjpeg.a)
+#set(LIB_AA C:/Users/kriz/CLionProjects/ImageProcessor/External/)
+#find_path(LIB_HEAD jpeglib.h PATH_SUFFIXES includes PATHS ${LIB_AA})
+#target_link_libraries(ImageProcessor C:/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
+
+ #link_directories(${CMAKE_BINARY_DIR}/res)
+
+#find_library(JPEG_LIB External/lib/)
+#${JPEG_LIB}
+
+target_link_libraries(ImageProcessor  /mnt/c/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
 
 
 
-find_library(JPEG_LIB libjpeg External/lib)
-target_link_libraries(ImageProcessor LINK_PUBLIC ${JPEG_LIB})
+#find_library(JPEG_LIB jpeg62)
+#target_link_libraries(ImageProcessor /External/lib/jpeg62.dll)
+#if(NOT ${JPEG_LIB})
+#    message(FATAL_ERROR "libjpeg library not found")
+#endif()
+#find_package (jpeg REQUIRED)
+#target_link_libraries(ImageProcessor jpeg::jpeg)
+#link_directories(${CMAKE_BINARY_DIR}/../External/lib)
+#target_link_libraries(ImageProcessor External/lib/libjpeg)
+#${JPEG_LIB}
 
 
 

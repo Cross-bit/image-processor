@@ -15,8 +15,8 @@
 
 class ImageFormat {
 public:
-    virtual ImageData LoadImageData() const = 0;
-    virtual bool SaveImageData() const = 0;
+    virtual ImageData LoadImageData(const std::string &inpFileName) const = 0;
+    virtual bool SaveImageData(const ImageData &dataToSave, const std::string &outFileName) const = 0;
 };
 
 
