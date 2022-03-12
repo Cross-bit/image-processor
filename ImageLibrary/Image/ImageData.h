@@ -6,20 +6,22 @@
 #define MAIN_CPP_IMAGEDATA_H
 
 #include <iostream>
+#include <memory>
+#include <vector>
 
 class ImageData {
 public:
+
+    std::string Name;
     int Width;
     int Height;
-    int Size;
-    uint8_t* Data;
+    int Channels;
+    std::unique_ptr<uint8_t[]> Data;
+    int DataSize;
 
-    //ImageFormat() = default;
-    /*ImageFormat(std::string fileName);
-    ImageFormat(const ImageFormat& other);
-    ~ImageFormat();*/
+    ImageData();
 
-    //std::string GetFormat() const;
+    explicit ImageData(std::string imageName, int width, int height, int numOfChannels, int dataSize);
 };
 
 
