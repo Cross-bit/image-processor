@@ -11,21 +11,12 @@
 #include <vector>
 #include <functional>
 
+#include "Image/ImageData.h"
+
 class ImageFormat {
 public:
-    int Width;
-    int Height;
-    int Size;
-    //ImageFormat() = default;
-    /*ImageFormat(std::string fileName);
-    ImageFormat(const ImageFormat& other);
-    ~ImageFormat();*/
-
-    //std::string GetFormat() const;
-
-private:
-    void LoadImageData();
-    void WriteImageData();
+    virtual ImageData LoadImageData() const = 0;
+    virtual bool SaveImageData() const = 0;
 };
 
 
