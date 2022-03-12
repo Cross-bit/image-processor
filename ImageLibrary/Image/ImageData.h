@@ -5,12 +5,15 @@
 #ifndef MAIN_CPP_IMAGEDATA_H
 #define MAIN_CPP_IMAGEDATA_H
 
+#include <iostream>
 
 class ImageData {
 public:
     int Width;
     int Height;
     int Size;
+    uint8_t* Data;
+
     //ImageFormat() = default;
     /*ImageFormat(std::string fileName);
     ImageFormat(const ImageFormat& other);
