@@ -6,27 +6,28 @@
 
 #include "ImageLibrary/ImageFormatFactory.h"
 
-#include <jpeglib.h>
+#include "ImageLibrary/ImageFormat/ImageJPG.h"
+
+#include <cstdio>
 
 int main() {
 
+    ImageJPG jpgFormat;
+
+    std::string file = "../test/algo.jpg";
+
+    auto res = jpgFormat.LoadImageData(file);
+    if(res!= nullptr){
+        std::cout << "image: " << std::endl;
+        std::cout << "\tname: " << res->Name << std::endl;
+        std::cout << "\tW: " << res->Width << std::endl;
+        std::cout << "\tH: " << res->Height << std::endl;
+    }
+    else
+        std::cout << "does not work" << std::endl;
+
     UserMenu userMenu;
     userMenu.Update();
-
-    //struct jpeg_decompress_struct info;
-     FILE* outfile = fopen("/tmp/test.jpeg", "wb");
-
-     struct jpeg_compress_struct cinfo;
-     struct jpeg_error_mgr       jerr;
-
-     cinfo.err = jpeg_std_error(&jerr);
-     jpeg_create_compress(&cinfo);
-     jpeg_stdio_dest(&cinfo, outfile);
-
-     cinfo.image_width      = 5;
-     cinfo.image_height     = 5;
-     cinfo.input_components = 3;
-     cinfo.in_color_space   = JCS_RGB;
 
     return 0;
 }
