@@ -3,7 +3,16 @@ project(ImageProcessor)
 
 set(CMAKE_CXX_STANDARD 14)
 
-#set(CMAKE_STATIC_LINKER_FLAGS "-l, External/lib/jpeg.lib")
+#set(CMAKE_STATIC_LINKER_FLAGS "-ljpeglib")
+#set(CMAKE_LIBRARY_PATH  /usr/local/lib)
+#include_directories(/usr/local/lib)
+#find_library(JPEG_LIB libjpeg.so.9)
+
+message(${JPEG_LIB})
+
+#if(NOT ${JPEG_LIB})
+ #   message(FATAL_ERROR "libjpeg library not found")
+#endif()
 
 add_executable(
         ImageProcessor
@@ -39,8 +48,8 @@ add_executable(
 #find_library(JPEG_LIB External/lib/)
 #${JPEG_LIB}
 
-target_link_libraries(ImageProcessor  /mnt/c/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
-
+#target_link_libraries(ImageProcessor  /mnt/c/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
+target_link_libraries(ImageProcessor ${JPEG_LIB})
 
 
 #find_library(JPEG_LIB jpeg62)
