@@ -7,11 +7,24 @@
 
 
 #include "../ImageFormat.h"
+#include <jpeglib.h>
+#include <setjmp.h>
 
 class ImageJPG : public ImageFormat {
 public:
-    ImageData LoadImageData(const std::string &inpFileName) const override;
+    std::unique_ptr<ImageData> LoadImageData(const std::string &inpFileName) const override;
     bool SaveImageData(const ImageData &dataToSave, const std::string &outFileName) const override;
+
+    virtual ~ImageJPG() = default;
+private:
+
+    struct ErrorManager {
+        jpeg_error_mgr defaultErrorManager;
+        jmp_buf jumpBuffer;
+    };
+
+    static void ErrorExit(j_common_ptr cinfo);
+    static void OutputMessage(j_common_ptr cinfo);
 };
 
 
