@@ -26,6 +26,13 @@ int main() {
     else
         std::cout << "does not work" << std::endl;
 
+    // set new file name:
+    res->Name = res->Name + "_";
+
+    jpgFormat.SaveImageData(*res, "../test");
+
+
+
     UserMenu userMenu;
     userMenu.Update();
 
