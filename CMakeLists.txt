@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 2.4)
 project(ImageProcessor)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 #set(CMAKE_STATIC_LINKER_FLAGS "-ljpeglib")
 #set(CMAKE_LIBRARY_PATH  /usr/local/lib)
 #include_directories(/usr/local/lib)
 #find_library(JPEG_LIB libjpeg.so.9)
-
-message(${JPEG_LIB})
 
 #if(NOT ${JPEG_LIB})
  #   message(FATAL_ERROR "libjpeg library not found")
