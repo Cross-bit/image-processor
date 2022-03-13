@@ -22,11 +22,12 @@ public:
     static std::string RemoveExstention(const std::string &inpFileName);
     static std::string ParseFileName(const std::string &inpFileName);
 
-    explicit ImageFormat()= default;
-    virtual ~ImageFormat()= default;
+    explicit ImageFormat() = default;
+    virtual ~ImageFormat() = default;
 
 protected:
-   // virtual std::string AddExstention(const std::string &inpFileName) const = 0;
+    virtual std::string AddExstention(const std::string &fileName) const = 0;
+
     //virtual std::string GetFormatExstention() const = 0;
 };
 
