@@ -11,7 +11,7 @@
 #include <jpeglib.h>
 
 std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileName) const {
-
+    // todo: add error handling of some api functions (e. g. jpeg_read_header ...)
     struct jpeg_decompress_struct cinfo;
     struct ErrorManager errorManager;
 
@@ -23,6 +23,7 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
     errorManager.defaultErrorManager.error_exit = ErrorExit;
     errorManager.defaultErrorManager.output_message = OutputMessage;
 
+    /* Setting up jump for error handling */
     if (setjmp(errorManager.jumpBuffer)){
 
         jpeg_destroy_decompress ( &cinfo );
@@ -30,16 +31,16 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
         return nullptr;
     }
 
-    /** Create decompression object */
+    /* Create decompression object */
     jpeg_create_decompress ( &cinfo );
 
-    /** Specify data source */
+    /* Specify data source */
     jpeg_stdio_src(&cinfo, fp);
 
-    /** Read file header */
+    /* Read file header */
     jpeg_read_header(&cinfo, TRUE);
 
-    /** Decopression phase */
+    /* Decompression phase */
     jpeg_start_decompress(&cinfo);
 
     std::unique_ptr<ImageData> imageData = std::make_unique<ImageData>(
@@ -51,17 +52,16 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
     );
 
 
-    /** One line of image pixels in bytes */
+    /* One line of image pixels in bytes */
     int rowWidth = cinfo.image_width * cinfo.num_components;
 
-    /** Read image line by line */
+    /* Read image line by line */
     while ( cinfo.output_scanline < cinfo.output_height ) {
-
         uint8_t* p= &(imageData->Data)[cinfo.output_scanline * rowWidth];
         jpeg_read_scanlines(&cinfo, &p, 1);
     }
 
-    /** Finish compression */
+    /* Finish compression */
     jpeg_finish_decompress ( &cinfo );
 
     jpeg_destroy_decompress ( &cinfo );
@@ -74,19 +74,20 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
 
 bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &outFileName) const {
 
+
+
     return true;
 }
 
 void ImageJPG::ErrorExit(j_common_ptr cinfo) {
 
-    /** cinfo->err really points to a my_error_mgr struct, so coerce pointer */
+    /* Cinfo common struct to custom errormanager */
     ErrorManager * myerr = (ErrorManager*) cinfo -> err;
 
-    /** Always display the message. */
-    /** We could postpone this until after returning, if we chose. */
-    (*cinfo->err->output_message)(cinfo); // print error message (actually disabled below)
+    /* Display error message */
+    (*cinfo->err->output_message)(cinfo);
 
-    /** Return control to the setjmp point */
+    /* Return control to the setjmp point */
     longjmp ( myerr->jumpBuffer, 1 );
 
 }
