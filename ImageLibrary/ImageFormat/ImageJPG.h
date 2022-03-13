@@ -16,6 +16,13 @@ public:
     bool SaveImageData(const ImageData &dataToSave, const std::string &outFileName) const override;
 
     virtual ~ImageJPG() = default;
+
+protected:
+
+    static const int COMPRESSION_QUALITY = 90;
+
+    std::string AddExstention(const std::string &fileName) const override;
+
 private:
 
     struct ErrorManager {
@@ -25,6 +32,7 @@ private:
 
     static void ErrorExit(j_common_ptr cinfo);
     static void OutputMessage(j_common_ptr cinfo);
+
 };
 
 
