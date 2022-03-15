@@ -31,8 +31,6 @@ int main() {
 
     jpgFormat.SaveImageData(*res, "../test");
 
-
-
     UserMenu userMenu;
     userMenu.Update();
 
