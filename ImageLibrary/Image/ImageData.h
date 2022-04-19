@@ -17,7 +17,7 @@ public:
     int Height;
     int Channels;
     std::unique_ptr<uint8_t[]> Data;
-    int DataSize;
+    int DataSize; // total number of pixels, typically width * height * #channels
 
     ImageData();
 
