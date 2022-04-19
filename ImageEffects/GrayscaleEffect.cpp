@@ -19,6 +19,7 @@ void GrayscaleEffect::ApplyEffect() {
         for (int j = i; j < i + _imageData.Channels; ++j) {
             avgPixelValue += _imageData.Data[j];
         }
+
         avgPixelValue /= _imageData.Channels;
 
         for (int j = i; j < i + _imageData.Channels; ++j) {
