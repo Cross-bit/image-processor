@@ -22,6 +22,7 @@ ImageData::ImageData ( std::string fileName, int width, int height, int numOfCha
     DataSize ( dataSize )
 { }
 
+const int ImageData::ColorChannels = 3;
 
 
 

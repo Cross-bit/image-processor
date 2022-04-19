@@ -12,16 +12,39 @@
 class ImageData {
 public:
 
+    /**
+     * Image name.
+     */
     std::string Name;
+    /**
+     * Image (pixel) widht.
+     */
     int Width;
+    /**
+     * Image (pixel) height.
+     */
     int Height;
+    /**
+     * All loaded channels.
+     */
     int Channels;
+    /**
+     * All Image data buffer.
+     */
     std::unique_ptr<uint8_t[]> Data;
-    int DataSize; // total number of pixels, typically width * height * #channels
+    /**
+     * Total number of pixels, typically width * height * #channels. (i. e. data array len)
+     */
+    int DataSize;
 
     ImageData();
 
     explicit ImageData(std::string imageName, int width, int height, int numOfChannels, int dataSize);
+
+    /**
+     * Real number of channels representing color (e.g. RGB).
+     */
+    static const int ColorChannels;
 };
 
 
