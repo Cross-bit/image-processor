@@ -5,10 +5,6 @@
 #include "ImageEffect.h"
 
 #include "cassert"
-/*ImageEffect::ImageEffect(ImageData &imageData) : _redCoef(1), _greenCoef(1), _blueCoef(1) {
-
-}*/
-
 
 ImageEffect::ImageEffect(ImageData &imageData) :
 _imageData(imageData),
@@ -17,22 +13,29 @@ _greenCoef(1),
 _blueCoef(1)
 { }
 
+ImageEffect::ImageEffect(ImageData &imageData, float redCoef, float greenCoef, float blueCoef)
+: _imageData(imageData) {
+    SetRedCoef(redCoef);
+    SetGreenCoef(greenCoef);
+    SetBlueCoef(blueCoef);
+}
 
-void ImageEffect::SetRedCoef(int value){
+
+void ImageEffect::SetRedCoef(float value){
     assert(("Red coef value is out of range [0,1]", !CheckCoef(value)));
     _redCoef = value;
 }
 
-void ImageEffect::SetGreenCoef(int value) {
+void ImageEffect::SetGreenCoef(float value) {
     assert(("Green coef value is out of range [0,1]", !CheckCoef(value)));
     _greenCoef = value;
 }
 
-void ImageEffect::SetBlueCoef(int value) {
+void ImageEffect::SetBlueCoef(float value) {
     assert(("Blue coef value is out of range [0,1]", !CheckCoef(value)));
     _blueCoef = value;
 }
 
-bool ImageEffect::CheckCoef(int value) {
+bool ImageEffect::CheckCoef(float value) {
     return value >= 0 && value <= 1;
 }
