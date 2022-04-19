@@ -30,7 +30,7 @@ add_executable(
         UserMenu/MenuCommands/GoSecondMenuOption.cpp
         UserMenu/MenuCommands/GoSecondMenuOption.h
         UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageFormat.cpp ImageLibrary/ImageFormat.h ImageLibrary/ImageFormat/ImageJPG.cpp ImageLibrary/ImageFormat/ImageJPG.h ImageLibrary/ImageFormatFactory.cpp ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp ImageLibrary/ImageFormat/ImagePNG.h
-        ImageLibrary/Image/ImageData.cpp ImageLibrary/Image/ImageData.h)
+        ImageLibrary/Image/ImageData.cpp ImageLibrary/Image/ImageData.h ImageEffects/GrayscaleEffect.cpp ImageEffects/GrayscaleEffect.h ImageEffects/ImageEffect.cpp ImageEffects/ImageEffect.h)
 
 #find_package (jpeg REQUIRED)
 

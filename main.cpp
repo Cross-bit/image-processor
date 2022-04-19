@@ -14,7 +14,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../test/algo.jpg";
+    std::string file = "../Resources/algo.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -29,7 +29,7 @@ int main() {
     // set new file name:
     res->Name = res->Name + "_";
 
-    jpgFormat.SaveImageData(*res, "../test");
+    jpgFormat.SaveImageData(*res, "../Resources");
 
     UserMenu userMenu;
     userMenu.Update();
