@@ -8,13 +8,16 @@
 
 #include "ImageLibrary/ImageFormat/ImageJPG.h"
 
+#include "ImageEffects/ImageEffect.h"
+#include "ImageEffects/GrayscaleEffect.h"
+
 #include <cstdio>
 
 int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/algo.jpg";
+    std::string file = "../Resources/cube.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -25,6 +28,10 @@ int main() {
     }
     else
         std::cout << "does not work" << std::endl;
+
+
+    auto effect = new GrayscaleEffect(*res);
+    effect->ApplyEffect();
 
     // set new file name:
     res->Name = res->Name + "_";
