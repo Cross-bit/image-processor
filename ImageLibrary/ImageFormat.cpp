@@ -15,4 +15,12 @@ std::string ImageFormat::ParseFileName(const std::string &fileName) {
     return RemoveExstention(fileName.substr(indexOfName + 1 ));
 }
 
+ImageData::ColorSpaces ImageFormat::DecodeColorSpaceMapping(int index) const {
+    return ImageData::ColorSpaces::sRGB;
+}
+
+int ImageFormat::EncodeColorSpaceMapping(ImageData::ColorSpaces colorSpace) const {
+    return 0;
+}
+
 

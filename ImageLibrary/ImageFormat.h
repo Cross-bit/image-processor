@@ -28,7 +28,19 @@ public:
 protected:
     virtual std::string AddExstention(const std::string &fileName) const = 0;
 
-    //virtual std::string GetFormatExstention() const = 0;
+    /**
+     * Converts 3-rd party library colorspace indexing to ours ColorSpaces enum.
+     * @param index
+     * @return
+     */
+    virtual ImageData::ColorSpaces DecodeColorSpaceMapping(int index) const;
+
+    /**
+     * Converts ours colorSpace enums to 3-rd party library int representation.
+     * @param colorSpace
+     * @return
+     */
+    virtual int EncodeColorSpaceMapping(ImageData::ColorSpaces colorSpace) const;
 };
 
 
