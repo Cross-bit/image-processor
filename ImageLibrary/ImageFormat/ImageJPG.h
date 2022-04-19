@@ -19,9 +19,13 @@ public:
 
 protected:
 
-    static const int COMPRESSION_QUALITY = 90;
+    static const int COMPRESSION_QUALITY = 90; // jpeglib specific constant
 
     std::string AddExstention(const std::string &fileName) const override;
+
+    ImageData::ColorSpaces DecodeColorSpaceMapping(int index) const override;
+
+    int EncodeColorSpaceMapping(ImageData::ColorSpaces colorSpace) const override;
 
 private:
 

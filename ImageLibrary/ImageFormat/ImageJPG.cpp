@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdint>
+#include "cassert"
 
 std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileName) const {
     // todo: add error handling of some api functions (e. g. jpeg_read_header ...)
@@ -51,11 +52,12 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
     jpeg_start_decompress(&cinfo);
 
     std::unique_ptr<ImageData> imageData = std::make_unique<ImageData>(
-    std::move(ParseFileName(inpFileName)),
-    cinfo.image_width,
-    cinfo.image_height,
-    cinfo.num_components,
-    cinfo.image_width * cinfo.image_height * cinfo.num_components
+            std::move(ParseFileName(inpFileName)),
+            cinfo.image_width,
+            cinfo.image_height,
+            cinfo.num_components,
+            cinfo.image_width * cinfo.image_height * cinfo.num_components,
+            DecodeColorSpaceMapping(cinfo.jpeg_color_space)
     );
 
 
@@ -77,7 +79,6 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
 
     return std::move(imageData);
 }
-
 
 bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &outFilePath) const {
 
@@ -115,7 +116,7 @@ bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &out
     cinfo.image_width = dataToSave.Width;
     cinfo.image_height = dataToSave.Height;
     cinfo.input_components = dataToSave.Channels;
-    cinfo.in_color_space = JCS_RGB; // todo: add property to imageData object
+    cinfo.in_color_space =  J_COLOR_SPACE(EncodeColorSpaceMapping(dataToSave.ColorSpace));
 
     jpeg_set_defaults ( &cinfo );
 
@@ -159,4 +160,26 @@ void ImageJPG::OutputMessage(j_common_ptr cinfo){
 
 std::string ImageJPG::AddExstention(const std::string &fileName) const {
     return fileName + ".jpg";
+}
+
+// -- color spaces mapping --
+ImageData::ColorSpaces ImageJPG::DecodeColorSpaceMapping(int j_color_space) const {
+
+    switch (j_color_space) {
+        case JCS_UNKNOWN: assert("Unknown color space provided!");		/* error/unspecified */
+        case JCS_GRAYSCALE: return ImageData::GRAYSCALE;		/* monochrome */
+        case JCS_RGB: return ImageData::sRGB;		/* red/green/blue, standard RGB (sRGB) */
+    }
+
+    return ImageData::sRGB;
+}
+
+int ImageJPG::EncodeColorSpaceMapping(ImageData::ColorSpaces colorSpace) const {
+    switch (colorSpace) {
+        case ImageData::sRGB: return 2;
+        case ImageData::GRAYSCALE: return 1;
+        default: assert("This format does not support given colorspace!");
+    }
+
+    return 0;
 }
