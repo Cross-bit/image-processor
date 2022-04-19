@@ -12,6 +12,8 @@
 class ImageData {
 public:
 
+    enum ColorSpaces { sRGB, GRAYSCALE }; // todo: fill in other spaces
+
     /**
      * Image name.
      */
@@ -36,10 +38,14 @@ public:
      * Total number of pixels, typically width * height * #channels. (i. e. data array len)
      */
     int DataSize;
+    /**
+     * In which color space the data are stored.
+     */
+    ColorSpaces ColorSpace;
 
     ImageData();
 
-    explicit ImageData(std::string imageName, int width, int height, int numOfChannels, int dataSize);
+    explicit ImageData(std::string imageName, int width, int height, int numOfChannels, int dataSize, ImageData::ColorSpaces colorSpace);
 
     /**
      * Real number of channels representing color (e.g. RGB).

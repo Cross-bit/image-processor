@@ -10,16 +10,19 @@ ImageData::ImageData() :
     Height( 0 ),
     Channels( 0 ),
     Data( nullptr ),
-    DataSize( 0 )
+    DataSize( 0 ),
+    ColorSpace ( ImageData::sRGB )
 { }
 
-ImageData::ImageData ( std::string fileName, int width, int height, int numOfChannels, int dataSize ):
-    Name ( move ( fileName ) ),
-    Width ( width ),
-    Height ( height ),
-    Channels ( numOfChannels ),
-    Data ( std::make_unique<uint8_t[]>(dataSize) ),
-    DataSize ( dataSize )
+
+ImageData::ImageData(std::string imageName, int width, int height, int numOfChannels, int dataSize, ImageData::ColorSpaces colorSpace) :
+Name ( move ( imageName ) ),
+Width ( width ),
+Height ( height ),
+Channels ( numOfChannels ),
+Data ( std::make_unique<uint8_t[]>(dataSize) ),
+DataSize ( dataSize ),
+ColorSpace(colorSpace)
 { }
 
 const int ImageData::ColorChannels = 3;
