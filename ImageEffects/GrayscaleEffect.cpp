@@ -7,6 +7,14 @@
 GrayscaleEffect::GrayscaleEffect(ImageData &_imageData)
 : ImageEffect(_imageData) { }
 
+GrayscaleEffect::GrayscaleEffect(ImageData &_imageData, float redCoef, float greenCoef, float blueCoef)
+: ImageEffect(_imageData)
+{
+    SetRedCoef(redCoef);
+    SetBlueCoef(greenCoef);
+    SetGreenCoef(blueCoef);
+}
+
 
 void GrayscaleEffect::ApplyEffect() {
 

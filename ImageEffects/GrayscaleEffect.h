@@ -12,9 +12,9 @@ class GrayscaleEffect : public ImageEffect{
 public:
     GrayscaleEffect(ImageData& _imageData);
 
+    GrayscaleEffect(ImageData& _imageData, float r, float g, float b);
+
     void ApplyEffect() override;
-
-
 };
 
 
