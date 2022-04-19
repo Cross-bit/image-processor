@@ -13,7 +13,7 @@ public:
 
     virtual void ApplyEffect() =0;
 
-private:
+protected:
     ImageData& _imageData;
 };
 
