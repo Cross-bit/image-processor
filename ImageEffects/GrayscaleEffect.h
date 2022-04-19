@@ -10,7 +10,7 @@
 
 class GrayscaleEffect : public ImageEffect{
 public:
-    GrayscaleEffect();
+    GrayscaleEffect(ImageData& _imageData);
 
     void ApplyEffect() override;
 
