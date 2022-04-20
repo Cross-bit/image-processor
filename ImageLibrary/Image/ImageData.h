@@ -8,6 +8,7 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <math.h>
 
 class ImageData {
 public:
@@ -51,6 +52,11 @@ public:
      * Real number of channels representing color (e.g. RGB).
      */
     static const int ColorChannels;
+
+    static float sRGBGammaExspansion(float value_srgb);
+
+    static float sRGBGammaCompression(float value_srgb);
+
 };
 
 

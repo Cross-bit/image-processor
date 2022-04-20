@@ -28,4 +28,20 @@ ColorSpace(colorSpace)
 const int ImageData::ColorChannels = 3;
 
 
+// todo: if further exspantion, it would be better to move colorSpaces and its methods to separate classes...
+
+float ImageData::sRGBGammaExspansion(float value_srgb){
+    if(value_srgb <= 0.04045)
+        return value_srgb / 12.92;
+    else
+        return pow(((value_srgb+0.055)/1.055), 2.4);
+}
+
+float ImageData::sRGBGammaCompression(float value_srgb){
+    if(value_srgb <= 0.0031308)
+        return value_srgb * 12.92;
+    else
+        return ((pow(value_srgb, 1/2.4)*1.055) - 0.055);
+}
+
 
