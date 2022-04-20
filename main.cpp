@@ -9,7 +9,8 @@
 #include "ImageLibrary/ImageFormat/ImageJPG.h"
 
 #include "ImageEffects/ImageEffect.h"
-#include "ImageEffects/GrayscaleEffect.h"
+#include "ImageEffects/GrayscaleEffect/GrayscaleEffect.h"
+#include "ImageEffects/GrayscaleEffect/Algorithms/AverageGrayscaleStrategy.h"
 
 #include <cstdio>
 
@@ -29,8 +30,9 @@ int main() {
     else
         std::cout << "does not work" << std::endl;
 
+    std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<AverageGrayscaleStrategy>();
 
-    auto effect = new GrayscaleEffect(*res);
+    auto effect = new GrayscaleEffect(*res, *strategyBase);
     effect->ApplyEffect();
 
     // set new file name:
