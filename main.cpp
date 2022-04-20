@@ -35,6 +35,7 @@ int main() {
     auto effect = new GrayscaleEffect(*res, *strategyBase);
     effect->ApplyEffect();
 
+
     // set new file name:
     res->Name = res->Name + "_";
 
