@@ -4,8 +4,11 @@
 
 #include "AverageGrayscaleStrategy.h"
 
+#include <cstring>
 
 void AverageGrayscaleStrategy::TransformToGrayscale(ImageData& imageData) const {
+    // simply takes average of R+G+B and sets all the channels to it.
+
     for (int i = 0; i < imageData.DataSize; i += imageData.ColorChannels) {
 
         int avgPixelValue;
@@ -16,8 +19,6 @@ void AverageGrayscaleStrategy::TransformToGrayscale(ImageData& imageData) const 
 
         avgPixelValue /= imageData.ColorChannels;
 
-        for (int j = i; j < i + imageData.ColorChannels; ++j) {
-            imageData.Data[j] = avgPixelValue;
-        }
+        std::memset(&imageData.Data[i], avgPixelValue, imageData.ColorChannels);
     }
 }
