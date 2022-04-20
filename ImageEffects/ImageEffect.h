@@ -29,7 +29,7 @@ private:
 protected:
     ImageData& _imageData;
 
-    float _redCoef;
+    float _redCoef; // todo: probably move to specific algoritm, but we will see if it makes sense here...
     float _greenCoef;
     float _blueCoef;
 };
