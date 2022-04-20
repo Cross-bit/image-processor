@@ -10,6 +10,8 @@
 #include <jpeglib.h>
 #include <setjmp.h>
 
+//#include "../../External/includes/turbojpeg.h" todo: recreate with faster turbojpeg
+
 class ImageJPG : public ImageFormat {
 public:
     std::unique_ptr<ImageData> LoadImageData(const std::string &inpFileName) const override;

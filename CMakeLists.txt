@@ -45,6 +45,7 @@ add_executable(
 
 #find_library(JPEG_LIB External/lib/)
 #${JPEG_LIB}
+target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libturbojpeg.a)
 
 #target_link_libraries(ImageProcessor  /mnt/c/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
 target_link_libraries(ImageProcessor ${JPEG_LIB})
