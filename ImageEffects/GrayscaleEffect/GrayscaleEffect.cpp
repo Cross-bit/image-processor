@@ -22,7 +22,7 @@ GrayscaleEffect::GrayscaleEffect(ImageData &_imageData,
 void GrayscaleEffect::ApplyEffect() {
 
     if(_imageData.DataSize == 0)
-        return; //nothing to do todo: throw probably
+        return;
 
     _effectStrategy.TransformToGrayscale(_imageData);
 }
