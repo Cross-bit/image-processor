@@ -13,6 +13,7 @@
 
 #include "ImageEffects/GrayscaleEffect/Algorithms/AverageGrayscaleStrategy.h"
 #include "ImageEffects/GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.h"
+#include "ImageEffects/NegativeEffect/NegativeEffect.h"
 
 #include <cstdio>
 
@@ -20,7 +21,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/gradient.jpg";
+    std::string file = "../Resources/parrot.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -35,12 +36,14 @@ int main() {
 
     std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<LinearGrayscaleStrategy>(.2126, .7152, .0722);
 
-    auto effect = new GrayscaleEffect(*res, *strategyBase);
+//    auto effect = new GrayscaleEffect(*res, *strategyBase);
+
+    auto effect = new NegativeEffect(*res, 0.5);
     effect->ApplyEffect();
 
 
     // set new file name:
-    res->Name = res->Name + "_";
+    res->Name = res->Name + "_n";
 
     jpgFormat.SaveImageData(*res, "../Resources");
 
