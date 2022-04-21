@@ -15,6 +15,11 @@ public:
 
     void TransformToGrayscale(ImageData& inputData) const override;
     void SetLinearParameters(float red, float green, float blue);
+
+    float GetRedCoef();
+    float GetGreenCoef();
+    float GetBlueCoef();
+
 private:
     float _redCoef;
     float _greenCoef;
