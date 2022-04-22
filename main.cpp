@@ -15,13 +15,15 @@
 #include "ImageEffects/GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.h"
 #include "ImageEffects/NegativeEffect/NegativeEffect.h"
 
+#include "ImageEffects/Convolution/ConvolutionKernels/ImageKernel.h"
+
 #include <cstdio>
 
 int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/parrot.jpg";
+    std::string file = "../Resources/colored.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -38,8 +40,20 @@ int main() {
 
 //    auto effect = new GrayscaleEffect(*res, *strategyBase);
 
-    auto effect = new NegativeEffect(*res, 0.5);
-    effect->ApplyEffect();
+    /*auto effect = new NegativeEffect(*res, 0.5);
+    effect->ApplyEffect();*/
+    printf("img h: %d\n", res->Height);
+    printf("ref: %d\n", res->Data[res->DataSize - 4]);
+    //std::cout << "reference: " << unsigned (res->Data[2]);
+
+    auto imgKernelTest = new ImageKernel(*res);
+    imgKernelTest->ProcessImageData();
+    /*for (int i = 0; i < res->DataSize; ++i) {
+        std::cout << unsigned(res->Data[i]) << " ";
+    }*/
+    
+
+
 
 
     // set new file name:
