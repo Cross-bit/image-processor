@@ -23,7 +23,8 @@ void LinearGrayscaleStrategy::SetLinearParameters(float red, float green, float 
 
 void LinearGrayscaleStrategy::TransformToGrayscale(ImageData &inputData) const {
 
-    for (int i = 0; i < inputData.DataSize; i += inputData.ColorChannels) {
+    for (int i = 0; i < inputData.DataSize; i += inputData.Channels)
+    {
 
         float res;
         res = _redCoef * ImageData::sRGBGammaExspansion(inputData.Data[i] / (float) 255);
