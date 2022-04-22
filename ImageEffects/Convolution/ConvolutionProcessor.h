@@ -9,12 +9,14 @@
 
 class ConvolutionProcessor {
 public:
-    ConvolutionProcessor(ImageData& imageData, ImageKernel& imageKernel);
+    ConvolutionProcessor(ImageData imageData, ImageKernel& imageKernel);
 
     void ProcessImageData();
 
 private:
     void ProcessImageKernel(int kernelLeftX, int kernelTopY);
+
+    void UpdateConvolutedBuffer(int x, int y);
 
     /**
      * Determines for how many pixels the kernel matrix shifts in each step horizontally. (Default set to 1)
@@ -28,7 +30,16 @@ private:
 
     ImageData& _imageData;
 
+    ImageData _imageDataCopy;
+
     ImageKernel _imageKernel;
+
+    /**
+     * Currently convoluted pixel buffer
+     */
+    std::vector<int> _convolutedPixelBuffer;
+
+    int _valuesPerLine;
 };
 
 
