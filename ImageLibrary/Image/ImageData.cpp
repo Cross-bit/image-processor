@@ -3,7 +3,10 @@
 //
 
 #include "ImageData.h"
-
+#include <memory>
+#include <string>
+#include <algorithm>
+#include <string.h>
 ImageData::ImageData() :
     Name( "" ),
     Width( 0 ),
@@ -33,7 +36,9 @@ Channels(other.Channels),
 DataSize(other.DataSize),
 ColorSpace(other.ColorSpace)
 {
-    std::copy(&other.Data[0], &other.Data[0] + this->DataSize, &this->Data[0]);
+    Data = std::make_unique<uint8_t[]>(other.DataSize);
+
+    std::copy(&other.Data[0], &other.Data[0] + other.DataSize, &Data[0]);
 }
 
 ImageData::ImageData(ImageData&& other) :
@@ -70,7 +75,9 @@ ImageData& ImageData::operator=(const ImageData& other){
     this->DataSize = other.DataSize;
     this->ColorSpace = other.ColorSpace;
 
-    std::copy(&other.Data[0], &other.Data[0] + this->DataSize, &this->Data[0]);
+    Data = std::make_unique<uint8_t[]>(other.DataSize);
+
+    std::copy(&other.Data[0], &other.Data[0] + other.DataSize, &Data[0]);
 
     return *this;
 }
