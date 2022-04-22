@@ -28,5 +28,17 @@ void ConvolutionProcessor::ProcessImageData() {
 }
 
 void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
+    int step = 3; // image kernel size
 
+    for (int y = kernelTopY; y < kernelTopY + step; ++y) {
+        for (int x = kernelLeftX; x < kernelLeftX + step * _imageData.Channels; x += _imageData.Channels) {
+
+            // per pixel
+            for (int k = _imageData.Width * _imageData.Channels * y + x; k < _imageData.Width * _imageData.Channels * y + x + _imageData.Channels; ++k) {
+                printf("%d ", _imageData.Data[k]);
+            }
+        //    printf(" ");
+        }
+        printf("\n");
+    }
 }
