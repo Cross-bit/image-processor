@@ -47,8 +47,8 @@ int main() {
 
     jpgFormat.SaveImageData(*res, "../Resources");
 
-    UserMenu userMenu;
-    userMenu.Update();
+    /*UserMenu userMenu;
+    userMenu.Update();*/
 
     return 0;
 }
