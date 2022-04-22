@@ -5,3 +5,7 @@
 #include "ImageKernel.h"
 
 ImageKernel::ImageKernel(int dimension) : _dimension(dimension) { }
+
+int ImageKernel::GetDimension() const {
+    return this->_dimension;
+}
