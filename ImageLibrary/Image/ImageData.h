@@ -44,15 +44,30 @@ public:
      */
     ColorSpaces ColorSpace;
 
-    ImageData();
+    explicit ImageData();
 
     explicit ImageData(std::string imageName, int width, int height, int numOfChannels, int dataSize, ImageData::ColorSpaces colorSpace);
+
+    ImageData(ImageData &&other);
+
+    ~ImageData() = default;
+
+    ImageData(const ImageData &other);
+
+    ImageData& operator=(const ImageData &other);
+
+    ImageData& operator=(ImageData&& other);
 
     /**
      * Real number of channels representing color (e.g. RGB).
      */
     static const int ColorChannels;
 
+    /**
+     *
+     * @param value_srgb
+     * @return
+     */
     static float sRGBGammaExspansion(float value_srgb);
 
     static float sRGBGammaCompression(float value_srgb);

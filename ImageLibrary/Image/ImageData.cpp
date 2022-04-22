@@ -25,6 +25,58 @@ DataSize ( dataSize ),
 ColorSpace(colorSpace)
 { }
 
+ImageData::ImageData(const ImageData& other) :
+Name(other.Name),
+Width(other.Width),
+Height(other.Height),
+Channels(other.Channels),
+DataSize(other.DataSize),
+ColorSpace(other.ColorSpace)
+{
+    std::copy(&other.Data[0], &other.Data[0] + this->DataSize, &this->Data[0]);
+}
+
+ImageData::ImageData(ImageData&& other) :
+        Name(std::move(other.Name)),
+        Width(std::move(other.Width)),
+        Height(std::move(other.Height)),
+        Channels(std::move(other.Channels)),
+        DataSize(std::move(other.DataSize)),
+        Data(std::move(other.Data)),
+        ColorSpace(std::move(other.ColorSpace))
+{ }
+
+ImageData& ImageData::operator=(ImageData&& other){
+    this->Name = std::move(other.Name);
+    this->Width = std::move(other.Width);
+    this->Height = std::move(other.Height);
+    this->Channels = std::move(other.Channels);
+    this->DataSize = std::move(other.DataSize);
+    this->Data = std::move(other.Data);
+    this->ColorSpace = std::move(other.ColorSpace);
+
+    return *this;
+}
+
+
+ImageData& ImageData::operator=(const ImageData& other){
+    if(this == &other)
+        return *this;
+
+    this->Name = other.Name;
+    this->Width = other.Width;
+    this->Height = other.Height;
+    this->Channels = other.Channels;
+    this->DataSize = other.DataSize;
+    this->ColorSpace = other.ColorSpace;
+
+    std::copy(&other.Data[0], &other.Data[0] + this->DataSize, &this->Data[0]);
+
+    return *this;
+}
+
+
+
 const int ImageData::ColorChannels = 3;
 
 
