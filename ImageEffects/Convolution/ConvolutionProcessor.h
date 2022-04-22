@@ -9,7 +9,7 @@
 
 class ConvolutionProcessor {
 public:
-    ConvolutionProcessor(ImageData imageData, ImageKernel& imageKernel);
+    ConvolutionProcessor(ImageData& imageData, ImageKernel& imageKernel);
 
     void ProcessImageData();
 
@@ -32,7 +32,7 @@ private:
 
     ImageData _imageDataCopy;
 
-    ImageKernel _imageKernel;
+    ImageKernel& _imageKernel;
 
     /**
      * Currently convoluted pixel buffer

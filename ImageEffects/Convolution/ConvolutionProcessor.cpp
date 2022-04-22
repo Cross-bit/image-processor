@@ -3,23 +3,22 @@
 //
 
 #include "ConvolutionProcessor.h"
+#include "vector"
 
-
-
-ConvolutionProcessor::ConvolutionProcessor(ImageData &imageData, ImageKernel &imageKernel) :
-_imageData(imageData),
-_imageKernel(imageKernel)
-{ }
+ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &imageKernel) :
+        _imageData(imageData),
+        _imageKernel(imageKernel),
+        _convolutedPixelBuffer(imageData.ColorChannels),
+        _valuesPerLine(_imageData.Width * _imageData.Channels),
+        _imageDataCopy(imageData) { }
 
 void ConvolutionProcessor::ProcessImageData() {
 
     int step = 1; // image kernel size
 
-    int componentsOnLine = _imageData.Width * _imageData.Channels;
-
     for (int i = 0; i < _imageData.Height; i += step) {
 
-        for (int j = 0; j < componentsOnLine; j += step*_imageData.Channels) {
+        for (int j = 0; j < _valuesPerLine; j += step*_imageData.Channels) {
             ProcessImageKernel(j, i);
             //printf("\n");
         }
@@ -28,17 +27,35 @@ void ConvolutionProcessor::ProcessImageData() {
 }
 
 void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
-    int step = 3; // image kernel size
 
-    for (int y = kernelTopY; y < kernelTopY + step; ++y) {
-        for (int x = kernelLeftX; x < kernelLeftX + step * _imageData.Channels; x += _imageData.Channels) {
+    // clear the buffer first...
+    std::fill(_convolutedPixelBuffer.begin(), _convolutedPixelBuffer.end(), 0);
 
-            // per pixel
-            for (int k = _imageData.Width * _imageData.Channels * y + x; k < _imageData.Width * _imageData.Channels * y + x + _imageData.Channels; ++k) {
-                printf("%d ", _imageData.Data[k]);
+    int lastPixelY = kernelTopY + _imageKernel.GetDimension();
+    int lastPixelX = kernelLeftX +  _imageKernel.GetDimension() * _imageData.Channels;
+
+    for (int y = kernelTopY; y < lastPixelY; ++y) {
+        for (int x = kernelLeftX; x < lastPixelX; x += _imageData.Channels) {
+
+            if(y > _imageData.Width){
+                // todo: :) handling of going out of the image bounds + vertically todo:
             }
-        //    printf(" ");
+
+            UpdateConvolutedBuffer(x, y);
+
         }
         printf("\n");
+    }
+}
+
+void ConvolutionProcessor::UpdateConvolutedBuffer(int x, int y) {
+
+    int pixelStartPos = _valuesPerLine * y + x;
+    int pixelEndPos = pixelStartPos + _imageData.ColorChannels;
+
+    // per each pixel do convolution for each color channel
+    for (int k = pixelStartPos; k < pixelEndPos; ++k) {
+        //printf("%d ", _imageData.Data[k]);
+        _convolutedPixelBuffer[k] += _imageKernel.GetKernelValueOnCoords(x, y);
     }
 }
