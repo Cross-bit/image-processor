@@ -15,14 +15,15 @@ public:
     ImageKernel(int dimension);
 
     /**
-     * Setter for kernel dimension.
-     */
-    void SetDimension(int value);
-
-    /**
      * Getter for kernel dimension
      */
-    void GetDimension();
+    int GetDimension();
+
+    /**
+     *  Gets value from kernel matrix on specific coords.
+     * @return
+     */
+    float GetKernelValueOnCoords(int x, int y);
 
 private:
     int _dimension;
