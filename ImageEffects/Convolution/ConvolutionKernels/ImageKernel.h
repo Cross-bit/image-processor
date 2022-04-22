@@ -17,13 +17,13 @@ public:
     /**
      * Getter for kernel dimension
      */
-    int GetDimension();
+    int GetDimension() const;
 
     /**
      *  Gets value from kernel matrix on specific coords.
      * @return
      */
-    float GetKernelValueOnCoords(int x, int y);
+    virtual float GetKernelValueOnCoords(int x, int y) const =0;
 
 private:
     int _dimension;
