@@ -34,7 +34,6 @@ void NegativeEffect::ApplyEffect() {
         _imageData.Data[i] = dataTmp - _intensityCoef*(2*dataTmp - 255);
                 //_imageData.Data[i]*(1-2*_intensityCoef) + _intensityCoef*255; // alternative
                 //((255 - _imageData.Data[i])  + (2*dataTmp - 255) * (1 - _intensityCoef)); original formula // todo: do not lose the paper with math, and put it into the documentation!
-                // todo: move it for 0.5 less and + figure out, why the 0.5 is the key value, where everything is one colourd gray... XD
     }
 
 }
