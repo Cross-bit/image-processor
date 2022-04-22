@@ -16,6 +16,8 @@
 #include "ImageEffects/NegativeEffect/NegativeEffect.h"
 
 #include "ImageEffects/Convolution/ConvolutionKernels/ImageKernel.h"
+#include "ImageEffects/Convolution/ConvolutionProcessor.h"
+
 
 #include <cstdio>
 
@@ -46,8 +48,12 @@ int main() {
     printf("ref: %d\n", res->Data[res->DataSize - 4]);
     //std::cout << "reference: " << unsigned (res->Data[2]);
 
-    auto imgKernelTest = new ImageKernel(*res);
-    imgKernelTest->ProcessImageData();
+
+
+    auto imgKernelTest = new ImageKernel(3);
+    auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest);
+
+    convolutionProcessor->ProcessImageData();
     /*for (int i = 0; i < res->DataSize; ++i) {
         std::cout << unsigned(res->Data[i]) << " ";
     }*/
