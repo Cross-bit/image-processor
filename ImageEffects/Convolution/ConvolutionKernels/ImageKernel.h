@@ -23,11 +23,11 @@ public:
      *  Gets value from kernel matrix on specific coords.
      * @return
      */
-    virtual float GetKernelValueOnCoords(int x, int y) const;
+    virtual double GetKernelValueOnCoords(int x, int y) const;
 
     bool CheckCoordsInDims(int x, int y) const;
 
-private:
+protected:
     int _dimension;
 };
 

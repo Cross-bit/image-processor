@@ -19,7 +19,7 @@ int ImageKernel::GetDimension() const {
  * @param y
  * @return
  */
-float ImageKernel::GetKernelValueOnCoords(int x, int y) const {
+double ImageKernel::GetKernelValueOnCoords(int x, int y) const {
     assert(CheckCoordsInDims(x, y));
     return  _dimension / 2 == x && _dimension / 2 == y ? 1 : 0;
 }
