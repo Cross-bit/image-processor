@@ -31,6 +31,7 @@ private:
 
     double Get2DGaussianValueOnCoords(int x, int y) const;
 
+    void NormalizeKernelData(int sum);
     /**
      * Kernel buffer matrix.
      */

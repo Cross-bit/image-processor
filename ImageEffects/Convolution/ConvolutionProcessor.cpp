@@ -81,6 +81,6 @@ void ConvolutionProcessor::UpdateConvolutedBuffer(int pixelX, int pixelY, int pi
     }
 }
 
-ImageData& ConvolutionProcessor::GetConvolutedImageData(){
+ImageData& ConvolutionProcessor::GetConvolutedImageData() {
     return *_convolutedImageData;
 }

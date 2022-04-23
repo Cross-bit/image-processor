@@ -3,6 +3,7 @@
 //
 
 #include "GaussianBlurImageKernel.h"
+#include <cassert>
 GaussianBlurImageKernel::GaussianBlurImageKernel(int kernelDimension) : ImageKernel(kernelDimension)
 {
     SetStandardDeviation(1);
@@ -15,15 +16,14 @@ GaussianBlurImageKernel::GaussianBlurImageKernel(int kernelDimension, double sta
 }
 
 void GaussianBlurImageKernel::SetStandardDeviation(double value) {
-
     _stdDiviation = value;
     _precomputedDeviationCoef = 2 * pow(_stdDiviation, 2);
 }
 
 void GaussianBlurImageKernel::PopulateKernelBufferWithValues() {
     // note: this algorithm works, but is far from optimal
-    // g. blur can be done in O(n)
-    // or even faster using box blur: http://blog.ivank.net/fastest-gaussian-blur.html
+    // g. blur can be done in O(n) (or O(n*log(n)) using FFT)
+    // for example: http://blog.ivank.net/fastest-gaussian-blur.html
 
     _kernelBuffer.clear();
     double sum = 0;
@@ -39,7 +39,11 @@ void GaussianBlurImageKernel::PopulateKernelBufferWithValues() {
         _kernelBuffer.emplace_back(std::move(bufferRow));
     }
 
-    // normalize the kernel (so all sum up to 1)
+    NormalizeKernelData(sum);
+}
+
+void GaussianBlurImageKernel::NormalizeKernelData(int sum){
+    // normalizes the kernel (so all values sum up to 1)
     for (int y = 0; y < _dimension; y++){
         for (int x = 0; x < _dimension; x++){
             _kernelBuffer[y][x] /= sum;
