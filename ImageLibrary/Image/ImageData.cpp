@@ -36,6 +36,9 @@ Channels(other.Channels),
 DataSize(other.DataSize),
 ColorSpace(other.ColorSpace)
 {
+    if(this == &other)
+        return;
+
     Data = std::make_unique<uint8_t[]>(other.DataSize);
 
     std::copy(&other.Data[0], &other.Data[0] + other.DataSize, &Data[0]);

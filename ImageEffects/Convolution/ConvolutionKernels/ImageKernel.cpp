@@ -3,6 +3,8 @@
 //
 
 #include "ImageKernel.h"
+#include <cassert>
+#include <string>
 
 ImageKernel::ImageKernel(int dimension) : _dimension(dimension) { }
 
@@ -18,5 +20,10 @@ int ImageKernel::GetDimension() const {
  * @return
  */
 float ImageKernel::GetKernelValueOnCoords(int x, int y) const {
-    return 1;
+    assert(CheckCoordsInDims(x, y));
+    return  _dimension / 2 == x && _dimension / 2 == y ? 1 : 0;
+}
+
+bool ImageKernel::CheckCoordsInDims(int x, int y) const{
+    return x < _dimension && y < _dimension && x >= 0 && y >= 0;
 }
