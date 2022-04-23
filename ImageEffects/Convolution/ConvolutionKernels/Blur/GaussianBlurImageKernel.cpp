@@ -42,7 +42,7 @@ void GaussianBlurImageKernel::PopulateKernelBufferWithValues() {
     NormalizeKernelData(sum);
 }
 
-void GaussianBlurImageKernel::NormalizeKernelData(int sum){
+void GaussianBlurImageKernel::NormalizeKernelData(double sum){
     // normalizes the kernel (so all values sum up to 1)
     for (int y = 0; y < _dimension; y++){
         for (int x = 0; x < _dimension; x++){
