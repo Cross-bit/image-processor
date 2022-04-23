@@ -15,10 +15,10 @@ ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &im
     {
         _convolutedImageData = std::make_unique<ImageData>(
                     imageData.Name + "_conv",
-                        imageData.Width,
-                        imageData.Height,
+                    imageData.Width,
+                    imageData.Height,
                     imageData.Channels,
-                       imageData.Width*imageData.Height * imageData.Channels,
+                    imageData.Width * imageData.Height * imageData.Channels,
                     imageData.ColorSpace );
 
     }
@@ -55,8 +55,9 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
     for (int y = kernelTopY; y < lastPixelY; ++y) {
         for (int x = kernelLeftX; x < lastPixelX; x += _imageData.Channels) {
 
-            if(y > _imageData.Width){
+            if(y > _imageData.Width) {
                 // todo: :) handling of going out of the image bounds + vertically too todo:
+                std::cout << "jsme venku";
             }
 
             UpdateConvolutedBuffer(x, y, pixelNumber);
