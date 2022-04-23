@@ -25,6 +25,8 @@ public:
      */
     virtual float GetKernelValueOnCoords(int x, int y) const;
 
+    bool CheckCoordsInDims(int x, int y) const;
+
 private:
     int _dimension;
 };
