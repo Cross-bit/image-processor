@@ -13,10 +13,19 @@ public:
 
     void ProcessImageData();
 
+    ImageData& GetConvolutedImageData();
+
 private:
     void ProcessImageKernel(int kernelLeftX, int kernelTopY);
 
-    void UpdateConvolutedBuffer(int x, int y);
+    void UpdateConvolutedBuffer(int pixelX, int pixelY, int pixelNumber);
+
+    /**
+     * Updates the final image data corresponding to the current kernel position with newly calculated data.
+     * @param kernelLeftX
+     * @param kernelTopY
+     */
+  // void UpdateFinalImageData(int kernelLeftX, int kernelTopY);
 
     /**
      * Determines for how many pixels the kernel matrix shifts in each step horizontally. (Default set to 1)
@@ -30,7 +39,7 @@ private:
 
     ImageData& _imageData;
 
-    ImageData _imageDataCopy;
+    std::unique_ptr<ImageData> _convolutedImageData;
 
     ImageKernel& _imageKernel;
 
@@ -38,6 +47,7 @@ private:
      * Currently convoluted pixel buffer
      */
     std::vector<int> _convolutedPixelBuffer;
+    std::vector<uint8_t> _convolutedData;
 
     int _valuesPerLine;
 };
