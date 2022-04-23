@@ -55,12 +55,11 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
     for (int y = kernelTopY; y < lastPixelY; ++y) {
         for (int x = kernelLeftX; x < lastPixelX; x += _imageData.Channels) {
 
-            if(y > _imageData.Width) {
-                // todo: :) handling of going out of the image bounds + vertically too todo:
-                std::cout << "jsme venku";
-            }
+            // todo: rewrite prettier
+            UpdateConvolutedBuffer(
+                    x <= _imageData.Width*_imageData.Channels-6 ? x : _imageData.Width*_imageData.Channels-6,
+                    y <= _imageData.Height-1 ? y : _imageData.Height-1, pixelNumber);
 
-            UpdateConvolutedBuffer(x, y, pixelNumber);
             pixelNumber++;
         }
     }
@@ -76,8 +75,9 @@ void ConvolutionProcessor::UpdateConvolutedBuffer(int pixelX, int pixelY, int pi
 
     // Do convolution per each color channel separately, k - real offset of channel
     for (int k = pixelOffset; k < pixelEndPosition; ++k) {
-
-        _convolutedPixelBuffer[k % _imageData.ColorChannels] +=
+        int tmp = k % _imageData.ColorChannels;
+        int a = _imageData.DataSize;
+        _convolutedPixelBuffer[tmp] +=
                 _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) * ImageData::sRGBGammaExspansion(_imageData.Data[k]/(float) 255);
     }
 }

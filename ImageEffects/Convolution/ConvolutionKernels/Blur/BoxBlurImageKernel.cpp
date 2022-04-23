@@ -10,5 +10,4 @@ BoxBlurImageKernel::BoxBlurImageKernel() : ImageKernel(3) { }; // box blur opera
 double BoxBlurImageKernel::GetKernelValueOnCoords(int x, int y) const {
     // box blur
     return 1 / (float) pow(_dimension, 2);
-
 }

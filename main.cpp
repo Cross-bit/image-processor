@@ -27,7 +27,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/baloon.jpg";
+    std::string file = "../Resources/harysek_2.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -54,6 +54,7 @@ int main() {
 
     double stdDeviation = sqrt(-(radius^2) / (2*std::log10(1 /(float) 255)));
     std::cout << stdDeviation;
+
     auto imgKernelTest = new GaussianBlurImageKernel(radius, 20);
     auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest);
 
