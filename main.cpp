@@ -25,7 +25,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/colored.jpg";
+    std::string file = "../Resources/parrot.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -54,11 +54,18 @@ int main() {
     auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest);
 
     convolutionProcessor->ProcessImageData();
+
+    auto& filtered = convolutionProcessor->GetConvolutedImageData();
+    filtered.Name = filtered.Name + "_c";
+
+    jpgFormat.SaveImageData(filtered, "../Resources");
+
+    return 0;
     /*for (int i = 0; i < res->DataSize; ++i) {
         std::cout << unsigned(res->Data[i]) << " ";
     }*/
     
-
+    return 0;
 
 
 
