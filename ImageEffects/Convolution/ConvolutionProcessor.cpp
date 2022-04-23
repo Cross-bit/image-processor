@@ -35,7 +35,7 @@ void ConvolutionProcessor::ProcessImageData() {
             ProcessImageKernel(j, i);
 
             for (auto & channelData : _convolutedPixelBuffer) {
-                _convolutedImageData->Data[totalDataCtr] = channelData;
+                _convolutedImageData->Data[totalDataCtr] = ImageData::sRGBGammaCompression(channelData) * 255;
                 totalDataCtr++;
             }
         }
@@ -77,7 +77,7 @@ void ConvolutionProcessor::UpdateConvolutedBuffer(int pixelX, int pixelY, int pi
     for (int k = pixelOffset; k < pixelEndPosition; ++k) {
 
         _convolutedPixelBuffer[k % _imageData.ColorChannels] +=
-                _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) * _imageData.Data[k];
+                _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) * ImageData::sRGBGammaExspansion(_imageData.Data[k]/(float) 255);
     }
 }
 
