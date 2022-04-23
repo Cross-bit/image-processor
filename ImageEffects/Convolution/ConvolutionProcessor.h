@@ -46,7 +46,7 @@ private:
     /**
      * Currently convoluted pixel buffer
      */
-    std::vector<int> _convolutedPixelBuffer;
+    std::vector<double> _convolutedPixelBuffer;
     std::vector<uint8_t> _convolutedData;
 
     int _valuesPerLine;
