@@ -56,6 +56,8 @@ double GaussianBlurImageKernel::Get2DGaussianValueOnCoords(int x, int y) const{
 }
 
 double GaussianBlurImageKernel::GetKernelValueOnCoords(int x, int y) const {
+    assert(("Given dimensions are out of image kernel!", CheckCoordsInDims(x, y)));
+
     // return the corresponding kernel value
    return _kernelBuffer[y][x];
 }
