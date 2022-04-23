@@ -18,6 +18,8 @@
 #include "ImageEffects/Convolution/ConvolutionKernels/ImageKernel.h"
 #include "ImageEffects/Convolution/ConvolutionProcessor.h"
 
+#include "ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.h"
+#include "ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h"
 
 #include <cstdio>
 
@@ -25,7 +27,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/parrot.jpg";
+    std::string file = "../Resources/baloon.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -48,16 +50,24 @@ int main() {
     printf("ref: %d\n", res->Data[res->DataSize - 4]);
     //std::cout << "reference: " << unsigned (res->Data[2]);
 
+    auto radius = 21;
 
-
-    auto imgKernelTest = new ImageKernel(3);
+    double stdDeviation = sqrt(-(radius^2) / (2*std::log10(1 /(float) 255)));
+    std::cout << stdDeviation;
+    auto imgKernelTest = new GaussianBlurImageKernel(radius, 20);
     auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest);
 
     convolutionProcessor->ProcessImageData();
 
     auto& filtered = convolutionProcessor->GetConvolutedImageData();
-    filtered.Name = filtered.Name + "_c";
 
+    /*for (int i = 0; i < 15; ++i) {
+        auto convolutionProcessora = new ConvolutionProcessor(filtered, *imgKernelTest);
+        convolutionProcessora->ProcessImageData();
+        filtered = convolutionProcessora->GetConvolutedImageData();
+    }*/
+
+    filtered.Name = filtered.Name + "_c";
     jpgFormat.SaveImageData(filtered, "../Resources");
 
     return 0;
