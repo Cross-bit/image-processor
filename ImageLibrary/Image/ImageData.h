@@ -68,9 +68,9 @@ public:
      * @param value_srgb
      * @return
      */
-    static float sRGBGammaExspansion(float value_srgb);
+    static double sRGBGammaExspansion(double value_srgb);
 
-    static float sRGBGammaCompression(float value_srgb);
+    static double sRGBGammaCompression(double value_srgb);
 
 };
 
