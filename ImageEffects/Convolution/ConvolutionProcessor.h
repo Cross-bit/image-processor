@@ -21,6 +21,20 @@ private:
     void UpdateConvolutedBuffer(int pixelX, int pixelY, int pixelNumber);
 
     /**
+     * Transforms recived x coord so that it always corresponds to pixel in the image.
+     * @param x coord to transform.
+     * @return X coord that always lies in the image.
+     */
+    int GetValidXCoord(int x);
+
+    /**
+     * Transforms recived y coord so that it always corresponds to pixel in the image.
+     * @param y coord to transform.
+     * @return coord that always lies in the image.
+     */
+    int GetValidYCoord(int y);
+
+    /**
      * Updates the final image data corresponding to the current kernel position with newly calculated data.
      * @param kernelLeftX
      * @param kernelTopY
@@ -47,7 +61,6 @@ private:
      * Currently convoluted pixel buffer
      */
     std::vector<double> _convolutedPixelBuffer;
-    std::vector<uint8_t> _convolutedData;
 
     int _valuesPerLine;
 };
