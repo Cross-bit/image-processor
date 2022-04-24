@@ -82,11 +82,6 @@ public:
      */
     static const int ColorChannels;
 
-    /**
-     *
-     * @param value_srgb
-     * @return
-     */
     static double sRGBGammaExspansion(double value_srgb);
 
     static double sRGBGammaCompression(double value_srgb);
