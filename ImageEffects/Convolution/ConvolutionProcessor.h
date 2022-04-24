@@ -64,7 +64,7 @@ private:
     ImageKernel& _imageKernel;
 
     /**
-     * Currently convoluted pixel buffer
+     * Holds channel values for currently convoluted pixel.
      */
     std::vector<double> _convolutedPixelBuffer;
 
