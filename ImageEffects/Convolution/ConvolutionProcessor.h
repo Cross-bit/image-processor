@@ -18,7 +18,13 @@ public:
 private:
     void ProcessImageKernel(int kernelLeftX, int kernelTopY);
 
-    void UpdateConvolutedBuffer(int pixelX, int pixelY, int pixelNumber);
+    /**
+     * Updates internal convolution pixel buffer.
+     * @param pixelX
+     * @param pixelY
+     * @param pixelNumber
+     */
+    void UpdateConvolutedPixelBuffer(int pixelX, int pixelY, int pixelNumber);
 
     /**
      * Transforms recived x coord so that it always corresponds to pixel in the image.
