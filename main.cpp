@@ -20,7 +20,7 @@
 
 #include "ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.h"
 #include "ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h"
-#include "ImageEffects/Convolution/ConvolutionKernels/Sobel/LeftSobelImageKernel.h"
+#include "ImageEffects/Convolution/ConvolutionKernels/EdgeDetection/SobelImageKernel.h"
 
 #include <cstdio>
 
@@ -28,7 +28,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/harysek_2.jpg";
+    std::string file = "../Resources/lion.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -44,7 +44,7 @@ int main() {
     std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<LinearGrayscaleStrategy>(.2126, .7152, .0722);
 
     strategyBase->TransformToGrayscale(*res);
-//    auto effect = new GrayscaleEffect(*res, *strategyBase);
+    //auto effect = new GrayscaleEffect(*res, *strategyBase);
 
     /*auto effect = new NegativeEffect(*res, 0.5);
     effect->ApplyEffect();*/
@@ -58,8 +58,8 @@ int main() {
     std::cout << stdDeviation;
 
     //auto imgKernelTest = new GaussianBlurImageKernel(radius, 15);
-    auto imgKernelTest = new LeftSobelImageKernel();
-    auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest);
+    auto imgKernelTest = new SobelImageKernel(SobelImageKernel::Direction::LEFT);
+    auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest, false);
 
     convolutionProcessor->ProcessImageData();
 
