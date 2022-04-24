@@ -31,14 +31,14 @@ private:
      * @param x coord to transform.
      * @return X coord that always lies in the image.
      */
-    int GetValidXCoord(int x);
+    int GetValidXCoord(int x) const;
 
     /**
      * Transforms recived y coord so that it always corresponds to pixel in the image.
      * @param y coord to transform.
      * @return coord that always lies in the image.
      */
-    int GetValidYCoord(int y);
+    int GetValidYCoord(int y) const;
 
     /**
      * Updates the final image data corresponding to the current kernel position with newly calculated data.
