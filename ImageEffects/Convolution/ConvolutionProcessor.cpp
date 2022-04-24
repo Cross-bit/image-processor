@@ -54,11 +54,8 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
     int pixelNumber = 0;
     for (int y = kernelTopY; y < lastPixelY; ++y) {
         for (int x = kernelLeftX; x < lastPixelX; x += _imageData.Channels) {
-
-            // todo: rewrite prettier
-            UpdateConvolutedBuffer(
-                    x <= _imageData.Width*_imageData.Channels-6 ? x : _imageData.Width*_imageData.Channels-6,
-                    y <= _imageData.Height-1 ? y : _imageData.Height-1, pixelNumber);
+            // Update currently convoluted pixel data with value on x, y
+            UpdateConvolutedPixelBuffer(GetValidXCoord(x), GetValidYCoord(y), pixelNumber);
 
             pixelNumber++;
         }
