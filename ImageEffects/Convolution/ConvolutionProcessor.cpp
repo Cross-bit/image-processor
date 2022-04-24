@@ -5,9 +5,10 @@
 #include "ConvolutionProcessor.h"
 #include "vector"
 
-ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &imageKernel) :
+ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &imageKernel, bool useGammaExspantion) :
         _imageData(imageData),
         _imageKernel(imageKernel),
+        _useGammaExspantion(useGammaExspantion),
         _convolutedPixelBuffer(imageData.ColorChannels),
         _valuesPerLine(_imageData.Width * _imageData.Channels),
         _kernelStepHorizontal(1),
@@ -20,25 +21,49 @@ ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &im
                     imageData.Channels,
                     imageData.Width * imageData.Height * imageData.Channels,
                     imageData.ColorSpace );
-
     }
 
 void ConvolutionProcessor::ProcessImageData() {
 
-    int step = 1; // how many pixels kernel slides at once ...
-    int totalDataCtr = 0;
+    int totalDataCtr = 0; //
 
-    // per rows
-    for (int i = 0; i < _imageData.Height; i += step) {
-        // per line
-        for (int j = 0; j < _valuesPerLine; j += step*_imageData.Channels) {
+    // per img rows
+    for (int i = 0; i < _imageData.Height; i += _kernelStepVertically) {
+        // per img line
+        for (int j = 0; j < _valuesPerLine; j += _kernelStepHorizontal * _imageData.Channels) {
+
+            // convolute data of matrix starting(top left value is) at j, i
             ProcessImageKernel(j, i);
 
-            for (auto & channelData : _convolutedPixelBuffer) {
-                _convolutedImageData->Data[totalDataCtr] = ImageData::sRGBGammaCompression(channelData) * 255;
-                totalDataCtr++;
-            }
+            // store convoluted data
+            StoreConvolutedPixelBuffer(totalDataCtr);
+
+            totalDataCtr += _convolutedPixelBuffer.size();
         }
+    }
+}
+
+void ConvolutionProcessor::StoreConvolutedPixelBuffer(int outDataOffset) {
+
+    int scalingConst = _useGammaExspantion ? _convolutedImageData->MaxChannelValue : 1;
+    // maan i do not like this! todo: !!
+
+    for (auto & channelData : _convolutedPixelBuffer) {
+
+        if ((channelData * scalingConst) <= 0) {
+            _convolutedImageData->Data[outDataOffset] = 0;
+        }
+        else if((channelData * scalingConst) >= _convolutedImageData->MaxChannelValue) {
+            _convolutedImageData->Data[outDataOffset] = _convolutedImageData->MaxChannelValue;
+        }
+        else {
+            if(_useGammaExspantion)
+                _convolutedImageData->SetGammaCompressed(outDataOffset, channelData);
+            else
+                _convolutedImageData->Data[outDataOffset] = channelData;
+        }
+
+        outDataOffset++;
     }
 }
 
@@ -49,7 +74,6 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
 
     int lastPixelY = kernelTopY + _imageKernel.GetDimension(); // only to know where to end
     int lastPixelX = kernelLeftX +  _imageKernel.GetDimension() * _imageData.Channels;
-
 
     int pixelNumber = 0;
     for (int y = kernelTopY; y < lastPixelY; ++y) {
@@ -62,7 +86,7 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
     }
 }
 
-void ConvolutionProcessor::UpdateConvolutedBuffer(int pixelX, int pixelY, int pixelNumber) {
+void ConvolutionProcessor::UpdateConvolutedPixelBuffer(int pixelX, int pixelY, int pixelNumber) {
 
     int pixelOffset = _valuesPerLine * pixelY + pixelX; // which value is the starting value of this pixel
     int pixelEndPosition = pixelOffset + _imageData.ColorChannels; // len of the pixel == # color channels
@@ -73,9 +97,11 @@ void ConvolutionProcessor::UpdateConvolutedBuffer(int pixelX, int pixelY, int pi
     // Do convolution per each color channel separately, k - real offset of channel
     for (int k = pixelOffset; k < pixelEndPosition; ++k) {
         int tmp = k % _imageData.ColorChannels;
-        int a = _imageData.DataSize;
+
         _convolutedPixelBuffer[tmp] +=
-                _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) * ImageData::sRGBGammaExspansion(_imageData.Data[k]/(float) 255);
+                _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) *
+                   (_useGammaExspantion ? _imageData.GetGammaExspanded(k) : _imageData.Data[k]);
+        //printf("%f ", _convolutedPixelBuffer[tmp]);
     }
 }
 

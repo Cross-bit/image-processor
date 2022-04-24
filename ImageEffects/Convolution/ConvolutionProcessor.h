@@ -9,7 +9,7 @@
 
 class ConvolutionProcessor {
 public:
-    ConvolutionProcessor(ImageData& imageData, ImageKernel& imageKernel);
+    ConvolutionProcessor(ImageData& imageData, ImageKernel& imageKernel, bool useGammaExspantion = true); // todo remove this bool...
 
     void ProcessImageData();
 
@@ -41,11 +41,9 @@ private:
     int GetValidYCoord(int y) const;
 
     /**
-     * Updates the final image data corresponding to the current kernel position with newly calculated data.
-     * @param kernelLeftX
-     * @param kernelTopY
+     * Procedur storing convoluted pixel data in buffer.
      */
-  // void UpdateFinalImageData(int kernelLeftX, int kernelTopY);
+    void StoreConvolutedPixelBuffer(int outDataOffset);
 
     /**
      * Determines for how many pixels the kernel matrix shifts in each step horizontally. (Default set to 1)
@@ -69,6 +67,8 @@ private:
     std::vector<double> _convolutedPixelBuffer;
 
     int _valuesPerLine;
+
+    bool _useGammaExspantion; // do not like this approach but i will leave it for now...
 };
 
 
