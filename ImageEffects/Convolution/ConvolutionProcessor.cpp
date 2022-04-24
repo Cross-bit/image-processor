@@ -47,7 +47,7 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
     // clear the buffer first...
     std::fill(_convolutedPixelBuffer.begin(), _convolutedPixelBuffer.end(), 0);
 
-    int lastPixelY = kernelTopY + _imageKernel.GetDimension();
+    int lastPixelY = kernelTopY + _imageKernel.GetDimension(); // only to know where to end
     int lastPixelX = kernelLeftX +  _imageKernel.GetDimension() * _imageData.Channels;
 
 
