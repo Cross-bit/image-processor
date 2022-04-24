@@ -26,7 +26,7 @@ private:
      * Kernel buffer matrix.
      */
    // std::vector<std::vector<double>>  _kernelBuffer = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};//;{{1, 0, -1}, {2, 0, -2}, {1, 0, -1}};*/
-   std::vector<std::vector<double>>  _kernelBuffer;// = {{-1, -1, -1}, {-1, 8, -1}, {-1, -1, -1}};//;{{1, 0, -1}, {2, 0, -2}, {1, 0, -1}};
+   std::vector<std::vector<int>> _kernelBuffer;
 
 
 };

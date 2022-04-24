@@ -3,13 +3,14 @@
 //
 
 #include "SobelImageKernel.h"
+#include <cassert>
 
-
-SobelImageKernel::SobelImageKernel(Direction direction) : ImageKernel(3) {
+SobelImageKernel::SobelImageKernel(Direction direction) : ImageKernel(3), _direction(direction) {
     PopulateKernelBufferValues();
 }
 
 double SobelImageKernel::GetKernelValueOnCoords(int x, int y) const {
+    assert(("Given dimensions are out of image kernel!", CheckCoordsInDims(x, y)));
     return _kernelBuffer[y][x];
 }
 
