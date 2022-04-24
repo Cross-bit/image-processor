@@ -20,6 +20,7 @@
 
 #include "ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.h"
 #include "ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h"
+#include "ImageEffects/Convolution/ConvolutionKernels/Sobel/LeftSobelImageKernel.h"
 
 #include <cstdio>
 
@@ -42,6 +43,7 @@ int main() {
 
     std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<LinearGrayscaleStrategy>(.2126, .7152, .0722);
 
+    strategyBase->TransformToGrayscale(*res);
 //    auto effect = new GrayscaleEffect(*res, *strategyBase);
 
     /*auto effect = new NegativeEffect(*res, 0.5);
@@ -55,7 +57,8 @@ int main() {
     double stdDeviation = sqrt(-(radius^2) / (2*std::log10(1 /(float) 255)));
     std::cout << stdDeviation;
 
-    auto imgKernelTest = new GaussianBlurImageKernel(radius, 20);
+    //auto imgKernelTest = new GaussianBlurImageKernel(radius, 15);
+    auto imgKernelTest = new LeftSobelImageKernel();
     auto convolutionProcessor = new ConvolutionProcessor(*res, *imgKernelTest);
 
     convolutionProcessor->ProcessImageData();
@@ -68,7 +71,7 @@ int main() {
         filtered = convolutionProcessora->GetConvolutedImageData();
     }*/
 
-    filtered.Name = filtered.Name + "_c";
+    filtered.Name = filtered.Name + "_c_s";
     jpgFormat.SaveImageData(filtered, "../Resources");
 
     return 0;
