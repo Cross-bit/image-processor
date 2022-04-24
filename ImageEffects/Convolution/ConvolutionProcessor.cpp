@@ -101,7 +101,6 @@ void ConvolutionProcessor::UpdateConvolutedPixelBuffer(int pixelX, int pixelY, i
         _convolutedPixelBuffer[tmp] +=
                 _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) *
                    (_useGammaExspantion ? _imageData.GetGammaExspanded(k) : _imageData.Data[k]);
-        //printf("%f ", _convolutedPixelBuffer[tmp]);
     }
 }
 
