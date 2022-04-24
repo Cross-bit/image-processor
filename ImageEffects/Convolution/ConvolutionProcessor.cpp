@@ -11,7 +11,7 @@ ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &im
         _convolutedPixelBuffer(imageData.ColorChannels),
         _valuesPerLine(_imageData.Width * _imageData.Channels),
         _kernelStepHorizontal(1),
-        _kernelStepVertically(2)
+        _kernelStepVertically(1)
     {
         _convolutedImageData = std::make_unique<ImageData>(
                     imageData.Name + "_conv",
