@@ -85,3 +85,15 @@ void ConvolutionProcessor::UpdateConvolutedBuffer(int pixelX, int pixelY, int pi
 ImageData& ConvolutionProcessor::GetConvolutedImageData() {
     return *_convolutedImageData;
 }
+
+int ConvolutionProcessor::GetValidXCoord(int x) const{
+    // if out of bounds return boundary pixel
+    return x <= _imageData.Width*_imageData.Channels-6 ? x : _imageData.Width*_imageData.Channels-6;
+}
+
+
+int ConvolutionProcessor::GetValidYCoord(int y) const{
+    // if out of bounds return boundary pixel
+    return y <= _imageData.Height-1 ? y : _imageData.Height-1;
+}
+
