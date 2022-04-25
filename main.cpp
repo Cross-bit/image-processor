@@ -30,7 +30,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/leaf.jpg";
+    std::string file = "../Resources/lenna.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -43,7 +43,7 @@ int main() {
         std::cout << "does not work" << std::endl;
 
 
-    std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<AverageGrayscaleStrategy>();// .2126, .7152, .0722
+    std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<LinearGrayscaleStrategy>();// .2126, .7152, .0722
     strategyBase->TransformToGrayscale(*res);
 
     res->Name = res->Name + "_n";
