@@ -57,3 +57,11 @@ std::unique_ptr<GrayscaleEffect> ImageEffectFactory::CreateLinearGrayScale() {
 std::unique_ptr<ImageEffect> ImageEffectFactory::CreateColorInversion(float intensity) {
     return std::move(std::make_unique<NegativeEffect>(_imageData, intensity));
 }
+
+/*
+ * Transformations
+ */
+
+std::unique_ptr<ImageEffect> ImageEffectFactory::CreateFlipTransform(FlipTransform::Direction direction) {
+    return std::move(std::make_unique<FlipTransform>(_imageData, direction));
+}

@@ -23,6 +23,8 @@
 #include "GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.h"
 #include "NegativeEffect/NegativeEffect.h"
 
+#include "Transformations/FlipTransform.h"
+
 class ImageEffectFactory {
 
 public:
@@ -59,6 +61,12 @@ public:
      */
 
     std::unique_ptr<ImageEffect> CreateColorInversion(float intensity);
+
+    /*
+     * Transformations
+     */
+
+    std::unique_ptr<ImageEffect> CreateFlipTransform(FlipTransform::Direction direction);
 
 private:
     ImageData& _imageData;
