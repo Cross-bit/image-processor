@@ -27,9 +27,9 @@ void LinearGrayscaleStrategy::TransformToGrayscale(ImageData &inputData) const {
     {
 
         float res;
-        res = _redCoef * ImageData::sRGBGammaExspansion(inputData.Data[i] / (float) 255);
-        res += _greenCoef * ImageData::sRGBGammaExspansion(inputData.Data[i + 1] / (float) 255);
-        res += _blueCoef * ImageData::sRGBGammaExspansion(inputData.Data[i + 2] / (float) 255);
+        res = _redCoef * ImageData::sRGBGammaExpansion(inputData.Data[i] / (float) 255);
+        res += _greenCoef * ImageData::sRGBGammaExpansion(inputData.Data[i + 1] / (float) 255);
+        res += _blueCoef * ImageData::sRGBGammaExpansion(inputData.Data[i + 2] / (float) 255);
 
         std::memset(&inputData.Data[i], ImageData::sRGBGammaCompression(res) * 255, inputData.ColorChannels);
     }
