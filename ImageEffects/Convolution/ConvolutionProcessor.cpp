@@ -5,7 +5,7 @@
 #include "ConvolutionProcessor.h"
 #include "vector"
 
-ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &imageKernel, bool useGammaExspantion) :
+ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, const ImageKernel &imageKernel, bool useGammaExspantion) :
         ImageEffect(imageData),
         _imageKernel(imageKernel),
         _useGammaExspantion(useGammaExspantion),

@@ -14,9 +14,9 @@
  */
 class GrayscaleEffect : public ImageEffect {
 public:
-    GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy);
+    GrayscaleEffect(ImageData& imageData, const GrayscaleStrategyBase& grayscaleStrategy);
 
-    GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy, float r, float g, float b);
+    GrayscaleEffect(ImageData& imageData, const GrayscaleStrategyBase& grayscaleStrategy, float r, float g, float b);
 
     void ProcessImageData() override;
 
@@ -24,7 +24,7 @@ private:
     /**
      *
      */
-    GrayscaleStrategyBase& _effectStrategy;
+    const GrayscaleStrategyBase& _effectStrategy;
 };
 
 

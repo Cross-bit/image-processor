@@ -4,13 +4,13 @@
 
 #include "GrayscaleEffect.h"
 
-GrayscaleEffect::GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy )
+GrayscaleEffect::GrayscaleEffect(ImageData& imageData, const GrayscaleStrategyBase& grayscaleStrategy )
 : ImageEffect(imageData),
 _effectStrategy(grayscaleStrategy)
 {}
 
 GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
-                                 GrayscaleStrategyBase& grayscaleStrategy,
+                                 const GrayscaleStrategyBase& grayscaleStrategy,
                                  float redCoef, float greenCoef, float blueCoef)
 : ImageEffect(imageData), _effectStrategy(grayscaleStrategy)
 {
