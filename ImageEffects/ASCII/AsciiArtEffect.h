@@ -79,14 +79,11 @@ private:
     void SetTileWidthByRowLen(int numOfCharsPerLine);
 
     /**
-     * Sets tile height proportionally to the tile width. (which needs to be set first)
-     * @param scalingFactor is value between (0, 1]
+     * Gets value from given alphabet.
+     * @param value 
+     * @return
      */
-    void SetTileHeightByScalingFactor(float scalingFactor);
-
-    void ProcessTile(int x, int y);
-
-    void PutCharacterToOutput(int averagedTileValue, bool isEnd);
+    virtual char GetOutputCharMapping(int value);
 
 };
 
