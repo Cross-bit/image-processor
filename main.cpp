@@ -30,7 +30,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/lenna.jpg";
+    std::string file = "../Resources/leaf.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -62,7 +62,7 @@ int main() {
 
     //reverse(inputAlpha.begin(), inputAlpha.end());
    // std::string inputAlpha = "abc";
-    auto asciiTest = new AsciiArtEffect(*res, inputAlpha, 100, 0.5f);
+    auto asciiTest = new AsciiArtEffect(*res, inputAlpha, 100, 0.5f, std::cout);
     asciiTest->ProcessImageData();
 
     return 0;
