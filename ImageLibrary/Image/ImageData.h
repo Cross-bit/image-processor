@@ -36,9 +36,9 @@ public:
      */
     std::unique_ptr<uint8_t[]> Data; // todo: if time do it generic => more than 8-bits color
 
-    int MaxChannelValue = 255; // constant for now
+    const int MaxChannelValue = 255; // constant for now
 
-    int MinChannelValue = 0; // constant for now todo:
+    const int MinChannelValue = 0; // constant for now todo:
 
     /**
      * Total number of pixels, typically width * height * #channels. (i. e. data array len)
