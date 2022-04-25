@@ -17,19 +17,60 @@ public:
 
     void ProcessImageData();
 
+    /**
+     * Sets tile width (how many pixels in width)
+     * @param tileWidth
+     */
+    void SetTileWidth(int tileWidth);
+
+    /**
+     * Sets tile height (how many pixels in height)
+     * @param tileHeight
+     */
+    void SetTileHeight(int tileHeight);
+
+    /**
+     * Sets tile width by: "how many chars per line should be printed".
+     * @param numOfCharsPerLine
+     */
+    void SetTileWidthByRowLen(int numOfCharsPerLine);
+
+    /**
+     * Sets tile height proportionally to the tile width. (which needs to be set first)
+     * @param scalingFactor is value between (0, 1]
+     */
+    void SetTileHeightByScalingFactor(float scalingFactor);
+
+    /**
+     * Puts characters into output stream.
+     * @param outputLetter Letter to put to the output stream.
+     * @param isEnd Wheter to put end of line symbol.
+     */
+    void PutCharacterToOutput(char outputLetter, bool isEnd);
+
+    /**
+     * Sets output stream where should the characters should be printed.
+     * @param _outputTarget
+     */
+    void SetOutputTarget(const std::ostream& _outputTarget);
+
 private:
     ImageData& _imageData;
     std::string& _inputAlphabet;
     int _valuesPerLine;
     int _alphabetSize;
     int _tileWidth;
+    std::ostream _outputTarget;
+
+    /**
+     * Height of tile(or matrix) of pixels thats values are averadged.
+     */
     int _tileHeight;
 
-
+    /**
+     * Sets internal size of alphabet.
+     */
     void SetAlphabetSize();
-
-    void SetTileWidth(int tileWidth);
-    void SetTileHeight(int tileHeight);
 
     /**
      * Sets
