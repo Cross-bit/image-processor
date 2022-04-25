@@ -7,20 +7,44 @@
 
 #include <iostream>
 #include <vector>
-#include <vector>
+#include <unordered_map>
 
+#include "Image/ImageData.h"
+#include "ImageFormat.h"
 
 class ImagesLibrary {
 public:
+    /**
+     * Adds new data to the library.
+     * @param filePath
+     * @param imageData
+     */
+    void AddRecord(std::string filePath, std::unique_ptr<ImageData> imageData);
 
-    void AddNewPathToLibrary();
-    void RemovePathFromLibrary();
+    /**
+     * Removes record from the library. If doesn't exists, does nothing.
+     * @param filePath
+     */
+    void RemoveRecord(std::string filePath);
 
+    /**
+     * Removes all records from the library.
+     */
     void ClearLibrary();
+
+    /**
+     * Returns all records.
+     */
     void GetAllImages();
 
+    /**
+     * Goes through all records and checks if image file exists at given key. If not it deletes the record.
+     */
+    void UpdateRecords();
+
+
 private:
-    std::vector<std::string> loadedImagesPaths;
+    std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
 };
 
 
