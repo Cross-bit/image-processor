@@ -7,21 +7,24 @@
 #include <iostream>
 #include <stdexcept>
 
-AsciiArtEffect::AsciiArtEffect(ImageData& imageData, std::string &inputAlphabet, int colsX, float scale) :
+AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int colsX, float scale, std::ostream &outputStream) :
 _imageData(imageData),
 _inputAlphabet(inputAlphabet),
 _alphabetSize(inputAlphabet.size()-1),
-_valuesPerLine(imageData.Width * imageData.Channels)
+_valuesPerLine(imageData.Width * imageData.Channels),
+_outputTarget(outputStream)
 {
     SetTileWidthByRowLen(colsX);
     SetTileHeightByScalingFactor(scale);
 }
 
-AsciiArtEffect::AsciiArtEffect(ImageData& imageData, std::string &inputAlphabet, int tileWidth, int tileHeight) :
-        _imageData(imageData),
-        _inputAlphabet(inputAlphabet),
-        _alphabetSize(inputAlphabet.size()-1),
-        _valuesPerLine(imageData.Width * imageData.Channels) {
+AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int tileWidth, int tileHeight, std::ostream &outputStream) :
+_imageData(imageData),
+_inputAlphabet(inputAlphabet),
+_alphabetSize(inputAlphabet.size()-1),
+_valuesPerLine(imageData.Width * imageData.Channels),
+_outputTarget(outputStream)
+{
     SetTileWidth(tileWidth);
     SetTileHeight(tileHeight);
 }
@@ -52,13 +55,19 @@ void AsciiArtEffect::ProcessImageData() {
         // per img line
         for (int j = 0; j < _valuesPerLine; j += _tileWidth * _imageData.Channels) {
             // convolute data of matrix starting(top left value is) at j, i
-            ProcessTile(j, i);
+            int averagedValue = ProcessTile(j, i);
+            char outputChar = GetOutputCharMapping(averagedValue);
+            // put calculated char into the output
+            bool isLastTile = j +  _tileWidth * _imageData.Channels >= _valuesPerLine;
+            PutCharacterToOutput(outputChar ,isLastTile);
+            //int averagedValue = PutCharacterToOutput(lastTilePixelX >= _valuesPerLine, false);
+
         }
     }
 }
 
 
-void AsciiArtEffect::ProcessTile(int tileLeftX, int tileTopY) {
+int AsciiArtEffect::ProcessTile(int tileLeftX, int tileTopY) {
     // average the tiles pixel value and find letter in alphabet
     int sum = 0;
 
@@ -73,17 +82,21 @@ void AsciiArtEffect::ProcessTile(int tileLeftX, int tileTopY) {
             sum += _imageData.Data[offsetPosition];
         }
     }
-    int tileAverage = sum /(double) (_tileHeight * _tileWidth);
 
-   PutCharacterToOutput(tileAverage, lastTilePixelX >= _valuesPerLine);
-
+    // return averaged value
+    return sum /(double) (_tileHeight * _tileWidth);
 }
 
-void AsciiArtEffect::PutCharacterToOutput(int averagedTileValue, bool isEnd) {
+void AsciiArtEffect::PutCharacterToOutput(char outputLetter, bool isEnd) {
 
-    std::cout << _inputAlphabet[(int)((averagedTileValue * _alphabetSize) /(double) _imageData.MaxChannelValue)];
+    _outputTarget << outputLetter;
 
     if (isEnd)
-        std::cout << std::endl;
+        _outputTarget << std::endl;
+}
 
+char AsciiArtEffect::GetOutputCharMapping(int value) {
+    assert(("Value is out of range", value < _imageData.MaxChannelValue && value > 0));
+
+    return _inputAlphabet[(int)((value * _alphabetSize) /(double) _imageData.MaxChannelValue)];
 }

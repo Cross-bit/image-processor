@@ -12,8 +12,10 @@
 
 class AsciiArtEffect {
 public:
-    AsciiArtEffect(ImageData& imageData, std::string& inputAlphabet, int cols, float scale);
-    AsciiArtEffect(ImageData& imageData, std::string& inputAlphabet, int tileHeight, int tileWidth);
+    AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int colsX, float scale,
+                   std::ostream &outputStream);
+    AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int tileWidth, int tileHeight,
+                   std::ostream &outputStream);
 
     void ProcessImageData();
 
@@ -60,7 +62,7 @@ private:
     int _valuesPerLine;
     int _alphabetSize;
     int _tileWidth;
-    std::ostream _outputTarget;
+    std::ostream& _outputTarget;
 
     /**
      * Height of tile(or matrix) of pixels thats values are averadged.
@@ -73,14 +75,15 @@ private:
     void SetAlphabetSize();
 
     /**
-     * Sets
-     * @param numOfCharsPerLine
+     * Averages value of given tile.
+     * @param x
+     * @param y
      */
-    void SetTileWidthByRowLen(int numOfCharsPerLine);
+    virtual int ProcessTile(int x, int y);
 
     /**
      * Gets value from given alphabet.
-     * @param value 
+     * @param value
      * @return
      */
     virtual char GetOutputCharMapping(int value);
