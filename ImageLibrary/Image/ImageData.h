@@ -30,14 +30,21 @@ public:
     /**
      * All loaded channels.
      */
+
     int Channels;
     /**
      * All Image data buffer.
      */
     std::unique_ptr<uint8_t[]> Data; // todo: if time do it generic => more than 8-bits color
 
+    /**
+     * Maximal value per channel(depends on depth).
+     */
     const int MaxChannelValue = 255; // constant for now
 
+    /**
+     * Minimal value per channel(typically zero)
+     */
     const int MinChannelValue = 0; // constant for now todo:
 
     /**
@@ -48,6 +55,11 @@ public:
      * In which color space the data are stored.
      */
     ColorSpaces ColorSpace;
+
+    /**
+     * Real number of channels that represents the color (e.g. RGB).
+     */
+    static const int ColorChannels; // for example for PNG, this value will be still 3
 
     explicit ImageData();
 
@@ -76,11 +88,6 @@ public:
      * @param value Data to set.
      */
     void SetGammaCompressed(int index, double value);
-
-    /**
-     * Real number of channels representing color (e.g. RGB).
-     */
-    static const int ColorChannels;
 
     static double sRGBGammaExspansion(double value_srgb);
 
