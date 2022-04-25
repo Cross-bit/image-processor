@@ -94,7 +94,7 @@ void AsciiArtEffect::PutCharacterToOutput(char outputLetter, bool isEnd) {
 }
 
 char AsciiArtEffect::GetOutputCharMapping(int value) {
-    assert(("Value is out of range", value <= _imageData.MaxChannelValue && value > 0));
+    assert(("Value is out of range", value < _alphabetSize && value > 0));
 
     return _inputAlphabet[(int)((value * _alphabetSize) /(double) _imageData.MaxChannelValue)];
 }
