@@ -36,7 +36,7 @@ int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/harysek_2.jpg";
+    std::string file = "../Resources/lenna.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -59,10 +59,13 @@ int main() {
     auto effect = imageFactory.CreateAsciiArtEffectByScale(inputAlpha, 100, 0.65, std::cout); // grayscale avg*/
    // auto effect = imageFactory.CreateBoxBlurConvolution(); // box blur
    // auto effect = imageFactory.CreateGaussianBlurConvolution(11, 11); // gaussian blur
-    auto effect = imageFactory.CreateColorInversion(1);
+   // auto effect = imageFactory.CreateColorInversion(1);
+
+   // -- tranformations --
+    auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
 
     effect->ProcessImageData();
-    tmpStoreImg(effect->GetProcessedImageData(), jpgFormat, "i");
+    tmpStoreImg(effect->GetProcessedImageData(), jpgFormat, "tr");
 
     return 0;
 }
