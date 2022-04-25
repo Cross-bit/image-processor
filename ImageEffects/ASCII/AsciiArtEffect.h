@@ -10,13 +10,19 @@
 
 #include "../../ImageLibrary/Image/ImageData.h"
 
+
+/**
+ * Filter converts image to ascii art and prints it to provided output.
+ */
 class AsciiArtEffect {
 public:
     AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int colsX, float scale,
                    std::ostream &outputStream);
     AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int tileWidth, int tileHeight,
                    std::ostream &outputStream);
-
+    /**
+     * Calling this method will convert given image to ascii art and print the data to given output stream.
+     */
     void ProcessImageData();
 
     /**
@@ -52,9 +58,9 @@ public:
 
     /**
      * Sets output stream where should the characters should be printed.
-     * @param _outputTarget
+     * @param _outputStream
      */
-    void SetOutputTarget(const std::ostream& _outputTarget);
+    void SetOutputTarget(const std::ostream& _outputStream);
 
 private:
     ImageData& _imageData;
@@ -62,7 +68,7 @@ private:
     int _valuesPerLine;
     int _alphabetSize;
     int _tileWidth;
-    std::ostream& _outputTarget;
+    std::ostream& _outputStream;
 
     /**
      * Height of tile(or matrix) of pixels thats values are averadged.

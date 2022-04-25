@@ -8,22 +8,22 @@
 #include <stdexcept>
 
 AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int colsX, float scale, std::ostream &outputStream) :
-_imageData(imageData),
-_inputAlphabet(inputAlphabet),
-_alphabetSize(inputAlphabet.size()-1),
-_valuesPerLine(imageData.Width * imageData.Channels),
-_outputTarget(outputStream)
+        _imageData(imageData),
+        _inputAlphabet(inputAlphabet),
+        _alphabetSize(inputAlphabet.size()-1),
+        _valuesPerLine(imageData.Width * imageData.Channels),
+        _outputStream(outputStream)
 {
     SetTileWidthByRowLen(colsX);
     SetTileHeightByScalingFactor(scale);
 }
 
 AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int tileWidth, int tileHeight, std::ostream &outputStream) :
-_imageData(imageData),
-_inputAlphabet(inputAlphabet),
-_alphabetSize(inputAlphabet.size()-1),
-_valuesPerLine(imageData.Width * imageData.Channels),
-_outputTarget(outputStream)
+        _imageData(imageData),
+        _inputAlphabet(inputAlphabet),
+        _alphabetSize(inputAlphabet.size()-1),
+        _valuesPerLine(imageData.Width * imageData.Channels),
+        _outputStream(outputStream)
 {
     SetTileWidth(tileWidth);
     SetTileHeight(tileHeight);
@@ -60,8 +60,6 @@ void AsciiArtEffect::ProcessImageData() {
             // put calculated char into the output
             bool isLastTile = j +  _tileWidth * _imageData.Channels >= _valuesPerLine;
             PutCharacterToOutput(outputChar ,isLastTile);
-            //int averagedValue = PutCharacterToOutput(lastTilePixelX >= _valuesPerLine, false);
-
         }
     }
 }
@@ -89,14 +87,14 @@ int AsciiArtEffect::ProcessTile(int tileLeftX, int tileTopY) {
 
 void AsciiArtEffect::PutCharacterToOutput(char outputLetter, bool isEnd) {
 
-    _outputTarget << outputLetter;
+    _outputStream << outputLetter;
 
     if (isEnd)
-        _outputTarget << std::endl;
+        _outputStream << std::endl;
 }
 
 char AsciiArtEffect::GetOutputCharMapping(int value) {
-    assert(("Value is out of range", value < _imageData.MaxChannelValue && value > 0));
+    assert(("Value is out of range", value <= _imageData.MaxChannelValue && value > 0));
 
     return _inputAlphabet[(int)((value * _alphabetSize) /(double) _imageData.MaxChannelValue)];
 }
