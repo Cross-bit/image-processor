@@ -21,19 +21,19 @@ std::unique_ptr<ImageEffect> ImageEffectFactory::CreateAsciiArtEffectFixedTileSi
  *  Convolutions.
  */
 
-std::unique_ptr<ImageEffect> ImageEffectFactory::CreateGaussianBlurConvolution(int kernelSize, double standardDeviasion){
-    GaussianBlurImageKernel gaussianImageKernel(kernelSize, standardDeviasion);
+std::unique_ptr<ImageEffect> ImageEffectFactory::CreateGaussianBlurConvolution(int kernelSize, double standardDeviation) {
+    auto gaussianImageKernel = std::make_unique<GaussianBlurImageKernel>(kernelSize, standardDeviation);
     return std::move(std::make_unique<ConvolutionProcessor>(_imageData, std::move(gaussianImageKernel), true));
 }
 
-std::unique_ptr<ImageEffect> ImageEffectFactory::CreateBoxBlurConvolution(int kernelSize, double standardDeviasion){
-    BoxBlurImageKernel boxBlurImageKernel;
+std::unique_ptr<ImageEffect> ImageEffectFactory::CreateBoxBlurConvolution() {
+    auto boxBlurImageKernel = std::make_unique<BoxBlurImageKernel>();
     return std::move(std::make_unique<ConvolutionProcessor>(_imageData, std::move(boxBlurImageKernel), true));
 }
 
 std::unique_ptr<ImageEffect> ImageEffectFactory::CreateSobelConvolution(SobelImageKernel::Direction direction){
-    SobelImageKernel sobelImageKernel(direction);
-    return std::move(std::make_unique<ConvolutionProcessor>(_imageData, false));
+    auto sobelImageKernel = std::make_unique<SobelImageKernel>(direction);
+    return std::move(std::make_unique<ConvolutionProcessor>(_imageData, std::move(sobelImageKernel), false));
 }
 
 /*
@@ -41,12 +41,12 @@ std::unique_ptr<ImageEffect> ImageEffectFactory::CreateSobelConvolution(SobelIma
  */
 
 std::unique_ptr<ImageEffect> ImageEffectFactory::CreateAveragedGrayScale() {
-    auto algorithm = AverageGrayscaleStrategy();
+    auto algorithm = std::make_unique<AverageGrayscaleStrategy>();
     return std::move(std::make_unique<GrayscaleEffect>(_imageData, std::move(algorithm)));
 }
 
-std::unique_ptr<ImageEffect> ImageEffectFactory::LinearGrayScale() {
-    auto algorithm = LinearGrayscaleStrategy();
+std::unique_ptr<GrayscaleEffect> ImageEffectFactory::CreateLinearGrayScale() {
+    auto algorithm = std::make_unique<LinearGrayscaleStrategy>();
     return std::move(std::make_unique<GrayscaleEffect>(_imageData,std::move(algorithm)));
 }
 

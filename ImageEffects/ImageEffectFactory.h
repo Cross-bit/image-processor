@@ -40,9 +40,9 @@ public:
      *  Convolutions.
      */
 
-    std::unique_ptr<ImageEffect> CreateGaussianBlurConvolution(int kernelSize, double standardDeviasion);
+    std::unique_ptr<ImageEffect> CreateGaussianBlurConvolution(int kernelSize, double standardDeviation);
 
-    std::unique_ptr<ImageEffect> CreateBoxBlurConvolution(int kernelSize, double standardDeviasion);
+    std::unique_ptr<ImageEffect> CreateBoxBlurConvolution();
 
     std::unique_ptr<ImageEffect> CreateSobelConvolution(SobelImageKernel::Direction direction);
 
@@ -52,7 +52,7 @@ public:
 
     std::unique_ptr<ImageEffect> CreateAveragedGrayScale();
 
-    std::unique_ptr<ImageEffect> LinearGrayScale();
+    std::unique_ptr<GrayscaleEffect> CreateLinearGrayScale();
 
     /*
      *  Negative effect.
