@@ -5,9 +5,9 @@
 #include "ConvolutionProcessor.h"
 #include "vector"
 
-ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, const ImageKernel &imageKernel, bool useGammaExspantion) :
+ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, std::unique_ptr<ImageKernel>&& imageKernel, bool useGammaExspantion) :
         ImageEffect(imageData),
-        _imageKernel(imageKernel),
+        _imageKernel(std::move(imageKernel)),
         _useGammaExspantion(useGammaExspantion),
         _convolutedPixelBuffer(imageData.ColorChannels),
         _valuesPerLine(_imageData.Width * _imageData.Channels),
@@ -72,8 +72,8 @@ void ConvolutionProcessor::ProcessImageKernel(int kernelLeftX, int kernelTopY) {
     // clear the buffer first...
     std::fill(_convolutedPixelBuffer.begin(), _convolutedPixelBuffer.end(), 0);
 
-    int lastPixelY = kernelTopY + _imageKernel.GetDimension(); // only to know where to end
-    int lastPixelX = kernelLeftX +  _imageKernel.GetDimension() * _imageData.Channels;
+    int lastPixelY = kernelTopY + _imageKernel->GetDimension(); // only to know where to end
+    int lastPixelX = kernelLeftX +  _imageKernel->GetDimension() * _imageData.Channels;
 
     int pixelNumber = 0;
     for (int y = kernelTopY; y < lastPixelY; ++y) {
@@ -91,15 +91,15 @@ void ConvolutionProcessor::UpdateConvolutedPixelBuffer(int pixelX, int pixelY, i
     int pixelOffset = _valuesPerLine * pixelY + pixelX; // which value is the starting value of this pixel
     int pixelEndPosition = pixelOffset + _imageData.ColorChannels; // len of the pixel == # color channels
 
-    int kernel_x = (pixelNumber) % (_imageKernel.GetDimension());
-    int kernel_y = pixelNumber / _imageKernel.GetDimension();
+    int kernel_x = (pixelNumber) % (_imageKernel->GetDimension());
+    int kernel_y = pixelNumber / _imageKernel->GetDimension();
 
     // Do convolution per each color channel separately, k - real offset of channel
     for (int k = pixelOffset; k < pixelEndPosition; ++k) {
         int tmp = k % _imageData.ColorChannels;
 
         _convolutedPixelBuffer[tmp] +=
-                _imageKernel.GetKernelValueOnCoords(kernel_x, kernel_y) *
+                _imageKernel->GetKernelValueOnCoords(kernel_x, kernel_y) *
                    (_useGammaExspantion ? _imageData.GetGammaExspanded(k) : _imageData.Data[k]);
     }
 }

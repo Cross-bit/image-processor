@@ -15,7 +15,7 @@
 class ConvolutionProcessor : public ImageEffect
 {
 public:
-    ConvolutionProcessor(ImageData& imageData,const ImageKernel& imageKernel, bool useGammaExspantion = true); // todo remove this bool...
+    ConvolutionProcessor(ImageData& imageData,std::unique_ptr<ImageKernel>&& imageKernel, bool useGammaExspantion = true); // todo remove this bool...
 
     void ProcessImageData() override;
 
@@ -63,7 +63,7 @@ private:
 
     std::unique_ptr<ImageData> _convolutedImageData;
 
-    const ImageKernel& _imageKernel;
+    std::unique_ptr<ImageKernel> _imageKernel;
 
     /**
      * Holds channel values for currently convoluted pixel.
