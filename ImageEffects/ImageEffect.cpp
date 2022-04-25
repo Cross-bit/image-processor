@@ -14,12 +14,15 @@ _blueCoef(1)
 { }
 
 ImageEffect::ImageEffect(ImageData &imageData, float redCoef, float greenCoef, float blueCoef)
-: _imageData(imageData) {
+        : _imageData(imageData) {
     SetRedCoef(redCoef);
     SetGreenCoef(greenCoef);
     SetBlueCoef(blueCoef);
 }
 
+ImageData& ImageEffect::GetProcessedImageData() const {
+    return _imageData;
+}
 
 void ImageEffect::SetRedCoef(float value){
     assert(("Red coef value is out of range [0,1]", !CheckCoef(value)));
