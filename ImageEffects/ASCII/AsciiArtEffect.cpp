@@ -8,7 +8,7 @@
 #include <stdexcept>
 
 AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int colsX, float scale, std::ostream &outputStream) :
-        _imageData(imageData),
+        ImageEffect(imageData),
         _inputAlphabet(inputAlphabet),
         _alphabetSize(inputAlphabet.size()-1),
         _valuesPerLine(imageData.Width * imageData.Channels),
@@ -19,7 +19,7 @@ AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet,
 }
 
 AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int tileWidth, int tileHeight, std::ostream &outputStream) :
-        _imageData(imageData),
+        ImageEffect(imageData),
         _inputAlphabet(inputAlphabet),
         _alphabetSize(inputAlphabet.size()-1),
         _valuesPerLine(imageData.Width * imageData.Channels),

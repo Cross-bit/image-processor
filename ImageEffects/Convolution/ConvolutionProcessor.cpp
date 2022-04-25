@@ -6,7 +6,7 @@
 #include "vector"
 
 ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, ImageKernel &imageKernel, bool useGammaExspantion) :
-        _imageData(imageData),
+        ImageEffect(imageData),
         _imageKernel(imageKernel),
         _useGammaExspantion(useGammaExspantion),
         _convolutedPixelBuffer(imageData.ColorChannels),
@@ -104,7 +104,7 @@ void ConvolutionProcessor::UpdateConvolutedPixelBuffer(int pixelX, int pixelY, i
     }
 }
 
-ImageData& ConvolutionProcessor::GetConvolutedImageData() {
+ImageData& ConvolutionProcessor::GetProcessedImageData() const {
     return *_convolutedImageData;
 }
 

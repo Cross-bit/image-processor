@@ -24,7 +24,7 @@ void NegativeEffect::SetIntensityCoef(float value){
     _intensityCoef = value;
 }
 
-void NegativeEffect::ApplyEffect() {
+void NegativeEffect::ProcessImageData() {
 
     if(_imageData.DataSize == 0)
         return;

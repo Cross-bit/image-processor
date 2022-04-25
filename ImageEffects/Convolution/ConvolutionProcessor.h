@@ -6,14 +6,16 @@
 #define MAIN_CPP_CONVOLUTIONPROCESSOR_H
 
 #include "ConvolutionKernels/ImageKernel.h"
+#include "../ImageEffect.h"
 
-class ConvolutionProcessor {
+class ConvolutionProcessor : public ImageEffect
+{
 public:
     ConvolutionProcessor(ImageData& imageData, ImageKernel& imageKernel, bool useGammaExspantion = true); // todo remove this bool...
 
-    void ProcessImageData();
+    void ProcessImageData() override;
 
-    ImageData& GetConvolutedImageData();
+    ImageData& GetProcessedImageData() const override;
 
 private:
     void ProcessImageKernel(int kernelLeftX, int kernelTopY);
@@ -54,8 +56,6 @@ private:
      * Determines for how many pixels the kernel matrix shifts in each step vertically. (Default set to 1)
      */
     int _kernelStepVertically;
-
-    ImageData& _imageData;
 
     std::unique_ptr<ImageData> _convolutedImageData;
 

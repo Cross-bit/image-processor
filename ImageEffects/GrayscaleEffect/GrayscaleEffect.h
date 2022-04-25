@@ -12,11 +12,11 @@
 
 class GrayscaleEffect : public ImageEffect{
 public:
-    GrayscaleEffect(ImageData& _imageData, GrayscaleStrategyBase& grayscaleStrategy);
+    GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy);
 
-    GrayscaleEffect(ImageData& _imageData, GrayscaleStrategyBase& grayscaleStrategy, float r, float g, float b);
+    GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy, float r, float g, float b);
 
-    void ApplyEffect() override;
+    void ProcessImageData() override;
 
 private:
     GrayscaleStrategyBase& _effectStrategy;

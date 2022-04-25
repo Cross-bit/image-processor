@@ -4,22 +4,22 @@
 
 #include "GrayscaleEffect.h"
 
-GrayscaleEffect::GrayscaleEffect(ImageData& _imageData, GrayscaleStrategyBase& grayscaleStrategy )
-: ImageEffect(_imageData),
+GrayscaleEffect::GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy )
+: ImageEffect(imageData),
 _effectStrategy(grayscaleStrategy)
 {}
 
-GrayscaleEffect::GrayscaleEffect(ImageData &_imageData,
+GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
                                  GrayscaleStrategyBase& grayscaleStrategy,
                                  float redCoef, float greenCoef, float blueCoef)
-: ImageEffect(_imageData), _effectStrategy(grayscaleStrategy)
+: ImageEffect(imageData), _effectStrategy(grayscaleStrategy)
 {
     SetRedCoef(redCoef);
     SetBlueCoef(greenCoef);
     SetGreenCoef(blueCoef);
 }
 
-void GrayscaleEffect::ApplyEffect() {
+void GrayscaleEffect::ProcessImageData() {
 
     if(_imageData.DataSize == 0)
         return;

@@ -9,12 +9,13 @@
 #include <string>
 
 #include "../../ImageLibrary/Image/ImageData.h"
+#include "../ImageEffect.h"
 
 
 /**
  * Filter converts image to ascii art and prints it to provided output.
  */
-class AsciiArtEffect {
+class AsciiArtEffect : public ImageEffect {
 public:
     AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet, int colsX, float scale,
                    std::ostream &outputStream);
@@ -23,7 +24,7 @@ public:
     /**
      * Calling this method will convert given image to ascii art and print the data to given output stream.
      */
-    void ProcessImageData();
+    void ProcessImageData() override;
 
     /**
      * Sets tile width (how many pixels in width)
@@ -63,7 +64,6 @@ public:
     void SetOutputTarget(const std::ostream& _outputStream);
 
 private:
-    ImageData& _imageData;
     std::string& _inputAlphabet;
     int _valuesPerLine;
     int _alphabetSize;

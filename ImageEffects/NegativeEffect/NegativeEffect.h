@@ -10,7 +10,7 @@
 
 class NegativeEffect : public ImageEffect{
 public:
-    void ApplyEffect() override;
+    void ProcessImageData() override;
 
     NegativeEffect(ImageData& imageData);
 
