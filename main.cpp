@@ -22,13 +22,15 @@
 #include "ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h"
 #include "ImageEffects/Convolution/ConvolutionKernels/EdgeDetection/SobelImageKernel.h"
 
+#include "ImageEffects/ASCII/AsciiArtEffect.h"
+
 #include <cstdio>
 
 int main() {
 
     ImageJPG jpgFormat;
 
-    std::string file = "../Resources/lion.jpg";
+    std::string file = "../Resources/leaf.jpg";
 
     auto res = jpgFormat.LoadImageData(file);
     if(res!= nullptr){
@@ -41,9 +43,12 @@ int main() {
         std::cout << "does not work" << std::endl;
 
 
-    std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<LinearGrayscaleStrategy>(.2126, .7152, .0722);
-
+    std::unique_ptr<GrayscaleStrategyBase> strategyBase = std::make_unique<AverageGrayscaleStrategy>();// .2126, .7152, .0722
     strategyBase->TransformToGrayscale(*res);
+
+    res->Name = res->Name + "_n";
+
+    jpgFormat.SaveImageData(*res, "../Resources");
     //auto effect = new GrayscaleEffect(*res, *strategyBase);
 
     /*auto effect = new NegativeEffect(*res, 0.5);
@@ -51,6 +56,16 @@ int main() {
     printf("img h: %d\n", res->Height);
     printf("ref: %d\n", res->Data[res->DataSize - 4]);
     //std::cout << "reference: " << unsigned (res->Data[2]);
+
+   // std::string inputAlpha = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,¨^`'. ";
+    std::string inputAlpha = "$@B%8&WM#;:,¨^`'. ";
+
+    //reverse(inputAlpha.begin(), inputAlpha.end());
+   // std::string inputAlpha = "abc";
+    auto asciiTest = new AsciiArtEffect(*res, inputAlpha, 100, 0.5f);
+    asciiTest->ProcessImageData();
+
+    return 0;
 
     auto radius = 21;
 
