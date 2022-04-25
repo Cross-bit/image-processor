@@ -11,7 +11,7 @@ void AverageGrayscaleStrategy::TransformToGrayscale(ImageData& imageData) const 
 
     for (int i = 0; i < imageData.DataSize; i += imageData.ColorChannels) {
 
-        int avgPixelValue;
+        int avgPixelValue = 0;
 
         for (int j = i; j < i + imageData.ColorChannels; ++j) {
             avgPixelValue += imageData.Data[j];
