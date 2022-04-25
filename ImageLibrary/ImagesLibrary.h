@@ -42,9 +42,6 @@ public:
      */
     void UpdateRecords();
 
-
-    //void LoadImagesFromSpecificDir(); maybe todo:
-
 private:
     std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
 };
