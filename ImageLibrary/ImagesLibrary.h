@@ -35,13 +35,15 @@ public:
     /**
      * Returns all records.
      */
-    void GetAllImages();
+    std::unordered_map<std::string, std::unique_ptr<ImageData>>::iterator GetAllImages();
 
     /**
      * Goes through all records and checks if image file exists at given key. If not it deletes the record.
      */
     void UpdateRecords();
 
+
+    //void LoadImagesFromSpecificDir(); maybe todo:
 
 private:
     std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
