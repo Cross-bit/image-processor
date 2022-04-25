@@ -58,7 +58,7 @@ int main() {
 
     auto effect = imageFactory.CreateAsciiArtEffectByScale(inputAlpha, 100, 0.65, std::cout); // grayscale avg*/
    // auto effect = imageFactory.CreateBoxBlurConvolution(); // box blur
-   // auto effect = imageFactory.CreateGaussianBlurConvolution(11, 11); // gaussian blur
+    //auto effect = imageFactory.CreateGaussianBlurConvolution(11, 11); // gaussian blur
    // auto effect = imageFactory.CreateColorInversion(1);
 
    // -- tranformations --
