@@ -4,15 +4,15 @@
 
 #include "GrayscaleEffect.h"
 
-GrayscaleEffect::GrayscaleEffect(ImageData& imageData, const GrayscaleStrategyBase& grayscaleStrategy )
+GrayscaleEffect::GrayscaleEffect(ImageData& imageData, std::unique_ptr<GrayscaleStrategyBase>&& grayscaleStrategy )
 : ImageEffect(imageData),
-_effectStrategy(grayscaleStrategy)
+_effectStrategy(std::move(grayscaleStrategy))
 {}
 
 GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
-                                 const GrayscaleStrategyBase& grayscaleStrategy,
+                                 std::unique_ptr<GrayscaleStrategyBase>&& grayscaleStrategy,
                                  float redCoef, float greenCoef, float blueCoef)
-: ImageEffect(imageData), _effectStrategy(grayscaleStrategy)
+: ImageEffect(imageData), _effectStrategy(std::move(grayscaleStrategy))
 {
     SetRedCoef(redCoef);
     SetBlueCoef(greenCoef);
@@ -22,5 +22,5 @@ GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
 void GrayscaleEffect::ProcessImageData() {
     if(_imageData.DataSize == 0)
         return;
-    _effectStrategy.TransformToGrayscale(_imageData);
+    _effectStrategy->TransformToGrayscale(_imageData);
 }

@@ -14,9 +14,9 @@
  */
 class GrayscaleEffect : public ImageEffect {
 public:
-    GrayscaleEffect(ImageData& imageData, const GrayscaleStrategyBase& grayscaleStrategy);
+    GrayscaleEffect(ImageData& imageData, std::unique_ptr<GrayscaleStrategyBase>&& grayscaleStrategy);
 
-    GrayscaleEffect(ImageData& imageData, const GrayscaleStrategyBase& grayscaleStrategy, float r, float g, float b);
+    GrayscaleEffect(ImageData& imageData, std::unique_ptr<GrayscaleStrategyBase>&& grayscaleStrategy, float r, float g, float b);
 
     void ProcessImageData() override;
 
@@ -24,7 +24,7 @@ private:
     /**
      *
      */
-    const GrayscaleStrategyBase& _effectStrategy;
+    std::unique_ptr<GrayscaleStrategyBase> _effectStrategy;
 };
 
 
