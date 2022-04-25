@@ -25,6 +25,12 @@ public:
      */
     virtual double GetKernelValueOnCoords(int x, int y) const;
 
+    /**
+     * Checks if given coordinates are in the matrix.
+     * @param x
+     * @param y
+     * @return
+     */
     bool CheckCoordsInDims(int x, int y) const;
 
 protected:
