@@ -94,7 +94,7 @@ double ImageData::GetGammaExspanded(int index) const {
         throw std::invalid_argument( "Index is out of data range!" );
 
     // todo: return based on the corresponding model
-    return ImageData::sRGBGammaExspansion(this->Data[index] / (double) MaxChannelValue);
+    return ImageData::sRGBGammaExpansion(this->Data[index] / (double) MaxChannelValue);
 }
 
 void ImageData::SetGammaCompressed(int index, double value) {
@@ -107,7 +107,7 @@ void ImageData::SetGammaCompressed(int index, double value) {
 
 // todo: if further exspantion, it would be better to move colorSpaces and its methods to separate classes...
 // todo: it would be better to rescale this funciton in order to return in integer... to keep data consistent
-double ImageData::sRGBGammaExspansion(double value_srgb){
+double ImageData::sRGBGammaExpansion(double value_srgb){
     if(value_srgb <= 0.04045)
         return value_srgb / 12.92;
     else

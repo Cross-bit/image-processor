@@ -19,19 +19,23 @@ public:
      * Image name.
      */
     std::string Name;
+
     /**
      * Image (pixel) widht.
      */
     int Width;
+
     /**
      * Image (pixel) height.
      */
     int Height;
+
     /**
      * All loaded channels.
      */
 
     int Channels;
+
     /**
      * All Image data buffer.
      */
@@ -51,6 +55,7 @@ public:
      * Total number of pixels, typically width * height * #channels. (i. e. data array len)
      */
     int DataSize;
+
     /**
      * In which color space the data are stored.
      */
@@ -89,8 +94,18 @@ public:
      */
     void SetGammaCompressed(int index, double value);
 
-    static double sRGBGammaExspansion(double value_srgb);
+    /**
+     * Performs gamma expansion in sRGB.
+     * @param value_srgb
+     * @return
+     */
+    static double sRGBGammaExpansion(double value_srgb);
 
+    /**
+     * Performs gamma compression in sRGB.
+     * @param value_srgb
+     * @return
+     */
     static double sRGBGammaCompression(double value_srgb);
 
 };
