@@ -6,7 +6,7 @@
 #define IMAGEPROCESSOR_GOSECONDMENUOPTION_H
 
 
-#include "../MenuGroups/MenuOption.h"
+#include "MenuOption.h"
 
 class GoSecondMenuOption : public MenuOption {
 public:

@@ -4,6 +4,6 @@
 
 #include "IdleMenuGroup.h"
 
-IdleMenuGroup::IdleMenuGroup(){
+IdleMenuGroup::IdleMenuGroup() {
     _headerData = "This is first menu!";
 }

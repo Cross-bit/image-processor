@@ -5,9 +5,7 @@
 #ifndef IMAGEPROCESSOR_GOIDLEMENUOPTION_H
 #define IMAGEPROCESSOR_GOIDLEMENUOPTION_H
 
-#include "../MenuGroups/MenuOption.h"
-
-
+#include "MenuOption.h"
 
 class GoIdleMenuOption : public MenuOption {
 public:

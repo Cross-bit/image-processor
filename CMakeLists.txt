@@ -16,11 +16,11 @@ add_executable(
         ImageProcessor
         main.cpp
         UserMenu/MenuGroups/MenuGroup.h
-        UserMenu/MenuGroups/MenuOption.h
+        UserMenu/MenuCommands/MenuOption.h
         UserMenu/UserMenu.h
         UserMenu/UserMenu.cpp
         UserMenu/MenuGroups/MenuGroup.cpp
-        UserMenu/MenuGroups/MenuOption.cpp
+        UserMenu/MenuCommands/MenuOption.cpp
         UserMenu/MenuCommands/GoIdleMenuOption.cpp
         UserMenu/MenuCommands/GoIdleMenuOption.h
         UserMenu/MenuGroups/IdleMenuGroup/IdleMenuGroup.cpp

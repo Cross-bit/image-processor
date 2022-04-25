@@ -5,11 +5,11 @@
 #ifndef IMAGEPROCESSOR_MENUGROUP_H
 #define IMAGEPROCESSOR_MENUGROUP_H
 
-#include "MenuOption.h"
+#include "../MenuCommands/MenuOption.h"
 
 class UserMenu;
 
-class MenuGroup{
+class MenuGroup {
 public:
     void AddMenuOption(
             std::string indentificator,

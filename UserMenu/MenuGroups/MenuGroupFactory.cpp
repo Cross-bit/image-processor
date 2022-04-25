@@ -17,5 +17,6 @@ std::unique_ptr<IdleMenuGroup> MenuGroupFactory::CreateIdleMenuGroup() {
 std::unique_ptr<SecondMenuGroup> MenuGroupFactory::CreateSecondMenuGroup() {
     auto newSecondMenuGroup = std::make_unique<SecondMenuGroup>();
     newSecondMenuGroup->AddMenuOption("1", std::make_unique<GoIdleMenuOption>());
+
     return std::move(newSecondMenuGroup);
 }
