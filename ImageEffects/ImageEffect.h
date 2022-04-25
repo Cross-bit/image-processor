@@ -15,7 +15,16 @@ public:
 
     ImageEffect(ImageData& imageData, float r, float g, float b);
 
-    virtual void ApplyEffect() =0;
+    /**
+     * Applies the effect on the image data.
+     */
+    virtual void ProcessImageData() =0;
+
+    /**
+     * Returns data after processing is done.
+     * @return
+     */
+    virtual ImageData& GetProcessedImageData() const;
 
     void SetRedCoef(float value);
 
