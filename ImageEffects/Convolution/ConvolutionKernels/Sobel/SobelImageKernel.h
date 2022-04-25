@@ -8,6 +8,9 @@
 
 #include "../ImageKernel.h"
 
+/**
+ * Represent sobel convolution kernel. (e.g. for edge detection)
+ */
 class SobelImageKernel : public ImageKernel // todo: make it generic
 {
 public:

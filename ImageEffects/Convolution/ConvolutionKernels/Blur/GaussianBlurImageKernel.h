@@ -7,6 +7,9 @@
 
 #include "../ImageKernel.h"
 #include <vector>
+/**
+ * Gaussian blur convolution image kernel.
+ */
 class GaussianBlurImageKernel : public ImageKernel
 {
 
@@ -31,18 +34,24 @@ private:
 
     double Get2DGaussianValueOnCoords(int x, int y) const;
 
+    /**
+     * Normalizes kernel data, so all values sum up to 1.
+     * @param sum sum of all matrix values.
+     */
     void NormalizeKernelData(double sum);
+
     /**
      * Kernel buffer matrix.
      */
     std::vector<std::vector<double>>  _kernelBuffer;
 
     /**
-     * Gaussian distribution standard diviation.
+     * Standard deviation for gaussian distribution.
      */
-    double _stdDiviation;
+    double _stdDeviation;
+
     /**
-     * Coefitient based on standard diviation used in the formula. (Is recalculated with setting std diviation)
+     * Coefitient based on standard diviation used in the formula. (Is recalculated with setting std diviation).
      */
     double _precomputedDeviationCoef;
 

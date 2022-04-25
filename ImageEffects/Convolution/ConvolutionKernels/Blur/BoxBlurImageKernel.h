@@ -7,6 +7,9 @@
 
 #include "../ImageKernel.h"
 
+/**
+ * Simple box blur image kernel (3x3).
+ */
 class BoxBlurImageKernel : public ImageKernel
 {
 public:

@@ -13,7 +13,7 @@
 
 
 /**
- * Filter converts image to ascii art and prints it to provided output.
+ * Filter converting image to ascii art and printing it to given output.
  */
 class AsciiArtEffect : public ImageEffect {
 public:

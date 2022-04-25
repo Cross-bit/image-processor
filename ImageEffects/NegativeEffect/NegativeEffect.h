@@ -7,7 +7,9 @@
 
 #include "../ImageEffect.h"
 
-
+/**
+ * Filter converting image to its negative. (inverts the colors)
+ */
 class NegativeEffect : public ImageEffect{
 public:
     void ProcessImageData() override;

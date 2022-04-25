@@ -16,8 +16,8 @@ GaussianBlurImageKernel::GaussianBlurImageKernel(int kernelDimension, double sta
 }
 
 void GaussianBlurImageKernel::SetStandardDeviation(double value) {
-    _stdDiviation = value;
-    _precomputedDeviationCoef = 2 * pow(_stdDiviation, 2);
+    _stdDeviation = value;
+    _precomputedDeviationCoef = 2 * pow(_stdDeviation, 2);
 }
 
 void GaussianBlurImageKernel::PopulateKernelBufferWithValues() {

@@ -20,9 +20,7 @@ GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
 }
 
 void GrayscaleEffect::ProcessImageData() {
-
     if(_imageData.DataSize == 0)
         return;
-
     _effectStrategy.TransformToGrayscale(_imageData);
 }

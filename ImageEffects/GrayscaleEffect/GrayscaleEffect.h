@@ -9,8 +9,10 @@
 
 #include "Algorithms/GrayscaleStrategyBase.h"
 
-
-class GrayscaleEffect : public ImageEffect{
+/**
+ * Filter converting image to grayscale based on provided strategy algorithm.
+ */
+class GrayscaleEffect : public ImageEffect {
 public:
     GrayscaleEffect(ImageData& imageData, GrayscaleStrategyBase& grayscaleStrategy);
 
@@ -19,6 +21,9 @@ public:
     void ProcessImageData() override;
 
 private:
+    /**
+     *
+     */
     GrayscaleStrategyBase& _effectStrategy;
 };
 

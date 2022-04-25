@@ -8,6 +8,10 @@
 #include "ConvolutionKernels/ImageKernel.h"
 #include "../ImageEffect.h"
 
+
+/**
+ * Filter converting applying convolution based on the given image kernel.
+ */
 class ConvolutionProcessor : public ImageEffect
 {
 public:
