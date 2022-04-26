@@ -8,6 +8,7 @@
 #include "../../../MenuCommands/MenuOption.h"
 
 #include "../../../../ImageLibrary/ImagesLibrary.h"
+#include "../../../../ImageLibrary/ImageFormatFactory.h"
 
 class AddImageToLibrary : public MenuOption {
 public:
@@ -18,6 +19,13 @@ public:
     void Execute() override;
 private:
     ImagesLibrary& _imagesLibrary;
+
+    ImageFormatFactory _formatFactory;
+
+    std::unique_ptr<ImageFormat> GetImageFormat(const std::string& filePath);
+
+    bool TryToFindImage(std::string& imagePath) const;
+
 };
 
 
