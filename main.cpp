@@ -2,7 +2,7 @@
 
 #include "UserMenu/UserMenu.h"
 
-#include "UserMenu/MenuCommands/GoIdleMenuOption.h"
+#include "UserMenu/MenuCommands/GoMainMenuOption.h"
 
 #include "ImageLibrary/ImageFormatFactory.h"
 
@@ -25,6 +25,9 @@
 #include "ImageEffects/ASCII/AsciiArtEffect.h"
 
 #include "ImageEffects/ImageEffectFactory.h"
+
+#include "ImageLibrary/ImagesLibrary.h"
+#include "UserMenu/MenuGroups/MenuGroupFactory.h"
 
 #include <cstdio>
  void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
@@ -67,12 +70,12 @@ int main() {
     effect->ProcessImageData();
     tmpStoreImg(effect->GetProcessedImageData(), jpgFormat, "tr");*/
 
-    /*ImagesLibrary imagesLibrary;
+    ImagesLibrary imagesLibrary;
 
     MenuGroupFactory menuGroupsFactory(imagesLibrary);
 
     UserMenu userMenu(menuGroupsFactory);
-    userMenu.Update();*/
+    userMenu.Update();
 
     return 0;
 }
