@@ -10,7 +10,7 @@
 UserMenu::UserMenu(MenuGroupFactory &groupsFac) : GroupsFac(groupsFac)
 {
 
-    _currentMenuGroup = GroupsFac.CreateIdleMenuGroup();
+    _currentMenuGroup = GroupsFac.CreateMainMenuGroup();
 }
 
 void UserMenu::SetNewMenuItem(std::unique_ptr<MenuGroup> menuItemToSet) {

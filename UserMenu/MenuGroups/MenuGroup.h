@@ -23,7 +23,7 @@ public:
 protected:
     std::string _headerData = "";
     std::string _bulletPointEnd = ") ";
-    std::unordered_map<std::string, std::unique_ptr<MenuOption>> _menuOptions;
+    std::map<std::string, std::unique_ptr<MenuOption>> _menuOptions;
 
     virtual void RenderHeader();
 
