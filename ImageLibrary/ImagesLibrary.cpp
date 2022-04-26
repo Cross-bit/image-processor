@@ -29,7 +29,7 @@ std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator Imag
 }
 
 bool ImagesLibrary::CheckIfRecordExists(const std::string& recordKey) const {
-    return _loadedImages.find(recordKey) == _loadedImages.end();
+    return _loadedImages.find(recordKey) != _loadedImages.end();
 }
 
 void ImagesLibrary::UpdateRecords() {
