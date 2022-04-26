@@ -41,3 +41,7 @@ void ImagesLibrary::UpdateRecords() {
 }
 
 
+std::string ImagesLibrary::ParseFileExstention(const std::string& filePath){
+    return filePath.substr(filePath.find_last_of(".") + 1);
+}
+
