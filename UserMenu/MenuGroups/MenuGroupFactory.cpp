@@ -32,7 +32,7 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateLibraryMenuGroup() {
     auto newLibraryMenuGroup = std::make_unique<LibraryMenuGroup>();
     newLibraryMenuGroup->AddMenuOption("a", std::make_unique<ListAllImagesOption>(ImageLibrary));
     newLibraryMenuGroup->AddMenuOption("b", std::make_unique<AddImageToLibrary>(ImageLibrary));
-    newLibraryMenuGroup->AddMenuOption("c", std::make_unique<AddImageToLibrary>(ImageLibrary));
+    newLibraryMenuGroup->AddMenuOption("c", std::make_unique<AddAllImagesFromDirOption>(ImageLibrary));
     newLibraryMenuGroup->AddMenuOption("d", std::make_unique<GoMainMenuOption>());
     return std::move(newLibraryMenuGroup);
 }

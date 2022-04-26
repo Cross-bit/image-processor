@@ -3,7 +3,3 @@
 //
 
 #include "SetDefaultInputDirectory.h"
-SetDefaultInputDirectory::SetDefaultInputDirectory() {
-
-}
-
