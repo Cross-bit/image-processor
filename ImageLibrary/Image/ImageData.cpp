@@ -101,7 +101,7 @@ void ImageData::SetGammaCompressed(int index, double value) {
     if (index < 0 || index >= DataSize)
         throw std::invalid_argument("Index is out of data range!");
 
-    // todo: return based on the corresponding model
+    // todo: set based on the corresponding model
     this->Data[index] = ImageData::sRGBGammaCompression(value) * MaxChannelValue;
 }
 
