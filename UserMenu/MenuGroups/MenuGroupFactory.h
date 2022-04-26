@@ -28,8 +28,8 @@ public:
     std::unique_ptr<MenuGroup> CreateFiltersMenuGroup();
 
     std::unique_ptr<MenuGroup> CreateLibraryMenuGroup();
-private:
-    ImagesLibrary& _imageLibrary;
+
+    ImagesLibrary& ImageLibrary;
 };
 
 #endif //IMAGEPROCESSOR_MENUGROUPFACTORY_H
