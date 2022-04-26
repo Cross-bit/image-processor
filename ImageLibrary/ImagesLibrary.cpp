@@ -11,7 +11,7 @@ void ImagesLibrary::AddRecord(const std::string& filePath, std::unique_ptr<Image
             return;
     }
 
-    _loadedImages.push_back(std::make_unique<LibraryRecord>(filePath, std::move(imageData)));
+    _loadedImages.push_back(std::make_shared<LibraryRecord>(filePath, std::move(imageData)));
 }
 
 void ImagesLibrary::RemoveRecord(std::string filePath) {
@@ -26,11 +26,11 @@ void ImagesLibrary::ClearLibrary() {
     _loadedImages.clear();
 }
 
-std::vector<std::unique_ptr<LibraryRecord>>::const_iterator ImagesLibrary::Begin() const {
+std::vector<std::shared_ptr<LibraryRecord>>::const_iterator ImagesLibrary::Begin() const {
     return _loadedImages.cbegin();
 }
 
-std::vector<std::unique_ptr<LibraryRecord>>::const_iterator  ImagesLibrary::End() const {
+std::vector<std::shared_ptr<LibraryRecord>>::const_iterator  ImagesLibrary::End() const {
     return _loadedImages.cend();
 }
 
@@ -43,6 +43,11 @@ bool ImagesLibrary::CheckIfRecordExists(const std::string& recordPath) const {
     return false;
 }
 
+bool ImagesLibrary::CheckIfIndexIsValid(int index) const {
+    return index < _loadedImages.size() && index >= 0;
+}
+
+
 void ImagesLibrary::UpdateRecords() {
 
     for (auto it = _loadedImages.begin(); it != _loadedImages.end() ; ++it) {
@@ -51,6 +56,13 @@ void ImagesLibrary::UpdateRecords() {
     }
 }
 
+std::shared_ptr<LibraryRecord> ImagesLibrary::GetRecordByIndex(int index) const{
+
+    if(!CheckIfIndexIsValid(index))
+        return nullptr;
+
+    return _loadedImages[index];
+}
 
 std::string ImagesLibrary::ParseFileExstention(const std::string& filePath){
     return filePath.substr(filePath.find_last_of(".") + 1);

@@ -32,6 +32,13 @@ public:
     void AddRecord(const std::string& filePath, std::unique_ptr<ImageData> imageData);
 
     /**
+     * Returns img record base on the index.
+     * @param index
+     * @return
+     */
+    std::shared_ptr<LibraryRecord> GetRecordByIndex(int index) const;
+
+    /**
      * Removes record from the library. If doesn't exists, does nothing.
      * @param filePath
      */
@@ -51,13 +58,13 @@ public:
     /*
      * Gets begin iterator of data.
      */
-    std::vector<std::unique_ptr<LibraryRecord>>::const_iterator Begin() const;
+    std::vector<std::shared_ptr<LibraryRecord>>::const_iterator Begin() const;
 
     /**
      * Gets end iterator of the data.
      * @return
      */
-    std::vector<std::unique_ptr<LibraryRecord>>::const_iterator End() const;
+    std::vector<std::shared_ptr<LibraryRecord>>::const_iterator End() const;
 
     static std::string ParseFileExstention(const std::string& filePath);
 
@@ -66,11 +73,17 @@ public:
      */
     void UpdateRecords();
 
-    void UpdateIndexMapping();
+    /**
+     * Check if index is in the library data range.
+     * @param index
+     * @return
+     */
+    bool CheckIfIndexIsValid(int index) const;
+
 
 private:
     //std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
-    std::vector<std::unique_ptr<LibraryRecord>> _loadedImages;
+    std::vector<std::shared_ptr<LibraryRecord>> _loadedImages;
 
 };
 
