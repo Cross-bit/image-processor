@@ -9,7 +9,3 @@ void MenuOption::Render(){
 }
 
 void MenuOption::Execute() { }
-
-/*std::unique_ptr<MenuItemGroup> MenuOption::CreateNextGroup(){
-
-}*/
