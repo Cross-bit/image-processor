@@ -19,7 +19,7 @@ public:
      * @param filePath
      * @param imageData
      */
-    void AddRecord(std::string filePath, std::unique_ptr<ImageData> imageData);
+    void AddRecord(const std::string& filePath, std::unique_ptr<ImageData> imageData);
 
     /**
      * Removes record from the library. If doesn't exists, does nothing.
@@ -31,6 +31,12 @@ public:
      * Removes all records from the library.
      */
     void ClearLibrary();
+
+    /**
+     * Checks if record exists in library.
+     * @return
+     */
+    bool CheckIfRecordExists(const std::string& recordKey) const;
 
     /*
      * Gets begin iterator of data.

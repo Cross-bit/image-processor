@@ -4,7 +4,7 @@
 
 #include "ImagesLibrary.h"
 #include <filesystem>
-void ImagesLibrary::AddRecord(std::string filePath, std::unique_ptr<ImageData> imageData)
+void ImagesLibrary::AddRecord(const std::string& filePath, std::unique_ptr<ImageData> imageData)
 {
     if (_loadedImages.find(filePath) == _loadedImages.end())
         _loadedImages.insert({filePath, std::move(imageData)});
@@ -26,6 +26,10 @@ std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator Imag
 
 std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator ImagesLibrary::End() const {
     return _loadedImages.end();
+}
+
+bool ImagesLibrary::CheckIfRecordExists(const std::string& recordKey) const {
+    return _loadedImages.find(recordKey) == _loadedImages.end();
 }
 
 void ImagesLibrary::UpdateRecords() {
