@@ -6,6 +6,9 @@
 #include <iostream>
 #include <filesystem>
 
+
+#include "../../MenuGroupFactory.h"
+
 AddAllImagesFromDirOption::AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary) : _imagesLibrary(imagesLibrary)
 {
 
@@ -52,7 +55,7 @@ void AddAllImagesFromDirOption::Execute() {
 }
 
 std::unique_ptr<MenuGroup> AddAllImagesFromDirOption::CreateNextGroup(MenuGroupFactory &groupFactory) {
-
+    return std::move(groupFactory.CreateLibraryMenuGroup());
 }
 
 
