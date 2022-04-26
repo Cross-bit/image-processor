@@ -9,7 +9,7 @@
 #include "../../../../ImageLibrary/ImagesLibrary.h"
 #include "../../../../ImageLibrary/ImageFormatFactory.h"
 
-class AddAllImagesFromDirOption : MenuOption
+class AddAllImagesFromDirOption : public MenuOption
 {
 public:
     AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary);

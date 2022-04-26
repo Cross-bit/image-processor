@@ -11,7 +11,6 @@
 
 AddAllImagesFromDirOption::AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary) : _imagesLibrary(imagesLibrary)
 {
-
     _itemContent = "Add all images from dir";
 }
 
@@ -39,16 +38,24 @@ void AddAllImagesFromDirOption::Execute() {
         auto imgFormat = _formatFactory.CreateImageFormat(fileExtension);
         std::string imgName = ImageFormat::ParseFileName(entry.path());
 
+        std::cout << "Immage: " << imgName << std::endl;
+
         if (imgFormat == nullptr){
-            PrintWarning("Not able to load: " + ImageFormat::ParseFileName(entry.path()));
+            PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()));
             continue;
         }
 
         auto imageData = imgFormat->LoadImageData(entry.path());
 
+        if (imageData == nullptr) {
+            PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()) + " image...");
+            continue;
+        }
+
+
         _imagesLibrary.AddRecord(std::move(entry.path()), std::move(imageData));
 
-        std::cout << "Immage: " << imgName << "added successfully!" << std::endl;
+        std::cout << " OK " << std::endl;
     }
 
     std::cout << "Loading done." << std::endl;
