@@ -27,6 +27,9 @@ public:
 
 protected:
     std::string _itemContent = "Item content is not filled";
+    //const std::string _generalFallbackMessage = "Invalid option";
+    virtual void PrintFallback(const std::string& callbackMessage);
+
 };
 
 #endif //IMAGEPROCESSOR_MENUOPTION_H

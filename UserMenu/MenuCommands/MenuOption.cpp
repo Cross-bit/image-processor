@@ -9,3 +9,7 @@ void MenuOption::Render(){
 }
 
 void MenuOption::Execute() { }
+
+void MenuOption::PrintFallback(const std::string& callbackMessage) {
+    std::cout << "Error: " << callbackMessage << std::endl;
+}
