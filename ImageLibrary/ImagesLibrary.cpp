@@ -6,36 +6,47 @@
 #include <filesystem>
 void ImagesLibrary::AddRecord(const std::string& filePath, std::unique_ptr<ImageData> imageData)
 {
-    if (_loadedImages.find(filePath) == _loadedImages.end())
-        _loadedImages.insert({filePath, std::move(imageData)});
+    for (auto & record : _loadedImages) {
+        if(record->FilePath == filePath)
+            return;
+    }
+
+    _loadedImages.push_back(std::make_unique<LibraryRecord>(filePath, std::move(imageData)));
 }
 
 void ImagesLibrary::RemoveRecord(std::string filePath) {
-    auto res = _loadedImages.find(filePath);
-    if (res != _loadedImages.end())
-        _loadedImages.erase(res);
+
+    for (auto it = _loadedImages.begin(); it != _loadedImages.end() ; ++it) {
+        if((*it)->FilePath == filePath)
+            _loadedImages.erase(it);
+    }
 }
 
 void ImagesLibrary::ClearLibrary() {
     _loadedImages.clear();
 }
 
-std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator ImagesLibrary::Begin() const {
-    return _loadedImages.begin();
+std::vector<std::unique_ptr<LibraryRecord>>::const_iterator ImagesLibrary::Begin() const {
+    return _loadedImages.cbegin();
 }
 
-std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator ImagesLibrary::End() const {
-    return _loadedImages.end();
+std::vector<std::unique_ptr<LibraryRecord>>::const_iterator  ImagesLibrary::End() const {
+    return _loadedImages.cend();
 }
 
-bool ImagesLibrary::CheckIfRecordExists(const std::string& recordKey) const {
-    return _loadedImages.find(recordKey) != _loadedImages.end();
+bool ImagesLibrary::CheckIfRecordExists(const std::string& recordPath) const {
+
+    for (auto & record : _loadedImages) {
+        if(record->FilePath == recordPath)
+            return true;
+    }
+    return false;
 }
 
 void ImagesLibrary::UpdateRecords() {
 
     for (auto it = _loadedImages.begin(); it != _loadedImages.end() ; ++it) {
-        if (!std::filesystem::exists(it->first))
+        if (!std::filesystem::exists((*it)->FilePath))
             _loadedImages.erase(it);
     }
 }

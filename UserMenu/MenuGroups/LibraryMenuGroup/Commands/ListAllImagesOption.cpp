@@ -26,7 +26,7 @@ void ListAllImagesOption::Execute() {
 
     int ctr = 0;
     for (auto it = _imagesLibrary.Begin(); it != _imagesLibrary.End(); ++it) {
-        std::cout << std::to_string(ctr) << " " << it->first << std::endl;
+        std::cout << std::to_string(ctr) << " " << (*it)->FilePath << std::endl;
         ctr++;
     }
 

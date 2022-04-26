@@ -12,6 +12,16 @@
 #include "Image/ImageData.h"
 #include "ImageFormat.h"
 
+struct LibraryRecord
+{
+    LibraryRecord(std::string filePath, std::unique_ptr<ImageData> imageData):
+    FilePath(filePath),
+    Data(std::move(imageData)) {}
+
+    std::string FilePath;
+    std::unique_ptr<ImageData> Data;
+};
+
 class ImagesLibrary {
 public:
     /**
@@ -41,13 +51,13 @@ public:
     /*
      * Gets begin iterator of data.
      */
-   std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator Begin() const;
+    std::vector<std::unique_ptr<LibraryRecord>>::const_iterator Begin() const;
 
     /**
      * Gets end iterator of the data.
      * @return
      */
-    std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator End() const;
+    std::vector<std::unique_ptr<LibraryRecord>>::const_iterator End() const;
 
     static std::string ParseFileExstention(const std::string& filePath);
 
@@ -56,9 +66,12 @@ public:
      */
     void UpdateRecords();
 
+    void UpdateIndexMapping();
 
 private:
-    std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
+    //std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
+    std::vector<std::unique_ptr<LibraryRecord>> _loadedImages;
+
 };
 
 
