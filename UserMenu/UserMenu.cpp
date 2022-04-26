@@ -17,6 +17,14 @@ void UserMenu::SetNewMenuItem(std::unique_ptr<MenuGroup> menuItemToSet) {
 	_currentMenuGroup = std::move(menuItemToSet);
 }
 
+void UserMenu::Initialize() {
+
+    //std::cout.setstate(std::ios_base::failbit);
+
+    // load images from default folder
+
+}
+
 void UserMenu::Update(){
 	while (_isAppRunning) {
 		_currentMenuGroup->Render();

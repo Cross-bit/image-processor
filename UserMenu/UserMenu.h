@@ -13,12 +13,15 @@ public:
 
     void SetNewMenuItem(std::unique_ptr<MenuGroup> menuItemToSet);
 
+    void Initialize();
+
     void Update();
 
     MenuGroupFactory &GroupsFac;
 
 private:
 	std::unique_ptr<MenuGroup> _currentMenuGroup;
+    
 
 	bool _isAppRunning = true;
 };
