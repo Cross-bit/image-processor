@@ -12,17 +12,18 @@ class ImageFormatFactory {
 public:
     ImageFormatFactory() noexcept;
 
-    std::unique_ptr<ImageFormat> CreateImageFormat(const std::string &fileName);
+    std::unique_ptr<ImageFormat> CreateImageFormat(std::string imgExtension);
 
     ImageFormatFactory(const ImageFormatFactory&) = delete;
     ImageFormatFactory(const ImageFormatFactory&&) = delete;
+
 
 private:
 
     template<typename  TFormat>
     void RegisterFormat(std::string formatType) {
         static_assert(!std::is_same<ImageFormat, TFormat>::value, "Invalid image format type!");
-        _imageFormatClassMapping.insert(std::make_pair(formatType, std::make_unique<TFormat>));
+        _imageFormatClassMapping.insert({formatType, std::make_unique<TFormat>});
     }
 
     std::unordered_map<std::string, std::function<std::unique_ptr<ImageFormat>()>> _imageFormatClassMapping;
