@@ -5,12 +5,13 @@
 #ifndef IMAGEPROCESSOR_MENUGROUPFACTORY_H
 #define IMAGEPROCESSOR_MENUGROUPFACTORY_H
 
-#include "IdleMenuGroup/IdleMenuGroup.h"
+#include "MainMenuGroup/MainMenuGroup.h"
 #include "SecondMenuGroup/SecondMenuGroup.h"
 #include "LibraryMenuGroup/LibraryMenuGroup.h"
 
 
 #include "../../ImageLibrary/ImagesLibrary.h"
+
 class MenuGroupFactory {
 public:
     MenuGroupFactory(ImagesLibrary& imageLibrary);
@@ -18,17 +19,17 @@ public:
      * Creates new instance of idle menu group.
      * @return
      */
-    std::unique_ptr<MenuGroup> CreateIdleMenuGroup();
+    std::unique_ptr<MenuGroup> CreateMainMenuGroup();
 
     /**
      * Creates new instance of second menu group.
      * @return
      */
-    std::unique_ptr<MenuGroup> CreateSecondMenuGroup();
+    std::unique_ptr<MenuGroup> CreateFiltersMenuGroup();
 
     std::unique_ptr<MenuGroup> CreateLibraryMenuGroup();
 private:
-    ImageLibrary& _imageLibrary;
+    ImagesLibrary& _imageLibrary;
 };
 
 #endif //IMAGEPROCESSOR_MENUGROUPFACTORY_H
