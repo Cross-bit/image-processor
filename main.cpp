@@ -30,6 +30,9 @@
 #include "UserMenu/MenuGroups/MenuGroupFactory.h"
 
 #include <cstdio>
+
+#include <filesystem>
+#include <unistd.h>
  void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
     data.Name = data.Name + "_" + name;
     format.SaveImageData(data, "../TestRes");
@@ -37,11 +40,14 @@
 
 int main() {
 
-    ImageJPG jpgFormat;
+    ImageFormatFactory formatFactory;
+
+
+    auto jpgFormat = formatFactory.CreateImageFormat("JPG");
 
     std::string file = "../Resources/lenna.jpg";
 
-    auto res = jpgFormat.LoadImageData(file);
+    auto res = jpgFormat->LoadImageData(file);
     if(res!= nullptr){
         std::cout << "image: " << std::endl;
         std::cout << "\tname: " << res->Name << std::endl;
@@ -75,6 +81,8 @@ int main() {
     MenuGroupFactory menuGroupsFactory(imagesLibrary);
 
     UserMenu userMenu(menuGroupsFactory);
+
+
     userMenu.Update();
 
     return 0;
