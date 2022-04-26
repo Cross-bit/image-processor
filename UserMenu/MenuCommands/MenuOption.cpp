@@ -10,6 +10,10 @@ void MenuOption::Render(){
 
 void MenuOption::Execute() { }
 
-void MenuOption::PrintFallback(const std::string& callbackMessage) {
+void MenuOption::PrintError(const std::string& callbackMessage) {
     std::cout << "Error: " << callbackMessage << std::endl;
+}
+
+void MenuOption::PrintWarning(const std::string& callbackMessage) {
+    std::cout << "Warning: " << callbackMessage << std::endl;
 }
