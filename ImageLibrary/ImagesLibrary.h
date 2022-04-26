@@ -49,10 +49,13 @@ public:
      */
     std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator End() const;
 
+    static std::string ParseFileExstention(const std::string& filePath);
+
     /**
      * Goes through all records and checks if image file exists at given key. If not it deletes the record.
      */
     void UpdateRecords();
+
 
 private:
     std::unordered_map<std::string, std::unique_ptr<ImageData>> _loadedImages;
