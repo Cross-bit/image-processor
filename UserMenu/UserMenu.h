@@ -9,11 +9,13 @@
 
 class UserMenu {
 public:
-    UserMenu();
+    UserMenu(MenuGroupFactory &groupsFac);
 
     void SetNewMenuItem(std::unique_ptr<MenuGroup> menuItemToSet);
 
     void Update();
+
+    MenuGroupFactory &GroupsFac;
 
 private:
 	std::unique_ptr<MenuGroup> _currentMenuGroup;

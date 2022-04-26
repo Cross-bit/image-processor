@@ -12,7 +12,7 @@ class GoSecondMenuOption : public MenuOption {
 public:
     GoSecondMenuOption();
 
-    std::unique_ptr<MenuGroup> CreateNextGroup() override;
+    std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory) override;
 };
 
 

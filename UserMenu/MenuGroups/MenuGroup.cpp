@@ -23,7 +23,7 @@ void MenuGroup::OnUserChoice(UserMenu& userMenu, std::string choice) {
     if (optionSearched != _menuOptions.end()) {
         optionSearched->second->Execute();
 
-        userMenu.SetNewMenuItem(std::move(optionSearched->second->CreateNextGroup()));
+        userMenu.SetNewMenuItem(std::move(optionSearched->second->CreateNextGroup(userMenu.GroupsFac)));
     }
     else {
         std::cout << "Choice \"" << choice << "\" not found" << std::endl;
@@ -40,7 +40,7 @@ void ChangeMenuGroup(UserMenu& userMenu, std::unique_ptr<MenuGroup> groupToChang
 // protected
 
 void MenuGroup::RenderHeader() {
-    std::cout << _headerData << std::endl;
+    std::cout << "-- " << _headerData << " --" << std::endl;
 }
 
 void MenuGroup::RenderBulletPoint(std::string innerText) {

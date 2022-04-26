@@ -62,10 +62,17 @@ int main() {
    // auto effect = imageFactory.CreateColorInversion(1);
 
    // -- tranformations --
-    auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
+    /*auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
 
     effect->ProcessImageData();
-    tmpStoreImg(effect->GetProcessedImageData(), jpgFormat, "tr");
+    tmpStoreImg(effect->GetProcessedImageData(), jpgFormat, "tr");*/
+
+    /*ImagesLibrary imagesLibrary;
+
+    MenuGroupFactory menuGroupsFactory(imagesLibrary);
+
+    UserMenu userMenu(menuGroupsFactory);
+    userMenu.Update();*/
 
     return 0;
 }

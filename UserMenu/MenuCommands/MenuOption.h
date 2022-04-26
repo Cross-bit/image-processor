@@ -10,6 +10,8 @@
 #include <iostream>
 #include <unordered_map>
 
+#include "../MenuGroups/MenuGroupFactory.h"
+
 class MenuGroup;
 
 class MenuOption {
@@ -19,7 +21,7 @@ public:
 
     void Execute();
 
-	virtual std::unique_ptr<MenuGroup> CreateNextGroup() = 0;
+	virtual std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory)= 0;
 
 protected:
     std::string _itemContent = "bla bla cool";

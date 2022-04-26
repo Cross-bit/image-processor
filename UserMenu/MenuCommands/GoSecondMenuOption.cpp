@@ -10,7 +10,7 @@ GoSecondMenuOption::GoSecondMenuOption() {
     _itemContent = "Go to second menu...";
 }
 
-std::unique_ptr<MenuGroup> GoSecondMenuOption::CreateNextGroup() {
-    MenuGroupFactory groupsFac;
-    return std::move(groupsFac.CreateSecondMenuGroup());
+std::unique_ptr<MenuGroup> GoSecondMenuOption::CreateNextGroup(MenuGroupFactory & groupFactory)
+{
+    return std::move(groupFactory.CreateSecondMenuGroup());
 }

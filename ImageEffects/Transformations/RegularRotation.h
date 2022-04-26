@@ -10,6 +10,7 @@
 
 #include "../ImageEffect.h"
 #include "../../ImageLibrary/Image/ImageData.h"
+#include "FlipTransform.h"
 
 
 /**
@@ -26,12 +27,16 @@ public:
 
     virtual std::string GenerateImageName() const;
 
+    void RotateImageRightAngle();
 
 private:
     std::unique_ptr<ImageData> _rotatedImage;
     int _rotationAngle;
 
     void SetRotationAngle(int inputAngle);
+
+    std::unique_ptr<FlipTransform> _flipOperation;
+
 
 };
 

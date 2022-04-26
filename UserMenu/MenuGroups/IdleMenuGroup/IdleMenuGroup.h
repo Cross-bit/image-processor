@@ -6,6 +6,7 @@
 #define IMAGEPROCESSOR_IDLEMENUGROUP_H
 
 #include "../MenuGroup.h"
+//class MenuGroup;
 
 class IdleMenuGroup : public MenuGroup {
 public:

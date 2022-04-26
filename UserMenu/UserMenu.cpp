@@ -7,9 +7,10 @@
 
 #include "MenuGroups/MenuGroupFactory.h"
 
-UserMenu::UserMenu(){
-    MenuGroupFactory groupsFac;
-    _currentMenuGroup = groupsFac.CreateIdleMenuGroup();
+UserMenu::UserMenu(MenuGroupFactory &groupsFac) : GroupsFac(groupsFac)
+{
+
+    _currentMenuGroup = GroupsFac.CreateIdleMenuGroup();
 }
 
 void UserMenu::SetNewMenuItem(std::unique_ptr<MenuGroup> menuItemToSet) {

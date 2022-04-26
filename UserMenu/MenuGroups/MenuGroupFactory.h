@@ -7,21 +7,28 @@
 
 #include "IdleMenuGroup/IdleMenuGroup.h"
 #include "SecondMenuGroup/SecondMenuGroup.h"
+#include "LibraryMenuGroup/LibraryMenuGroup.h"
 
+
+#include "../../ImageLibrary/ImagesLibrary.h"
 class MenuGroupFactory {
 public:
+    MenuGroupFactory(ImagesLibrary& imageLibrary);
     /**
      * Creates new instance of idle menu group.
      * @return
      */
-    std::unique_ptr<IdleMenuGroup> CreateIdleMenuGroup();
+    std::unique_ptr<MenuGroup> CreateIdleMenuGroup();
 
     /**
      * Creates new instance of second menu group.
      * @return
      */
-    std::unique_ptr<SecondMenuGroup> CreateSecondMenuGroup();
+    std::unique_ptr<MenuGroup> CreateSecondMenuGroup();
 
+    std::unique_ptr<MenuGroup> CreateLibraryMenuGroup();
+private:
+    ImageLibrary& _imageLibrary;
 };
 
 #endif //IMAGEPROCESSOR_MENUGROUPFACTORY_H

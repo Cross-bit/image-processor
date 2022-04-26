@@ -10,7 +10,6 @@ GoIdleMenuOption::GoIdleMenuOption() {
     _itemContent = "Go to first menu";
 }
 
-std::unique_ptr<MenuGroup> GoIdleMenuOption::CreateNextGroup(){
-    MenuGroupFactory groupsFac;
-    return std::move(groupsFac.CreateIdleMenuGroup());
+std::unique_ptr<MenuGroup> GoIdleMenuOption::CreateNextGroup(MenuGroupFactory & groupFactory) {
+    return std::move(groupFactory.CreateIdleMenuGroup());
 }
