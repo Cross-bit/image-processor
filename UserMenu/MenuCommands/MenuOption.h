@@ -8,23 +8,25 @@
 #include <string>
 #include <memory>
 #include <iostream>
-#include <unordered_map>
-
-#include "../MenuGroups/MenuGroupFactory.h"
+#include <map>
 
 class MenuGroup;
+class MenuGroupFactory;
 
+/**
+ * Base class for menu option command.
+ */
 class MenuOption {
 public:
 
-    void Render();
+    virtual void Render();
 
-    void Execute();
+    virtual void Execute();
 
 	virtual std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory)= 0;
 
 protected:
-    std::string _itemContent = "bla bla cool";
+    std::string _itemContent = "Item content is not filled";
 };
 
 #endif //IMAGEPROCESSOR_MENUOPTION_H
