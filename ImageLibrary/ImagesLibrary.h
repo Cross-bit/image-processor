@@ -32,10 +32,16 @@ public:
      */
     void ClearLibrary();
 
-    /**
-     * Returns all records.
+    /*
+     * Gets begin iterator of data.
      */
-    std::unordered_map<std::string, std::unique_ptr<ImageData>>::iterator GetAllImages();
+   std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator Begin() const;
+
+    /**
+     * Gets end iterator of the data.
+     * @return
+     */
+    std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator End() const;
 
     /**
      * Goes through all records and checks if image file exists at given key. If not it deletes the record.

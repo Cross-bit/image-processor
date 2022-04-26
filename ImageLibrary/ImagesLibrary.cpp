@@ -20,8 +20,12 @@ void ImagesLibrary::ClearLibrary() {
     _loadedImages.clear();
 }
 
-std::unordered_map<std::string, std::unique_ptr<ImageData>>::iterator ImagesLibrary::GetAllImages() {
+std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator ImagesLibrary::Begin() const {
     return _loadedImages.begin();
+}
+
+std::unordered_map<std::string, std::unique_ptr<ImageData>>::const_iterator ImagesLibrary::End() const {
+    return _loadedImages.end();
 }
 
 void ImagesLibrary::UpdateRecords() {
