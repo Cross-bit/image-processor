@@ -82,7 +82,7 @@ int main() {
 
     UserMenu userMenu(menuGroupsFactory);
 
-
+    userMenu.Initialize("/mnt/c/Users/kriz/CLionProjects/ImageProcessor/Resources");
     userMenu.Update();
 
     return 0;

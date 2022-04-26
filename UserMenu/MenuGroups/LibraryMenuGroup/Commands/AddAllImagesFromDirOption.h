@@ -12,15 +12,17 @@
 class AddAllImagesFromDirOption : public MenuOption
 {
 public:
-    AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary);
+    AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary, std::string sourceDir = "");
 
     void Execute() override;
 
-    std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory &groupFactory) override;
+    std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & userMenu) override;
 private:
     ImageFormatFactory _formatFactory;
 
     ImagesLibrary& _imagesLibrary;
+
+    std::string _sourceDir;
 };
 
 

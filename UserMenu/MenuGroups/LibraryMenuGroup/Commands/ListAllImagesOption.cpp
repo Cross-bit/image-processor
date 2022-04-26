@@ -4,14 +4,15 @@
 
 #include "ListAllImagesOption.h"
 #include "../../MenuGroupFactory.h"
+#include "../../../UserMenu.h"
+
 
 ListAllImagesOption::ListAllImagesOption(ImagesLibrary& imagesLibrary) : _imagesLibrary(imagesLibrary) {
     _itemContent = "List all images";
 }
 
-std::unique_ptr<MenuGroup> ListAllImagesOption::CreateNextGroup(MenuGroupFactory & groupFactory) {
-    std::cin;
-    return std::move(groupFactory.CreateLibraryMenuGroup());
+std::unique_ptr<MenuGroup> ListAllImagesOption::CreateNextGroup(UserMenu &userMenu) {
+    return nullptr;
 }
 
 void ListAllImagesOption::Execute() {

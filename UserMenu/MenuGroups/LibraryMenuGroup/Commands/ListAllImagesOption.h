@@ -14,7 +14,7 @@ class ListAllImagesOption : public MenuOption {
 public:
     ListAllImagesOption(ImagesLibrary& imagesLibrary);
 
-    std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory) override;
+    std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &userMenu) override;
 
     void Execute() override;
 private:

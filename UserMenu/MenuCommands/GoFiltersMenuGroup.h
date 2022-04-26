@@ -12,7 +12,7 @@ class GoFiltersMenuGroup : public MenuOption {
 public:
     GoFiltersMenuGroup();
 
-    std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory) override;
+    std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &userMenu) override;
 };
 
 

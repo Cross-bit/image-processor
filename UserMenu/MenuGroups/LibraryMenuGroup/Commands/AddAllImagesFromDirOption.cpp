@@ -6,10 +6,12 @@
 #include <iostream>
 #include <filesystem>
 
-
+#include "../../../UserMenu.h"
 #include "../../MenuGroupFactory.h"
 
-AddAllImagesFromDirOption::AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary) : _imagesLibrary(imagesLibrary)
+AddAllImagesFromDirOption::AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary, std::string sourceDir) :
+_imagesLibrary(imagesLibrary),
+_sourceDir(sourceDir)
 {
     _itemContent = "Add all images from dir";
 }
@@ -18,16 +20,14 @@ void AddAllImagesFromDirOption::Execute() {
 
     std::cout << "Enter full path to directory: " << std::endl;
 
-    std::string dirPath;
+    _sourceDir = _sourceDir == "" ? ReadUserInput() : _sourceDir;
 
-    getline(std::cin, dirPath);
-
-    if(!std::filesystem::is_directory(dirPath)){
+    if(!std::filesystem::is_directory(_sourceDir)){
         std::cout << "Invalid directory!" << std::endl;
         return;
     }
 
-    for (const auto & entry : std::filesystem::directory_iterator(dirPath)) {
+    for (const auto & entry : std::filesystem::directory_iterator(_sourceDir)) {
 
         if(_imagesLibrary.CheckIfRecordExists(entry.path()))
             continue;
@@ -38,7 +38,7 @@ void AddAllImagesFromDirOption::Execute() {
         auto imgFormat = _formatFactory.CreateImageFormat(fileExtension);
         std::string imgName = ImageFormat::ParseFileName(entry.path());
 
-        std::cout << "Immage: " << imgName << std::endl;
+        std::cout << "Image: " << imgName << std::endl;
 
         if (imgFormat == nullptr){
             PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()));
@@ -52,7 +52,6 @@ void AddAllImagesFromDirOption::Execute() {
             continue;
         }
 
-
         _imagesLibrary.AddRecord(std::move(entry.path()), std::move(imageData));
 
         std::cout << " OK " << std::endl;
@@ -61,8 +60,8 @@ void AddAllImagesFromDirOption::Execute() {
     std::cout << "Loading done." << std::endl;
 }
 
-std::unique_ptr<MenuGroup> AddAllImagesFromDirOption::CreateNextGroup(MenuGroupFactory &groupFactory) {
-    return std::move(groupFactory.CreateLibraryMenuGroup());
+std::unique_ptr<MenuGroup> AddAllImagesFromDirOption::CreateNextGroup(UserMenu & userMenu) {
+    return std::move(userMenu.GroupsFac.CreateLibraryMenuGroup());
 }
 
 

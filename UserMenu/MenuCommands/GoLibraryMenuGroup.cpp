@@ -5,11 +5,11 @@
 #include "GoLibraryMenuGroup.h"
 
 #include "../MenuGroups/MenuGroupFactory.h"
-
+#include "../UserMenu.h"
 GoLibraryMenuGroup::GoLibraryMenuGroup() {
     _itemContent = "Go to image library";
 }
 
-std::unique_ptr<MenuGroup> GoLibraryMenuGroup::CreateNextGroup(MenuGroupFactory & groupFactory) {
-    return std::move(groupFactory.CreateLibraryMenuGroup());
+std::unique_ptr<MenuGroup> GoLibraryMenuGroup::CreateNextGroup(UserMenu &userMenu) {
+    return std::move(userMenu.GroupsFac.CreateLibraryMenuGroup());
 }

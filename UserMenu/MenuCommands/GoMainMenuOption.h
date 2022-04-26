@@ -11,7 +11,7 @@ class GoMainMenuOption : public MenuOption {
 public:
     GoMainMenuOption();
 
-    std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory) override;
+    std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &userMenu) override;
 };
 
 #endif //IMAGEPROCESSOR_GOIDLEMENUOPTION_H

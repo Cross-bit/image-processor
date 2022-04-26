@@ -13,15 +13,16 @@ public:
 
     void SetNewMenuItem(std::unique_ptr<MenuGroup> menuItemToSet);
 
-    void Initialize();
+    void Initialize(const std::string& inputImageFolder);
 
     void Update();
 
     MenuGroupFactory &GroupsFac;
 
+    std::unique_ptr<MenuGroup> GetCurrentMenuGroup();
+
 private:
 	std::unique_ptr<MenuGroup> _currentMenuGroup;
-    
 
 	bool _isAppRunning = true;
 };

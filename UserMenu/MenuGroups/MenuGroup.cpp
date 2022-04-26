@@ -23,7 +23,7 @@ void MenuGroup::OnUserChoice(UserMenu& userMenu, std::string choice) {
     if (optionSearched != _menuOptions.end()) {
         optionSearched->second->Execute();
 
-        userMenu.SetNewMenuItem(std::move(optionSearched->second->CreateNextGroup(userMenu.GroupsFac)));
+        userMenu.SetNewMenuItem(std::move(optionSearched->second->CreateNextGroup(userMenu)));
     }
     else {
         std::cout << "Choice \"" << choice << "\" not found" << std::endl;

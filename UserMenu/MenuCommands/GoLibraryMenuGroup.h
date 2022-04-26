@@ -12,7 +12,7 @@ class GoLibraryMenuGroup : public MenuOption {
 public:
     GoLibraryMenuGroup();
 
-    std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory) override;
+    std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &userMenu) override;
 };
 
 

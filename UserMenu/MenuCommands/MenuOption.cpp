@@ -17,3 +17,10 @@ void MenuOption::PrintError(const std::string& callbackMessage) {
 void MenuOption::PrintWarning(const std::string& callbackMessage) {
     std::cout << "Warning: " << callbackMessage << std::endl;
 }
+
+std::string MenuOption::ReadUserInput() const {
+    std::string input;
+    getline(std::cin, input);
+
+    return std::move(input);
+}

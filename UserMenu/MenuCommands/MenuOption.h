@@ -13,6 +13,7 @@
 class MenuGroup;
 class MenuGroupFactory;
 
+class UserMenu;
 /**
  * Base class for menu option command.
  */
@@ -23,13 +24,15 @@ public:
 
     virtual void Execute();
 
-	virtual std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory)= 0;
+	virtual std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & groupFactory)= 0;
 
 protected:
     std::string _itemContent = "Item content is not filled";
     //const std::string _generalFallbackMessage = "Invalid option";
     virtual void PrintError(const std::string& callbackMessage);
     virtual void PrintWarning(const std::string& callbackMessage);
+
+    virtual std::string ReadUserInput() const;
 
 };
 

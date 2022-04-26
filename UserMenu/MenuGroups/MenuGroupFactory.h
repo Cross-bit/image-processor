@@ -6,7 +6,6 @@
 #define IMAGEPROCESSOR_MENUGROUPFACTORY_H
 
 #include "MainMenuGroup/MainMenuGroup.h"
-#include "SecondMenuGroup/SecondMenuGroup.h"
 #include "LibraryMenuGroup/LibraryMenuGroup.h"
 
 

@@ -5,11 +5,12 @@
 #include "GoMainMenuOption.h"
 
 #include "../MenuGroups/MenuGroupFactory.h"
+#include "../UserMenu.h"
 
 GoMainMenuOption::GoMainMenuOption() {
     _itemContent = "Go to main menu";
 }
 
-std::unique_ptr<MenuGroup> GoMainMenuOption::CreateNextGroup(MenuGroupFactory & groupFactory) {
-    return std::move(groupFactory.CreateMainMenuGroup());
+std::unique_ptr<MenuGroup> GoMainMenuOption::CreateNextGroup(UserMenu &userMenu) {
+    return std::move(userMenu.GroupsFac.CreateMainMenuGroup());
 }

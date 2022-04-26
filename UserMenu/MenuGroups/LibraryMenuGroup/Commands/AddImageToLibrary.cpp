@@ -5,6 +5,7 @@
 #include "AddImageToLibrary.h"
 
 #include "../../MenuGroupFactory.h"
+#include "../../../UserMenu.h"
 
 #include <filesystem>
 #include <string>
@@ -14,8 +15,8 @@ AddImageToLibrary::AddImageToLibrary(ImagesLibrary& imagesLibrary) : _imagesLibr
     _itemContent = "Add image to library";
 }
 
-std::unique_ptr<MenuGroup> AddImageToLibrary::CreateNextGroup(MenuGroupFactory & groupFactory) {
-    return std::move(groupFactory.CreateLibraryMenuGroup());
+std::unique_ptr<MenuGroup> AddImageToLibrary::CreateNextGroup(UserMenu & userMenu) {
+    return std::move(userMenu.GroupsFac.CreateLibraryMenuGroup());
 }
 
 void AddImageToLibrary::Execute()
@@ -26,7 +27,12 @@ void AddImageToLibrary::Execute()
 
     std::cout << "Enter file path:" << std::endl;
 
-    getline(std::cin, imageFilePath);
+    imageFilePath = ReadUserInput();
+
+    if(imageFilePath == ""){
+        PrintError("Invalid input!");
+        return;
+    }
 
     if (!TryToFindImage(imageFilePath)) {
         PrintError("File does not exist!");

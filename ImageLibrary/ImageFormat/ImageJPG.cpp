@@ -144,7 +144,7 @@ void ImageJPG::ErrorExit(j_common_ptr cinfo) {
     ErrorManager * myerr = (ErrorManager*) cinfo -> err;
 
     /* Display error message */
-    (*cinfo->err->output_message)(cinfo);
+    //(*cinfo->err->output_message)(cinfo);
 
     /* Return control to the setjmp point */
     longjmp ( myerr->jumpBuffer, 1 );

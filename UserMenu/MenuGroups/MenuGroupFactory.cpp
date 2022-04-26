@@ -7,6 +7,9 @@
 #include "../MenuCommands/GoFiltersMenuGroup.h"
 #include "../MenuCommands/GoMainMenuOption.h"
 #include "../MenuCommands/GoLibraryMenuGroup.h"
+
+#include "FiltersMenuGroup/FiltersMenuGroup.h"
+
 #include "LibraryMenuGroup/Commands/ListAllImagesOption.h"
 #include "LibraryMenuGroup/Commands/AddImageToLibrary.h"
 #include "LibraryMenuGroup/Commands/AddAllImagesFromDirOption.h"
@@ -22,8 +25,9 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
 }
 
 std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup() {
-    auto newFiltersMenuGroup = std::make_unique<SecondMenuGroup>();
-    newFiltersMenuGroup->AddMenuOption("a", std::make_unique<GoMainMenuOption>());
+    auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
+    newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ListAllImagesOption>(ImageLibrary));
+    newFiltersMenuGroup->AddMenuOption("b", std::make_unique<GoMainMenuOption>());
 
     return std::move(newFiltersMenuGroup);
 }

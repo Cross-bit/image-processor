@@ -25,8 +25,8 @@ add_executable(
         UserMenu/MenuCommands/GoMainMenuOption.h
         UserMenu/MenuGroups/MainMenuGroup/MainMenuGroup.cpp
         UserMenu/MenuGroups/MainMenuGroup/MainMenuGroup.h
-        UserMenu/MenuGroups/SecondMenuGroup/SecondMenuGroup.cpp
-        UserMenu/MenuGroups/SecondMenuGroup/SecondMenuGroup.h
+        UserMenu/MenuGroups/FiltersMenuGroup/FiltersMenuGroup.cpp
+        UserMenu/MenuGroups/FiltersMenuGroup/FiltersMenuGroup.h
         UserMenu/MenuCommands/GoFiltersMenuGroup.cpp
         UserMenu/MenuCommands/GoFiltersMenuGroup.h
         UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageFormat.cpp ImageLibrary/ImageFormat.h ImageLibrary/ImageFormat/ImageJPG.cpp ImageLibrary/ImageFormat/ImageJPG.h ImageLibrary/ImageFormatFactory.cpp ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp ImageLibrary/ImageFormat/ImagePNG.h
