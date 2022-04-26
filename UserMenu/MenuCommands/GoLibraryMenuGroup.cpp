@@ -7,7 +7,7 @@
 #include "../MenuGroups/MenuGroupFactory.h"
 
 GoLibraryMenuGroup::GoLibraryMenuGroup() {
-    _itemContent = "Go image library";
+    _itemContent = "Go to image library";
 }
 
 std::unique_ptr<MenuGroup> GoLibraryMenuGroup::CreateNextGroup(MenuGroupFactory & groupFactory) {
