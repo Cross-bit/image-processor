@@ -16,6 +16,7 @@ public:
 
     std::unique_ptr<MenuGroup> CreateNextGroup(MenuGroupFactory & groupFactory) override;
 
+    void Execute() override;
 private:
     ImagesLibrary& _imagesLibrary;
 };
