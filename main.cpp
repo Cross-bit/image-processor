@@ -74,7 +74,7 @@ int main() {
     /*auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
 
     effect->ProcessImageData();
-    tmpStoreImg(effect->GetProcessedImageData(), jpgFormat, "tr");*/
+    tmpStoreImg(effect->GetProcessedImageDataReference(), jpgFormat, "tr");*/
 
     ImagesLibrary imagesLibrary;
 
