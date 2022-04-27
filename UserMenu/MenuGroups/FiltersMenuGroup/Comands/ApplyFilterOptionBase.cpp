@@ -6,6 +6,10 @@
 
 
 #include "../../../UserMenu.h"
+#include "../../../GlobalMenuCommands/StoreImageDataOption.h"
+
+#include <thread>
+#include <future>
 
 ApplyFilterOptionBase::ApplyFilterOptionBase(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
 _libraryIndexesToWorkWith(libraryIndexesToWorkWith),
@@ -13,6 +17,13 @@ _imagesLibrary(imagesLibrary)
 { }
 
 void ApplyFilterOptionBase::Execute() {
+
+    std::vector<std::future<std::unique_ptr<ImageData>>> asyncFilters;
+
+    if(!InitializeFilterProperties())
+        return;
+
+    std::cout << "Processing images data..." << std::endl;
 
     while(!_libraryIndexesToWorkWith.empty()){
 
@@ -26,18 +37,31 @@ void ApplyFilterOptionBase::Execute() {
             continue;
         }
 
-        std::cout << "Processing image data..." << std::endl;
+        // todo: what about error handling??
 
-        ApplyFilterOnImage((*imageRecord->Data));
-        // todo: probably it we could return some status code if operation fails...
-        std::cout << "Done!" << std::endl;
-
-
-
+        asyncFilters.emplace_back(std::async(&ApplyFilterOptionBase::ApplyFilterOnImage, this, std::ref(*(imageRecord->Data))));
     }
+
+    for (auto & t : asyncFilters) {
+        t.wait();
+    }
+
+    for (auto & t : asyncFilters) {
+        _processedImageIndexes.emplace_back(t.get());
+        //std::cout << a->Name << "againg" << std::endl;
+    }
+
+    std::cout << "Done!" << std::endl;
+
+    // call image store command
+    (StoreImageDataOption (_processedImageIndexes)).Execute();
 }
 
 
 std::unique_ptr<MenuGroup> ApplyFilterOptionBase::CreateNextGroup(UserMenu & userMenu) {
     return nullptr;
+}
+
+bool ApplyFilterOptionBase::InitializeFilterProperties() {
+    return true;
 }

@@ -9,7 +9,6 @@
 #include "../../../../ImageLibrary/Image/ImageData.h"
 #include "../../../../ImageLibrary/ImagesLibrary.h"
 #include "../../../../ImageEffects/ImageEffectFactory.h"
-//#include "../../../"
 
 #include <queue>
 
@@ -25,11 +24,24 @@ protected:
     std::queue<int>& _libraryIndexesToWorkWith;
 
     /**
+     * Implementation of other users input values needed for filter computation.
+     * @return
+     */
+    virtual bool InitializeFilterProperties();
+
+    /**
      * Stores index of processed image data in library.
      */
-    std::unique_ptr<std::vector<int>> _processedImageIndexes;
+    std::vector<std::unique_ptr<ImageData>> _processedImageIndexes;
 
-    virtual void ApplyFilterOnImage(ImageData& inputImage) =0;
+    /**
+     * Adds filtered data to image library and returns pointer to the data.
+     */
+    void AddFilteredDataToLibrary();
+
+    virtual std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData& inputImage) =0;
+
+ //   bool _executionSucceded = false;
 };
 
 
