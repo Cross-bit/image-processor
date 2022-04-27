@@ -10,7 +10,7 @@
 
 
 #include "../../ImageLibrary/ImagesLibrary.h"
-
+#include <queue>
 class MenuGroupFactory {
 public:
     MenuGroupFactory(ImagesLibrary& imageLibrary);
@@ -24,7 +24,7 @@ public:
      * Creates new instance of second menu group.
      * @return
      */
-    std::unique_ptr<MenuGroup> CreateFiltersMenuGroup();
+    std::unique_ptr<MenuGroup> CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith);
 
     std::unique_ptr<MenuGroup> CreateLibraryMenuGroup();
 

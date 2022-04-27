@@ -9,24 +9,30 @@
 #include "../MenuCommands/GoLibraryMenuGroup.h"
 
 #include "FiltersMenuGroup/FiltersMenuGroup.h"
+#include "FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h"
+
+
 
 #include "LibraryMenuGroup/Commands/ListAllImagesOption.h"
 #include "LibraryMenuGroup/Commands/AddImageToLibrary.h"
 #include "LibraryMenuGroup/Commands/AddAllImagesFromDirOption.h"
+
+#include "queue"
 
 MenuGroupFactory::MenuGroupFactory(ImagesLibrary& imageLib) : ImageLibrary(imageLib) { }
 
 std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
     auto newMainMenuGroup = std::make_unique<MainMenuGroup>();
     newMainMenuGroup->AddMenuOption("a", std::make_unique<GoLibraryMenuGroup>());
-    newMainMenuGroup->AddMenuOption("b", std::make_unique<GoFiltersMenuGroup>());
+    newMainMenuGroup->AddMenuOption("b", std::make_unique<GoFiltersMenuGroup>(ImageLibrary));
 
     return std::move(newMainMenuGroup);
 }
 
-std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup() {
+std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith) {
     auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
-    newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ListAllImagesOption>(ImageLibrary));
+    //newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ListAllImagesOption>(ImageLibrary));
+    newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
     newFiltersMenuGroup->AddMenuOption("b", std::make_unique<GoMainMenuOption>());
 
     return std::move(newFiltersMenuGroup);
