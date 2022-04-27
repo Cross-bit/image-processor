@@ -39,7 +39,7 @@ Výstupem aplikace poté bude v případě ASCII art tisk převedeného obrázku
 
 
 ## Příklad výsledného ASCII art:
-<img src="zapoctovy_program_specifikace/ascii_example.jpg" alt="drawing" width="400"/> <br>
+<img src="assets/ascii_example.jpg" alt="drawing" width="400"/> <br>
 Pro vytvoření jsem použil: https://manytools.org/hacker-tools/convert-images-to-ascii-art/
 
 Případně další příklady <a href="https://www.google.cz/search?q=ascii+art&sxsrf=AOaemvIimboiElMdk7LrD4VW4hkXoNpNoQ:1637189735808&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjFuYeFv6D0AhWC-6QKHQMoAokQ_AUoAXoECAIQAw&biw=1920&bih=937&dpr=1">zde</a>.
@@ -47,7 +47,7 @@ Případně další příklady <a href="https://www.google.cz/search?q=ascii+art
 ## Příklady výsledných filtrů:
 Na obrázku níže jsou uvedeny vzorové výstupy jednotlivých filtrů seřazené tak, jak jsou vyjmenovány výše v seznamu.
 Samozřejmě výsledný vzhled se bude případně lišit dle konkrétních nastavením daného filtru.<br>
-<img src="zapoctovy_program_specifikace/penguin_filters.jpg" alt="drawing" width="400"/> <br>
+<img src="assets/penguin_filters.jpg" alt="drawing" width="400"/> <br>
 
 
 ## Rozšíření & Poznámky
