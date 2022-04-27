@@ -29,11 +29,13 @@ void NegativeEffect::ProcessImageData() {
     if(_imageData.DataSize == 0)
         return;
 
+    // create copy of original data
+    _processedImage = std::make_unique<ImageData>(_imageData);
+
     for (int i = 0; i < _imageData.DataSize; ++i) {
         int dataTmp = _imageData.Data[i];
-        _imageData.Data[i] = dataTmp - _intensityCoef*(2*dataTmp - 255);
+        _processedImage->Data[i] = dataTmp - _intensityCoef*(2*dataTmp - 255);
                 //_imageData.Data[i]*(1-2*_intensityCoef) + _intensityCoef*255; // alternative
                 //((255 - _imageData.Data[i])  + (2*dataTmp - 255) * (1 - _intensityCoef)); original formula // todo: do not lose the paper with math, and put it into the documentation!
     }
-
 }
