@@ -10,8 +10,8 @@
 
 #include "FiltersMenuGroup/FiltersMenuGroup.h"
 #include "FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h"
-
-
+#include "FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h"
+//#include "FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h"
 
 #include "LibraryMenuGroup/Commands/ListAllImagesOption.h"
 #include "LibraryMenuGroup/Commands/AddImageToLibrary.h"
@@ -32,7 +32,8 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
 std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith) {
     auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
     newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
-    newFiltersMenuGroup->AddMenuOption("b", std::make_unique<GoMainMenuOption>());
+    newFiltersMenuGroup->AddMenuOption("b", std::make_unique<ApplyGaussianBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
+    newFiltersMenuGroup->AddMenuOption("c", std::make_unique<GoMainMenuOption>());
 
     return std::move(newFiltersMenuGroup);
 }

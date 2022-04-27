@@ -15,18 +15,23 @@ class MenuGroupFactory {
 public:
     MenuGroupFactory(ImagesLibrary& imageLibrary);
     /**
-     * Creates new instance of idle menu group.
+     * Creates new instance of main menu group.
      * @return
      */
     std::unique_ptr<MenuGroup> CreateMainMenuGroup();
 
     /**
-     * Creates new instance of second menu group.
+     * Creates new instance of filters menu group.
      * @return
      */
     std::unique_ptr<MenuGroup> CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith);
 
+    /**
+     * Creates new instance of library menu group.
+     * @return
+     */
     std::unique_ptr<MenuGroup> CreateLibraryMenuGroup();
+
 
     ImagesLibrary& ImageLibrary;
 };
