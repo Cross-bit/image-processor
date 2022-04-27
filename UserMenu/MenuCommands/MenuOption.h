@@ -28,7 +28,7 @@ public:
 
 protected:
     std::string _itemContent = "Item content is not filled";
-    //const std::string _generalFallbackMessage = "Invalid option";
+
     virtual void PrintError(const std::string& callbackMessage);
     virtual void PrintWarning(const std::string& callbackMessage);
 
