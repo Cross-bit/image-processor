@@ -41,9 +41,6 @@ private:
     void FlipVertically(ImageData& imageData);
 
     Direction _flipDirection;
-
-    std::unique_ptr<ImageData> _flippedData;
-
 };
 
 

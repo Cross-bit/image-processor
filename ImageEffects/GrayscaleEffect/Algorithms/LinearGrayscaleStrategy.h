@@ -7,13 +7,15 @@
 
 #include "GrayscaleStrategyBase.h"
 
+#include <memory>
+
 class LinearGrayscaleStrategy : public GrayscaleStrategyBase
 {
 public:
     LinearGrayscaleStrategy();
     LinearGrayscaleStrategy(float redCoef, float greenCoef, float blueCoef);
 
-    void TransformToGrayscale(ImageData& inputData) const override;
+    std::unique_ptr<ImageData> TransformToGrayscale(ImageData& inputData) const override;
     void SetLinearParameters(float red, float green, float blue);
 
     float GetRedCoef();

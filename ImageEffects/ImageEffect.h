@@ -37,6 +37,7 @@ private:
 
 protected:
     ImageData& _imageData;
+    std::unique_ptr<ImageData> _processedImage;
 
     float _redCoef; // todo: probably move to specific algoritm, but we will see if it makes sense here...
     float _greenCoef;

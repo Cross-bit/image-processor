@@ -7,7 +7,7 @@
 GrayscaleEffect::GrayscaleEffect(ImageData& imageData, std::unique_ptr<GrayscaleStrategyBase>&& grayscaleStrategy )
 : ImageEffect(imageData),
 _effectStrategy(std::move(grayscaleStrategy))
-{}
+{ }
 
 GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
                                  std::unique_ptr<GrayscaleStrategyBase>&& grayscaleStrategy,
@@ -22,5 +22,7 @@ GrayscaleEffect::GrayscaleEffect(ImageData &imageData,
 void GrayscaleEffect::ProcessImageData() {
     if(_imageData.DataSize == 0)
         return;
-    _effectStrategy->TransformToGrayscale(_imageData);
+
+    // copy the data to output:
+    _processedImage = std::move(_effectStrategy->TransformToGrayscale(_imageData));
 }

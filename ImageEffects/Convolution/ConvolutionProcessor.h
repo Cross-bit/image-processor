@@ -19,8 +19,6 @@ public:
 
     void ProcessImageData() override;
 
-    ImageData& GetProcessedImageData() const override;
-
 private:
     void ProcessImageKernel(int kernelLeftX, int kernelTopY);
 
@@ -61,7 +59,6 @@ private:
      */
     int _kernelStepVertically;
 
-    std::unique_ptr<ImageData> _convolutedImageData;
 
     std::unique_ptr<ImageKernel> _imageKernel;
 

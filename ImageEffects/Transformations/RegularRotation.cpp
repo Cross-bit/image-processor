@@ -6,6 +6,9 @@
 #include "FlipTransform.h"
 #include <cassert>
 
+
+// todo:
+
 RegularRotation::RegularRotation(ImageData &imageData, int rotationAngle) :
 ImageEffect(imageData),
 _rotationAngle(rotationAngle)

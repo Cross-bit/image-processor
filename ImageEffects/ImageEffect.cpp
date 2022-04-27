@@ -21,7 +21,7 @@ ImageEffect::ImageEffect(ImageData &imageData, float redCoef, float greenCoef, f
 }
 
 ImageData& ImageEffect::GetProcessedImageData() const {
-    return _imageData;
+    return *_processedImage;
 }
 
 void ImageEffect::SetRedCoef(float value){

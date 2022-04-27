@@ -21,7 +21,9 @@ void LinearGrayscaleStrategy::SetLinearParameters(float red, float green, float 
     _blueCoef = blue;
 }
 
-void LinearGrayscaleStrategy::TransformToGrayscale(ImageData &inputData) const {
+std::unique_ptr<ImageData> LinearGrayscaleStrategy::TransformToGrayscale(ImageData &inputData) const {
+
+    auto imageCopy = std::make_unique<ImageData>(inputData);
 
     for (int i = 0; i < inputData.DataSize; i += inputData.Channels)
     {
@@ -31,6 +33,8 @@ void LinearGrayscaleStrategy::TransformToGrayscale(ImageData &inputData) const {
         res += _greenCoef * ImageData::sRGBGammaExpansion(inputData.Data[i + 1] / (float) 255);
         res += _blueCoef * ImageData::sRGBGammaExpansion(inputData.Data[i + 2] / (float) 255);
 
-        std::memset(&inputData.Data[i], ImageData::sRGBGammaCompression(res) * 255, inputData.ColorChannels);
+        std::memset(&imageCopy->Data[i], ImageData::sRGBGammaCompression(res) * 255, imageCopy->ColorChannels);
     }
+
+    return std::move(imageCopy);
 }

@@ -8,8 +8,6 @@ ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
     _itemContent = "Linear grayscale";
 }
 
-
-
 void ApplyLinearGrayscaleOption::ApplyFilterOnImage(ImageData& imageToProcess) {
     ImageEffectFactory imageFactory(imageToProcess);
     auto effect = imageFactory.CreateLinearGrayScale();
@@ -19,6 +17,4 @@ void ApplyLinearGrayscaleOption::ApplyFilterOnImage(ImageData& imageToProcess) {
     effect->ProcessImageData();
 
     std::cout << "Done!" << std::endl;
-
-    //_imagesLibrary.AddRecord();
 }

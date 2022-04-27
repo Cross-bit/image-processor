@@ -6,8 +6,10 @@
 
 #include <cstring>
 
-void AverageGrayscaleStrategy::TransformToGrayscale(ImageData& imageData) const {
+std::unique_ptr<ImageData> AverageGrayscaleStrategy::TransformToGrayscale(ImageData& imageData) const {
     // simply takes average of R+G+B and sets all the channels to it.
+
+    auto imageCopy = std::make_unique<ImageData>(imageData);
 
     for (int i = 0; i < imageData.DataSize; i += imageData.ColorChannels) {
 
@@ -19,6 +21,8 @@ void AverageGrayscaleStrategy::TransformToGrayscale(ImageData& imageData) const 
 
         avgPixelValue /= imageData.ColorChannels;
 
-        std::memset(&imageData.Data[i], avgPixelValue, imageData.ColorChannels);
+        std::memset(&imageCopy->Data[i], avgPixelValue, imageCopy->ColorChannels);
     }
+
+    return std::move(imageCopy);
 }

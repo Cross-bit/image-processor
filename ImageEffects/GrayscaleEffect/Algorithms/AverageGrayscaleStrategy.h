@@ -10,7 +10,7 @@
 
 class AverageGrayscaleStrategy : public GrayscaleStrategyBase {
 public:
-    void TransformToGrayscale(ImageData& inputData) const override;
+    std::unique_ptr<ImageData> TransformToGrayscale(ImageData& inputData) const override;
 };
 
 

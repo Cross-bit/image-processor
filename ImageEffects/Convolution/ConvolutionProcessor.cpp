@@ -14,7 +14,7 @@ ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, std::unique_ptr
         _kernelStepHorizontal(1),
         _kernelStepVertically(1)
     {
-        _convolutedImageData = std::make_unique<ImageData>(
+        _processedImage = std::make_unique<ImageData>(
                     imageData.Name + "_conv",
                     imageData.Width,
                     imageData.Height,
@@ -45,22 +45,22 @@ void ConvolutionProcessor::ProcessImageData() {
 
 void ConvolutionProcessor::StoreConvolutedPixelBuffer(int outDataOffset) {
 
-    int scalingConst = _useGammaExspantion ? _convolutedImageData->MaxChannelValue : 1;
+    int scalingConst = _useGammaExspantion ? _processedImage->MaxChannelValue : 1;
     // maan i do not like this! todo: !!
 
     for (auto & channelData : _convolutedPixelBuffer) {
 
         if ((channelData * scalingConst) <= 0) {
-            _convolutedImageData->Data[outDataOffset] = 0;
+            _processedImage->Data[outDataOffset] = 0;
         }
-        else if((channelData * scalingConst) >= _convolutedImageData->MaxChannelValue) {
-            _convolutedImageData->Data[outDataOffset] = _convolutedImageData->MaxChannelValue;
+        else if((channelData * scalingConst) >= _processedImage->MaxChannelValue) {
+            _processedImage->Data[outDataOffset] = _processedImage->MaxChannelValue;
         }
         else {
             if(_useGammaExspantion)
-                _convolutedImageData->SetGammaCompressed(outDataOffset, channelData);
+                _processedImage->SetGammaCompressed(outDataOffset, channelData);
             else
-                _convolutedImageData->Data[outDataOffset] = channelData;
+                _processedImage->Data[outDataOffset] = channelData;
         }
 
         outDataOffset++;
@@ -102,10 +102,6 @@ void ConvolutionProcessor::UpdateConvolutedPixelBuffer(int pixelX, int pixelY, i
                 _imageKernel->GetKernelValueOnCoords(kernel_x, kernel_y) *
                    (_useGammaExspantion ? _imageData.GetGammaExspanded(k) : _imageData.Data[k]);
     }
-}
-
-ImageData& ConvolutionProcessor::GetProcessedImageData() const {
-    return *_convolutedImageData;
 }
 
 int ConvolutionProcessor::GetValidXCoord(int x) const{

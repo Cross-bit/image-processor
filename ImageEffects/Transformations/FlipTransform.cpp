@@ -9,7 +9,7 @@ FlipTransform::FlipTransform(ImageData &imageData, Direction flipDirection) :
 ImageEffect(imageData),
 _flipDirection(flipDirection)
 {
-    _flippedData = std::make_unique<ImageData>(
+    _processedImage = std::make_unique<ImageData>(
             imageData.Name,
             imageData.Width,
             imageData.Height,
@@ -42,7 +42,7 @@ void FlipTransform::FlipHorizontally(ImageData &imageData) {
         for (int x = imageData.Channels; x <= valuesPerRow; x += imageData.Channels) {
             // process the pixel
             for (int i = 0; i < imageData.Channels; ++i) {
-                _flippedData->Data[y * valuesPerRow + x - imageData.Channels + i] =
+                _processedImage->Data[y * valuesPerRow + x - imageData.Channels + i] =
                         imageData.Data[(y+1) * valuesPerRow - x + i];
             }
         }
@@ -54,12 +54,12 @@ void FlipTransform::FlipVertically(ImageData &imageData) {
 
     for (int y = 0; y < imageData.Height; ++y) {
         for (int x = 0; x < valuesPerRow; ++x) {
-            _flippedData->Data[x + y * valuesPerRow] =
+            _processedImage->Data[x + y * valuesPerRow] =
                     imageData.Data[x + (imageData.Height-1) * valuesPerRow -  y * valuesPerRow];
         }
     }
 }
 
 ImageData& FlipTransform::GetProcessedImageData() const {
-    return *_flippedData;
+    return *_processedImage;
 }

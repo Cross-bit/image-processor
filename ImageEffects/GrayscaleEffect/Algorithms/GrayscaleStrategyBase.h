@@ -10,7 +10,7 @@
 class GrayscaleStrategyBase {
 public:
     virtual ~GrayscaleStrategyBase() {}
-    virtual void TransformToGrayscale(ImageData& inputData) const = 0;
+    virtual std::unique_ptr<ImageData> TransformToGrayscale(ImageData& inputData) const = 0;
 };
 
 
