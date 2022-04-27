@@ -48,7 +48,6 @@ void AsciiArtEffect::SetTileWidth(int tileWidth) {
     assert(("Tile width is not valid!", tileWidth > 0 && tileWidth <= _imageData.Height));
     _tileHeight = tileWidth;
 }
-
 void AsciiArtEffect::ProcessImageData() {
 
     for (int i = 0; i < _imageData.Height; i += _tileHeight) {
@@ -63,7 +62,6 @@ void AsciiArtEffect::ProcessImageData() {
         }
     }
 }
-
 
 int AsciiArtEffect::ProcessTile(int tileLeftX, int tileTopY) {
     // average the tiles pixel value and find letter in alphabet

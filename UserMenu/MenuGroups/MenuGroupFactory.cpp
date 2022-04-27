@@ -31,7 +31,6 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
 
 std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith) {
     auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
-    //newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ListAllImagesOption>(ImageLibrary));
     newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
     newFiltersMenuGroup->AddMenuOption("b", std::make_unique<GoMainMenuOption>());
 
