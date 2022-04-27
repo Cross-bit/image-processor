@@ -8,7 +8,7 @@
 #include "../ImageKernel.h"
 
 /**
- * Simple box blur image kernel (3x3).
+ * Simple box blur image kernel (3x3). (very simple low pass filter)
  */
 class BoxBlurImageKernel : public ImageKernel
 {

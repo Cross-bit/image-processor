@@ -8,7 +8,7 @@
 #include "../ImageKernel.h"
 #include <vector>
 /**
- * Gaussian blur convolution image kernel.
+ * Gaussian blur convolution image kernel. (low pass filter)
  */
 class GaussianBlurImageKernel : public ImageKernel
 {
