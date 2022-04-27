@@ -55,6 +55,12 @@ public:
      */
     bool CheckIfRecordExists(const std::string& recordKey) const;
 
+    /**
+     * Returns id of last inserted record.
+     * @return
+     */
+    int  GetLastInsertRecordId();
+
     /*
      * Gets begin iterator of data.
      */

@@ -68,3 +68,6 @@ std::string ImagesLibrary::ParseFileExstention(const std::string& filePath){
     return filePath.substr(filePath.find_last_of(".") + 1);
 }
 
+int ImagesLibrary::GetLastInsertRecordId(){
+    return _loadedImages.size() - 1;
+}
