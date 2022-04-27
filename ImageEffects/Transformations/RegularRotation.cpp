@@ -40,7 +40,7 @@ std::string RegularRotation::GenerateImageName() const{
     return _imageData.Name + std::to_string(_rotationAngle);
 }
 
-ImageData& RegularRotation::GetProcessedImageData() const {
+ImageData& RegularRotation::GetProcessedImageDataReference() const {
     return _rotationAngle % 360 == 0 ? _imageData : *_rotatedImage; //
 }
 
