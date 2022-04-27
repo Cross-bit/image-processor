@@ -14,7 +14,7 @@ public:
     ApplyLinearGrayscaleOption(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
 protected:
-    void ApplyFilterOnImage(ImageData &imageToProcess) override;
+    std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
 };
 
 
