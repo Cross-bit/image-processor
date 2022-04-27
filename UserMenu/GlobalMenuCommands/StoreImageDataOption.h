@@ -6,8 +6,22 @@
 #define MAIN_CPP_STOREIMAGEDATAOPTION_H
 
 
-class StoreImageDataOption {
+#include "../MenuCommands/MenuOption.h"
+#include "../../ImageLibrary/Image/ImageData.h"
 
+#include <vector>
+class StoreImageDataOption : public MenuOption {
+public:
+    StoreImageDataOption(std::vector<std::unique_ptr<ImageData>>& imagesToStore);
+
+    std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &groupFactory) override;
+
+    void Execute() override;
+private:
+    std::vector<std::unique_ptr<ImageData>>& _imagesToStore;
+
+    const std::string _defaultOutputDir = "/mnt/c/Users/kriz/CLionProjects/ImageProcessor/DefaultOutput";
+    // todo: ... really bad hardcoded... just for now ...
 };
 
 
