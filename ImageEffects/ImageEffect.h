@@ -21,10 +21,16 @@ public:
     virtual void ProcessImageData() =0;
 
     /**
-     * Returns data after processing is done.
+     * Returns reference to processed data.
      * @return
      */
-    virtual ImageData& GetProcessedImageData() const;
+    virtual ImageData& GetProcessedImageDataReference() const;
+
+    /**
+     * Passes ownership of processed image data to caller.
+     * @return
+     */
+    virtual std::unique_ptr<ImageData> GetProcessedImageData();
 
     void SetRedCoef(float value);
 

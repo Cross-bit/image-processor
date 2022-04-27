@@ -20,8 +20,12 @@ ImageEffect::ImageEffect(ImageData &imageData, float redCoef, float greenCoef, f
     SetBlueCoef(blueCoef);
 }
 
-ImageData& ImageEffect::GetProcessedImageData() const {
+ImageData& ImageEffect::GetProcessedImageDataReference() const {
     return *_processedImage;
+}
+
+std::unique_ptr<ImageData> ImageEffect::GetProcessedImageData() {
+    return std::move(_processedImage);
 }
 
 void ImageEffect::SetRedCoef(float value){
