@@ -12,9 +12,5 @@ void ApplyLinearGrayscaleOption::ApplyFilterOnImage(ImageData& imageToProcess) {
     ImageEffectFactory imageFactory(imageToProcess);
     auto effect = imageFactory.CreateLinearGrayScale();
 
-    std::cout << "Processing image data..." << std::endl;
-
     effect->ProcessImageData();
-
-    std::cout << "Done!" << std::endl;
 }

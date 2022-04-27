@@ -24,6 +24,11 @@ protected:
     ImagesLibrary& _imagesLibrary;
     std::queue<int>& _libraryIndexesToWorkWith;
 
+    /**
+     * Stores index of processed image data in library.
+     */
+    std::unique_ptr<std::vector<int>> _processedImageIndexes;
+
     virtual void ApplyFilterOnImage(ImageData& inputImage) =0;
 };
 

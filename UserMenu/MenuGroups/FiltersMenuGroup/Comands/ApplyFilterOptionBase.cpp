@@ -26,7 +26,13 @@ void ApplyFilterOptionBase::Execute() {
             continue;
         }
 
+        std::cout << "Processing image data..." << std::endl;
+
         ApplyFilterOnImage((*imageRecord->Data));
+        // todo: probably it we could return some status code if operation fails...
+        std::cout << "Done!" << std::endl;
+
+
 
     }
 }
