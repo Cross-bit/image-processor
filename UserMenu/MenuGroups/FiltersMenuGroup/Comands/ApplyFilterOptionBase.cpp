@@ -7,6 +7,7 @@
 
 #include "../../../UserMenu.h"
 #include "../../../GlobalMenuCommands/StoreImageDataOption.h"
+#include "../../MenuGroupFactory.h"
 
 #include <thread>
 #include <future>
@@ -24,11 +25,6 @@ void ApplyFilterOptionBase::Execute() {
         return;
 
     std::cout << "Processing images data..." << std::endl;
-
-    //std::cout << _libraryIndexesToWorkWith.size();
-    for(auto libIndex : _libraryIndexesToWorkWith){
-        std::cout << libIndex;
-    }
 
     for(auto libIndex : _libraryIndexesToWorkWith) {
         auto imageRecord = _imagesLibrary.GetRecordByIndex(libIndex);
@@ -59,7 +55,7 @@ void ApplyFilterOptionBase::Execute() {
 
 
 std::unique_ptr<MenuGroup> ApplyFilterOptionBase::CreateNextGroup(UserMenu & userMenu) {
-    return nullptr;
+    return userMenu.GroupsFac.CreateMainMenuGroup();
 }
 
 bool ApplyFilterOptionBase::InitializeFilterProperties() {

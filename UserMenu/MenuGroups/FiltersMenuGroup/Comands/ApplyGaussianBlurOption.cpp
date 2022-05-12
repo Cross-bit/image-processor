@@ -12,15 +12,15 @@ ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
 }
 
 bool ApplyGaussianBlurOption::ReadKernelSize(){
-    std::cout << "Please enter odd positive integer representing Gaussian kernel size:" << std::endl;
+    std::cout << "Please enter odd positive integer representing Gaussian kernel size(def.: 3):" << std::endl;
     auto kernelInput = ReadUserInput();
 
-    if(kernelInput == "") {
-        PrintError("Input can not be empty!");
+    if (kernelInput == "") {
+        std::cout << "No input provided. Default value will be used instead (3).";
         return false;
     }
 
-    if(kernelInput.find_first_not_of("0123456789") != std::string::npos || (stoi(kernelInput) & 1) == 0) {
+    if (kernelInput.find_first_not_of("0123456789") != std::string::npos || (stoi(kernelInput) & 1) == 0) {
         PrintError("Gaussian kernel size must be positive odd integer!");
         return false;
     }
@@ -30,13 +30,14 @@ bool ApplyGaussianBlurOption::ReadKernelSize(){
 }
 
 bool ApplyGaussianBlurOption::ReadStandardDeviation(){
-    std::cout << "Please enter standard deviation(positive double):" << std::endl;
+    std::cout << "Please enter standard deviation(positive double, def.: 1):" << std::endl;
 
     auto stdDeviation = ReadUserInput();
 
     if(stdDeviation == "") {
-        PrintError("Input can not be empty!");
-        return false;
+        std::cout << "No input provided. Default value will be used instead.";
+        _standardDeviation = 1;
+        return true;
     }
 
     if(stdDeviation.find_first_not_of("0123456789.") != std::string::npos || std::count(stdDeviation.begin(), stdDeviation.end(), '.') > 1) {
