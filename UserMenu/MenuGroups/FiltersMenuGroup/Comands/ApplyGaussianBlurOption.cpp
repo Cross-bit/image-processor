@@ -15,9 +15,10 @@ bool ApplyGaussianBlurOption::ReadKernelSize(){
     std::cout << "Please enter odd positive integer representing Gaussian kernel size(def.: 3):" << std::endl;
     auto kernelInput = ReadUserInput();
 
-    if (kernelInput == "") {
-        std::cout << "No input provided. Default value will be used instead (3).";
-        return false;
+    if (kernelInput == "" || kernelInput.find_first_not_of(" ") == std::string::npos) {
+        std::cout << "No input provided. Default value will be used instead (3)." << std::endl;
+        _kernelSize = 3;
+        return true;
     }
 
     if (kernelInput.find_first_not_of("0123456789") != std::string::npos || (stoi(kernelInput) & 1) == 0) {
@@ -34,8 +35,8 @@ bool ApplyGaussianBlurOption::ReadStandardDeviation(){
 
     auto stdDeviation = ReadUserInput();
 
-    if(stdDeviation == "") {
-        std::cout << "No input provided. Default value will be used instead.";
+    if(stdDeviation == "" || !stdDeviation.find_first_not_of(" ") == std::string::npos) {
+        std::cout << "No input provided. Default value will be used instead." << std::endl;
         _standardDeviation = 1;
         return true;
     }

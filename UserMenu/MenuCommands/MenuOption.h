@@ -33,6 +33,9 @@ protected:
     virtual void PrintError(const std::string& callbackMessage);
     virtual void PrintWarning(const std::string& callbackMessage);
 
+    template<typename T>
+    void PrintInputFallback();
+
     virtual std::string ReadUserInput() const;
 
 };
