@@ -24,3 +24,5 @@ std::string MenuOption::ReadUserInput() const {
 
     return std::move(input);
 }
+
+MenuOption::~MenuOption(){ }

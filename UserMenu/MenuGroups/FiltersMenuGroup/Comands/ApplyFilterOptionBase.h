@@ -11,17 +11,18 @@
 #include "../../../../ImageEffects/ImageEffectFactory.h"
 
 #include <queue>
+#include <unordered_set>
 
 class ApplyFilterOptionBase : public MenuOption {
 public:
-    ApplyFilterOptionBase(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
+    ApplyFilterOptionBase(std::unordered_set<int> libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
     void Execute() override;
 
     std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & userMenu) override;
 protected:
     ImagesLibrary& _imagesLibrary;
-    std::queue<int>& _libraryIndexesToWorkWith;
+    std::unordered_set<int> _libraryIndexesToWorkWith;
 
     /**
      * Implementation of other users input values needed for filter computation.

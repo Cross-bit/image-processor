@@ -11,8 +11,8 @@
 #include <thread>
 #include <future>
 
-ApplyFilterOptionBase::ApplyFilterOptionBase(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
-_libraryIndexesToWorkWith(libraryIndexesToWorkWith),
+ApplyFilterOptionBase::ApplyFilterOptionBase(std::unordered_set<int> libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
+_libraryIndexesToWorkWith(std::move(libraryIndexesToWorkWith)),
 _imagesLibrary(imagesLibrary)
 { }
 
@@ -20,20 +20,21 @@ void ApplyFilterOptionBase::Execute() {
 
     std::vector<std::future<std::unique_ptr<ImageData>>> asyncFilters;
 
-    if(!InitializeFilterProperties())
+    if (!InitializeFilterProperties())
         return;
 
     std::cout << "Processing images data..." << std::endl;
 
-    while(!_libraryIndexesToWorkWith.empty()){
+    //std::cout << _libraryIndexesToWorkWith.size();
+    for(auto libIndex : _libraryIndexesToWorkWith){
+        std::cout << libIndex;
+    }
 
-        int index = _libraryIndexesToWorkWith.front();
-        _libraryIndexesToWorkWith.pop();
+    for(auto libIndex : _libraryIndexesToWorkWith) {
+        auto imageRecord = _imagesLibrary.GetRecordByIndex(libIndex);
 
-        auto imageRecord = _imagesLibrary.GetRecordByIndex(index);
-
-        if(imageRecord == nullptr) {
-            PrintWarning("Index " + std::to_string(index) + " couldn't be found in library...");
+        if (imageRecord == nullptr) {
+            PrintWarning("Index " + std::to_string(libIndex) + " couldn't be found in library...");
             continue;
         }
 
@@ -48,7 +49,6 @@ void ApplyFilterOptionBase::Execute() {
 
     for (auto & t : asyncFilters) {
         _processedImageIndexes.emplace_back(t.get());
-        //std::cout << a->Name << "againg" << std::endl;
     }
 
     std::cout << "Done!" << std::endl;

@@ -60,7 +60,6 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
             DecodeColorSpaceMapping(cinfo.jpeg_color_space)
     );
 
-
     /* One line of image pixels in bytes */
     int rowWidth = cinfo.image_width * cinfo.num_components;
 
@@ -80,7 +79,7 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
     return std::move(imageData);
 }
 
-bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &outFilePath) const {
+bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &outFileDir) const {
 
     struct jpeg_compress_struct cinfo;
     struct ErrorManager errorManager;
@@ -89,8 +88,8 @@ bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &out
     FILE * fp;
 
     // if provided dir does not exsist
-    if (!std::filesystem::exists(outFilePath)) {
-        std::filesystem::create_directory(outFilePath);
+    if (!std::filesystem::exists(outFileDir)) {
+        std::filesystem::create_directory(outFileDir);
     }
 
     cinfo.err = jpeg_std_error ( &errorManager.defaultErrorManager );
@@ -108,7 +107,7 @@ bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &out
     /* Create compression object before opening path */
     jpeg_create_compress ( &cinfo );
 
-    if ( ( fp = std::fopen ( AddExstention ( outFilePath + "/" + dataToSave.Name ).c_str(), "wb" ) ) == nullptr )
+    if (( fp = std::fopen (AddExstention (outFileDir + "/" + dataToSave.Name ).c_str(), "wb" ) ) == nullptr )
         return false;
 
     jpeg_stdio_dest ( &cinfo, fp );
@@ -144,7 +143,7 @@ void ImageJPG::ErrorExit(j_common_ptr cinfo) {
     ErrorManager * myerr = (ErrorManager*) cinfo -> err;
 
     /* Display error message */
-    //(*cinfo->err->output_message)(cinfo);
+    //(*cinfo->err->output_message)(cinfo); // todo:
 
     /* Return control to the setjmp point */
     longjmp ( myerr->jumpBuffer, 1 );

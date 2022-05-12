@@ -45,7 +45,7 @@ int main() {
 
     auto jpgFormat = formatFactory.CreateImageFormat("JPG");
 
-    std::string file = "../Resources/lenna.jpg";
+    std::string file = "../Resources/cube.jpg";
 
     auto res = jpgFormat->LoadImageData(file);
     if(res!= nullptr){
@@ -60,21 +60,25 @@ int main() {
     ImageEffectFactory imageFactory(*res);
 
     //LinearGrayscaleStrategy algorithm;
-    //auto effect = imageFactory.CreateLinearGrayScale();// grayscale linear
+    auto effect1 = imageFactory.CreateLinearGrayScale();// grayscale linear
+    effect1->ProcessImageData();
 
-    /*std::string inputAlpha = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,¨^`'. ";
+    std::string inputAlpha = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,¨^`'. ";
     inputAlpha = "$@B%8&WM#;:,¨^`'. ";
 
-    auto effect = imageFactory.CreateAsciiArtEffectByScale(inputAlpha, 100, 0.65, std::cout); // grayscale avg*/
+    ImageEffectFactory imageFactory2(effect1->GetProcessedImageDataReference());
+
+    //auto effect = imageFactory2.CreateAsciiArtEffectByScale(inputAlpha, 100, 0.4, std::cout); // grayscale avg*/
    // auto effect = imageFactory.CreateBoxBlurConvolution(); // box blur
     //auto effect = imageFactory.CreateGaussianBlurConvolution(11, 11); // gaussian blur
    // auto effect = imageFactory.CreateColorInversion(1);
 
    // -- tranformations --
-    /*auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
+ //   auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
 
-    effect->ProcessImageData();
-    tmpStoreImg(effect->GetProcessedImageDataReference(), jpgFormat, "tr");*/
+    //effect->ProcessImageData();
+
+   // tmpStoreImg(effect->GetProcessedImageDataReference(), *jpgFormat, "tr");
 
     ImagesLibrary imagesLibrary;
 
@@ -84,6 +88,7 @@ int main() {
 
     userMenu.Initialize("/mnt/c/Users/kriz/CLionProjects/ImageProcessor/Resources");
     userMenu.Update();
+
 
     return 0;
 }

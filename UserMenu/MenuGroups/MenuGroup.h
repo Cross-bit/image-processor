@@ -6,20 +6,20 @@
 #define IMAGEPROCESSOR_MENUGROUP_H
 
 #include "../MenuCommands/MenuOption.h"
-
 class UserMenu;
 
 class MenuGroup {
 public:
     void AddMenuOption(
-            std::string indentificator,
-            std::unique_ptr<MenuOption> option
+        std::string indentificator,
+        std::unique_ptr<MenuOption> option
     );
 
     void Render();
 
     void OnUserChoice(UserMenu& userMenu, std::string choice);
 
+    virtual ~MenuGroup();
 protected:
     std::string _headerData = "";
     std::string _bulletPointEnd = ") ";

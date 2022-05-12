@@ -53,7 +53,7 @@ void AsciiArtEffect::ProcessImageData() {
     for (int i = 0; i < _imageData.Height; i += _tileHeight) {
         // per img line
         for (int j = 0; j < _valuesPerLine; j += _tileWidth * _imageData.Channels) {
-            // convolute data of matrix starting(top left value is) at j, i
+            // convoluted data of matrix starting(top left value is) at j, i
             int averagedValue = ProcessTile(j, i);
             char outputChar = GetOutputCharMapping(averagedValue);
             // put calculated char into the output
@@ -92,7 +92,9 @@ void AsciiArtEffect::PutCharacterToOutput(char outputLetter, bool isEnd) {
 }
 
 char AsciiArtEffect::GetOutputCharMapping(int value) {
-    assert(("Value is out of range", value < _alphabetSize && value > 0));
 
-    return _inputAlphabet[(int)((value * _alphabetSize) /(double) _imageData.MaxChannelValue)];
+    int alphabetIndex = (int)((value * (_alphabetSize-1)) /(double) _imageData.MaxChannelValue);
+    assert(("Value is out of range", alphabetIndex < _alphabetSize && alphabetIndex >= 0));
+
+    return _inputAlphabet[alphabetIndex];
 }

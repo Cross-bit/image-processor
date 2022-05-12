@@ -89,7 +89,7 @@ ImageData& ImageData::operator=(const ImageData& other){
 
 const int ImageData::ColorChannels = 3;
 
-double ImageData::GetGammaExspanded(int index) const {
+double ImageData::GetGammaExpanded(int index) const {
     if (index < 0 || index >= DataSize)
         throw std::invalid_argument( "Index is out of data range!" );
 

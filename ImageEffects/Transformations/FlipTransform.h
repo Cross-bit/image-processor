@@ -25,7 +25,7 @@ public:
 
     void ProcessImageData() override;
 
-    ImageData& GetProcessedImageDataReference() const override;
+    ImageData& GetProcessedImageDataReference() override;
 
 private:
     /**

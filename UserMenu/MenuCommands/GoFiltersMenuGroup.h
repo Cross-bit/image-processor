@@ -9,6 +9,8 @@
 #include "MenuOption.h"
 #include "../../ImageLibrary/ImagesLibrary.h"
 #include <queue>
+#include <unordered_set>
+
 
 class GoFiltersMenuGroup : public MenuOption {
 public:
@@ -20,7 +22,7 @@ public:
 
 private:
     ImagesLibrary& _imagesLibrary;
-    std::queue<int> _imagesToFilter;
+    std::unordered_set<int> _imagesToFilter;
 };
 
 

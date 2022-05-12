@@ -5,7 +5,7 @@
 #include "ApplyGaussianBlurOption.h"
 #include <sstream>
 
-ApplyGaussianBlurOption::ApplyGaussianBlurOption(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
+ApplyGaussianBlurOption::ApplyGaussianBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
 ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
 {
     _itemContent = "Gaussian blur";

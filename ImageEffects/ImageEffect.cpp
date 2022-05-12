@@ -20,7 +20,7 @@ ImageEffect::ImageEffect(ImageData &imageData, float redCoef, float greenCoef, f
     SetBlueCoef(blueCoef);
 }
 
-ImageData& ImageEffect::GetProcessedImageDataReference() const {
+ImageData& ImageEffect::GetProcessedImageDataReference() {
     return *_processedImage;
 }
 

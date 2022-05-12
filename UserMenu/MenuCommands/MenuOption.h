@@ -19,8 +19,9 @@ class UserMenu;
  */
 class MenuOption {
 public:
-
     virtual void Render();
+
+    virtual ~MenuOption();
 
     virtual void Execute();
 

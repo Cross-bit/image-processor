@@ -3,6 +3,7 @@
 //
 
 #include <sstream>
+#include <iostream>
 #include <string>
 #include "GoFiltersMenuGroup.h"
 
@@ -18,7 +19,7 @@ _imagesLibrary(imagesLibrary)
 }
 
 std::unique_ptr<MenuGroup> GoFiltersMenuGroup::CreateNextGroup(UserMenu &userMenu) {
-    return std::move(userMenu.GroupsFac.CreateFiltersMenuGroup(_imagesToFilter));
+    return std::move(userMenu.GroupsFac.CreateFiltersMenuGroup(std::move(_imagesToFilter)));
 }
 
 
@@ -41,13 +42,13 @@ void GoFiltersMenuGroup::Execute() {
     std::istringstream stringStream( dataToModify );
 
     int n;
-    while( stringStream >> n ) {
+    while ( stringStream >> n ) {
 
-        if(!_imagesLibrary.CheckIfIndexIsValid(n)) {
+        if (!_imagesLibrary.CheckIfIndexIsValid(n)) {
             PrintWarning("Index " + std::to_string(n) + " is invalid and effect will be not applied!");
         }
 
         // add to the queue
-        _imagesToFilter.push(n);
+        _imagesToFilter.emplace(n);
     }
 }

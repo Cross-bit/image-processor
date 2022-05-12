@@ -2,6 +2,7 @@
 // Created by kriz on 06.03.2022.
 //
 
+#include <unordered_set>
 #include "MenuGroupFactory.h"
 
 #include "../MenuCommands/GoFiltersMenuGroup.h"
@@ -29,7 +30,7 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
     return std::move(newMainMenuGroup);
 }
 
-std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith) {
+std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::unordered_set<int> &&libraryIndexesToWorkWith) {
     auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
     newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
     newFiltersMenuGroup->AddMenuOption("b", std::make_unique<ApplyGaussianBlurOption>(libraryIndexesToWorkWith, ImageLibrary));

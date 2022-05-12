@@ -11,6 +11,9 @@
 
 #include "../../ImageLibrary/ImagesLibrary.h"
 #include <queue>
+#include <unordered_set>
+
+//#include <unordered_set>
 class MenuGroupFactory {
 public:
     MenuGroupFactory(ImagesLibrary& imageLibrary);
@@ -24,7 +27,7 @@ public:
      * Creates new instance of filters menu group.
      * @return
      */
-    std::unique_ptr<MenuGroup> CreateFiltersMenuGroup(std::queue<int>& libraryIndexesToWorkWith);
+    std::unique_ptr<MenuGroup> CreateFiltersMenuGroup(std::unordered_set<int> &&libraryIndexesToWorkWith);
 
     /**
      * Creates new instance of library menu group.

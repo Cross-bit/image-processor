@@ -60,6 +60,6 @@ void FlipTransform::FlipVertically(ImageData &imageData) {
     }
 }
 
-ImageData& FlipTransform::GetProcessedImageDataReference() const {
+ImageData& FlipTransform::GetProcessedImageDataReference() {
     return *_processedImage;
 }

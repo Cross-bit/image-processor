@@ -21,8 +21,10 @@ void MenuGroup::Render() {
 void MenuGroup::OnUserChoice(UserMenu& userMenu, std::string choice) {
     auto optionSearched = _menuOptions.find(choice);
     if (optionSearched != _menuOptions.end()) {
+        // 1) execute command
         optionSearched->second->Execute();
 
+        // 2) navigate to next menu group
         userMenu.SetNewMenuItem(std::move(optionSearched->second->CreateNextGroup(userMenu)));
     }
     else {
@@ -55,3 +57,5 @@ void MenuGroup::RenderMenuItems(){
     }
 }
 
+
+MenuGroup::~MenuGroup() {}

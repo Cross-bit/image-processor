@@ -24,7 +24,7 @@ public:
      * Returns reference to processed data.
      * @return
      */
-    virtual ImageData& GetProcessedImageDataReference() const;
+    virtual ImageData& GetProcessedImageDataReference();
 
     /**
      * Passes ownership of processed image data to caller.

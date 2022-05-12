@@ -23,7 +23,7 @@ public:
 
     void ProcessImageData() override;
 
-    ImageData& GetProcessedImageDataReference() const override;
+    ImageData& GetProcessedImageDataReference() override;
 
     virtual std::string GenerateImageName() const;
 

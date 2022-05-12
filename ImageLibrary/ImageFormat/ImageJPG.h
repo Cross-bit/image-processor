@@ -15,7 +15,7 @@
 class ImageJPG : public ImageFormat {
 public:
     std::unique_ptr<ImageData> LoadImageData(const std::string &inpFileName) const override;
-    bool SaveImageData(const ImageData &dataToSave, const std::string &outFileName) const override;
+    bool SaveImageData(const ImageData &dataToSave, const std::string &outFileDir) const override;
 
     virtual ~ImageJPG() = default;
 

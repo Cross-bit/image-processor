@@ -2,8 +2,9 @@
 // Created by kriz on 27.04.2022.
 //
 
+#include <unordered_set>
 #include "ApplyLinearGrayscaleOption.h"
-ApplyLinearGrayscaleOption::ApplyLinearGrayscaleOption(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
+ApplyLinearGrayscaleOption::ApplyLinearGrayscaleOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
 ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
     _itemContent = "Linear grayscale";
 }

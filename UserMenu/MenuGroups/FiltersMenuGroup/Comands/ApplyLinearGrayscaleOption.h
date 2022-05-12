@@ -5,13 +5,14 @@
 #ifndef MAIN_CPP_APPLYLINEARGRAYSCALEOPTION_H
 #define MAIN_CPP_APPLYLINEARGRAYSCALEOPTION_H
 
+#include <unordered_set>
 #include "ApplyFilterOptionBase.h"
 
 
 class ApplyLinearGrayscaleOption : public ApplyFilterOptionBase
 {
 public:
-    ApplyLinearGrayscaleOption(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
+    ApplyLinearGrayscaleOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;

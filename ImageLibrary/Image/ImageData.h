@@ -81,11 +81,11 @@ public:
     ImageData& operator=(ImageData&& other);
 
     /**
-     * Gets data at index after gamma exspansion (based on the color model).
+     * Gets data at index after gamma expansion (based on the color model).
      * @param index Index of data to get;
      * @return Gamme exspanded data.
      */
-    double GetGammaExspanded(int index) const;
+    double GetGammaExpanded(int index) const;
 
     /**
      * Sets dat at index with gamma compression (based on the color model). Modifies the data!(it is up to user to take care about data coherience and consistivity)

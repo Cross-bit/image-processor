@@ -5,12 +5,13 @@
 #ifndef MAIN_CPP_APPLYGAUSSIANBLUROPTION_H
 #define MAIN_CPP_APPLYGAUSSIANBLUROPTION_H
 
+#include <unordered_set>
 #include "ApplyFilterOptionBase.h"
 
 class ApplyGaussianBlurOption : public ApplyFilterOptionBase
 {
 public:
-    ApplyGaussianBlurOption(std::queue<int>& libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
+    ApplyGaussianBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
