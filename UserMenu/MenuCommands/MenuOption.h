@@ -36,6 +36,8 @@ protected:
     template <typename T>
     void PrintInputFallback(const T& fallbackValue);
 
+    static bool CheckEmptyString(const std::string& inputToCheck);
+
     virtual std::string ReadUserInput() const;
 
 };

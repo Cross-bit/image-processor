@@ -35,5 +35,12 @@ void MenuOption::PrintInputFallback(const T& fallbackValue) {
 template void MenuOption::PrintInputFallback<int>(const int&);
 template void MenuOption::PrintInputFallback<double>(const double&);
 
+// -- static helper functions
+
+bool MenuOption::CheckEmptyString(const std::string &inputToCheck) {
+    return inputToCheck == "" || inputToCheck.find_first_not_of(" ") == std::string::npos;
+}
+
+
 
 MenuOption::~MenuOption(){ }
