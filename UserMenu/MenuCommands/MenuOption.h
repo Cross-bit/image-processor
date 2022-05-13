@@ -33,8 +33,8 @@ protected:
     virtual void PrintError(const std::string& callbackMessage);
     virtual void PrintWarning(const std::string& callbackMessage);
 
-    template<typename T>
-    void PrintInputFallback();
+    template <typename T>
+    void PrintInputFallback(const T& fallbackValue);
 
     virtual std::string ReadUserInput() const;
 

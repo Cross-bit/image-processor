@@ -6,6 +6,7 @@
 #include <sstream>
 
 ApplyGaussianBlurOption::ApplyGaussianBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
+
 ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
 {
     _itemContent = "Gaussian blur";
@@ -16,8 +17,8 @@ bool ApplyGaussianBlurOption::ReadKernelSize(){
     auto kernelInput = ReadUserInput();
 
     if (kernelInput == "" || kernelInput.find_first_not_of(" ") == std::string::npos) {
-        std::cout << "No input provided. Default value will be used instead (3)." << std::endl;
         _kernelSize = 3;
+        PrintInputFallback<int>(_kernelSize);
         return true;
     }
 
@@ -36,8 +37,8 @@ bool ApplyGaussianBlurOption::ReadStandardDeviation(){
     auto stdDeviation = ReadUserInput();
 
     if(stdDeviation == "" || !stdDeviation.find_first_not_of(" ") == std::string::npos) {
-        std::cout << "No input provided. Default value will be used instead." << std::endl;
         _standardDeviation = 1;
+        PrintInputFallback<int>(_standardDeviation);
         return true;
     }
 
