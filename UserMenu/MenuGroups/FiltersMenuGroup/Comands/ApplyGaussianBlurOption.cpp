@@ -6,7 +6,6 @@
 #include <sstream>
 
 ApplyGaussianBlurOption::ApplyGaussianBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
-
 ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
 {
     _itemContent = "Gaussian blur";
@@ -16,7 +15,7 @@ bool ApplyGaussianBlurOption::ReadKernelSize(){
     std::cout << "Please enter odd positive integer representing Gaussian kernel size(def.: 3):" << std::endl;
     auto kernelInput = ReadUserInput();
 
-    if (kernelInput == "" || kernelInput.find_first_not_of(" ") == std::string::npos) {
+    if (CheckEmptyString(kernelInput)) {
         _kernelSize = 3;
         PrintInputFallback<int>(_kernelSize);
         return true;
