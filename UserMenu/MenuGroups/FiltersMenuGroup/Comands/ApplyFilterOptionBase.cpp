@@ -21,7 +21,7 @@ void ApplyFilterOptionBase::StartProcessingImageData(int imageLibraryIndex) {
 
     auto imageRecord = _imagesLibrary.GetRecordByIndex(imageLibraryIndex);
 
-    Print("\t->");
+    Print("-> ");
     PrintLine(imageRecord->Data->Name);
 
     if (imageRecord == nullptr) {
@@ -61,7 +61,7 @@ void ApplyFilterOptionBase::Execute() {
     if (!InitializeFilterProperties())
         return;
 
-    PrintLine("Processing images data...");
+    PrintLine("Processing images data(this may take a while)...");
 
     PerformImageParallelProcessing();
 

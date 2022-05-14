@@ -11,8 +11,6 @@ ApplyNegativeOption::ApplyNegativeOption(std::unordered_set<int> &libraryIndexes
 }
 
 std::unique_ptr<ImageData> ApplyNegativeOption::ApplyFilterOnImage(ImageData& imageToProcess) {
-    std::cout << imageToProcess.Name << std::endl; // todo: move out
-
     ImageEffectFactory imageFactory(imageToProcess);
     auto effect = imageFactory.CreateColorInversion(1.0f);
     effect->ProcessImageData();
