@@ -33,7 +33,7 @@
 
 #include <filesystem>
 #include <unistd.h>
- void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
+void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
     data.Name = data.Name + "_" + name;
     format.SaveImageData(data, "../TestRes");
 }
