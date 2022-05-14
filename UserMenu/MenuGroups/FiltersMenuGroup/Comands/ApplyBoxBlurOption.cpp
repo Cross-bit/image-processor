@@ -11,8 +11,7 @@ ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
 }
 
 bool ApplyBoxBlurOption::InitializeFilterProperties() {
-
-    std::cout << "Enter number of cycles in range 1 to n (def.: 1):" << std::endl;
+    PrintLine("Enter number of cycles in range 1 to n (def.: 1):");
 
     auto repetitionsInput = ReadUserInput();
 
@@ -29,8 +28,6 @@ bool ApplyBoxBlurOption::InitializeFilterProperties() {
 }
 
 std::unique_ptr<ImageData> ApplyBoxBlurOption::ApplyFilterOnImage(ImageData& imageToProcess) {
-    std::cout << imageToProcess.Name << std::endl;
-
     std::unique_ptr<ImageData> result = std::make_unique<ImageData>(imageToProcess);
 
     for (int i = 0; i < _repetitions; ++i) {

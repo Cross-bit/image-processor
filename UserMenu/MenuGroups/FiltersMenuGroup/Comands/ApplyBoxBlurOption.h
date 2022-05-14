@@ -21,6 +21,7 @@ protected:
     bool InitializeFilterProperties() override;
 private:
     int _repetitions = 1;
+
 };
 
 
