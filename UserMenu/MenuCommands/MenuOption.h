@@ -9,6 +9,7 @@
 #include <memory>
 #include <iostream>
 #include <map>
+#include <vector>
 
 class MenuGroup;
 class MenuGroupFactory;
@@ -33,6 +34,10 @@ protected:
 
     virtual void PrintError(const std::string& callbackMessage);
     virtual void PrintWarning(const std::string& callbackMessage);
+
+    virtual void Print(const std::string& messageToPrint);
+    virtual void PrintLine(const std::string& messageToPrint);
+    virtual void PrintList(const std::vector<std::string>& messagesToPrint, std::string optionalBullet = "->");
 
     template <typename T>
     void PrintInputFallback(const T& fallbackValue);

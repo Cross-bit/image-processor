@@ -4,6 +4,7 @@
 
 #include "MenuOption.h"
 
+
 void MenuOption::Render(){
     std::cout << _itemContent;
 }
@@ -18,6 +19,21 @@ void MenuOption::PrintWarning(const std::string& callbackMessage) {
     std::cout << "Warning: " << callbackMessage << std::endl;
 }
 
+void MenuOption::Print(const std::string& messageToPrint) {
+    std::cout << messageToPrint;
+}
+
+void MenuOption::PrintLine(const std::string& messageToPrint) {
+    std::cout << messageToPrint << std::endl;
+}
+
+void MenuOption::PrintList(const std::vector<std::string>& messagesToPrint, std::string optionalBullet) {
+    for (auto &message : messagesToPrint) {
+        Print(optionalBullet);
+        PrintLine(message);
+    }
+}
+
 std::string MenuOption::ReadUserInput() const {
     std::string input;
     getline(std::cin, input);
@@ -30,7 +46,7 @@ void MenuOption::PrintInputFallback(const T& fallbackValue) {
     // it is up to user to specify all value types convertible to string(by to_string) in fallback arg, in ff declaration below
     std::cout << "No input provided, or the input is invalid. "
                  "Default value will be used instead. (def.:"
-                 << fallbackValue << std::to_string(fallbackValue) << ")" << std::endl;
+                  << std::to_string(fallbackValue) << ")" << std::endl;
 }
 
 // ff declaration for fallback prints (add if some more needed in the future)
