@@ -14,13 +14,6 @@ public:
 
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
-
-    bool InitializeFilterProperties() override;
-
-private:
-    float _intensityConst = 1.0f;
-
-
 };
 
 
