@@ -12,6 +12,8 @@
 
 #include <queue>
 #include <unordered_set>
+#include <thread>
+#include <future>
 
 class ApplyFilterOptionBase : public MenuOption {
 public:
@@ -43,7 +45,30 @@ protected:
 
     virtual std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData& inputImage) =0;
 
- //   bool _executionSucceded = false;
+    /**
+     * Processes all images in parallel.
+     */
+    void PerformImageParallelProcessing();
+
+private:
+    std::vector<std::future<std::unique_ptr<ImageData>>> _asyncFilters;
+
+    /**
+     * Starts async image processing.
+     * @param imageLibraryIndex
+     */
+    void StartProcessingImageData(int imageLibraryIndex);
+
+    /**
+     * Ads processed images into output list
+     * @param imageLibraryIndex
+     */
+    void FinalizeParallelImageProcessing();
+
+    /**
+     * Waits until all async computations finishes image processing and joins them into main thread.
+     */
+    void WaitForParallelImageComputation();
 };
 
 

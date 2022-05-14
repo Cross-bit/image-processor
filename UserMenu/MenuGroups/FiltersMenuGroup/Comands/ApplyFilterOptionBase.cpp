@@ -8,46 +8,64 @@
 #include "../../../UserMenu.h"
 #include "../../../GlobalMenuCommands/StoreImageDataOption.h"
 #include "../../MenuGroupFactory.h"
-
-#include <thread>
-#include <future>
+#include "thread"
+#include "future"
 
 ApplyFilterOptionBase::ApplyFilterOptionBase(std::unordered_set<int> libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
 _libraryIndexesToWorkWith(std::move(libraryIndexesToWorkWith)),
 _imagesLibrary(imagesLibrary)
 { }
 
-void ApplyFilterOptionBase::Execute() {
 
-    std::vector<std::future<std::unique_ptr<ImageData>>> asyncFilters;
+void ApplyFilterOptionBase::StartProcessingImageData(int imageLibraryIndex) {
+
+    auto imageRecord = _imagesLibrary.GetRecordByIndex(imageLibraryIndex);
+
+    Print("\t->");
+    PrintLine(imageRecord->Data->Name);
+
+    if (imageRecord == nullptr) {
+        PrintWarning("Index " + std::to_string(imageLibraryIndex) + " couldn't be found in library...");
+        return;
+    }
+
+    _asyncFilters.emplace_back(std::async(&ApplyFilterOptionBase::ApplyFilterOnImage, this, std::ref(*(imageRecord->Data))));
+}
+
+void ApplyFilterOptionBase::WaitForParallelImageComputation() {
+    for (auto & t : _asyncFilters) {
+        t.wait();
+    }
+}
+
+void ApplyFilterOptionBase::FinalizeParallelImageProcessing() {
+    for (auto & t : _asyncFilters) {
+        _processedImageIndexes.emplace_back(t.get());
+    }
+}
+
+void ApplyFilterOptionBase::PerformImageParallelProcessing() {
+
+    for (auto libIndex : _libraryIndexesToWorkWith) {
+        StartProcessingImageData(libIndex);
+    }
+
+    WaitForParallelImageComputation();
+
+    FinalizeParallelImageProcessing();
+}
+
+
+void ApplyFilterOptionBase::Execute() {
 
     if (!InitializeFilterProperties())
         return;
 
-    std::cout << "Processing images data..." << std::endl;
+    PrintLine("Processing images data...");
 
-    for(auto libIndex : _libraryIndexesToWorkWith) {
-        auto imageRecord = _imagesLibrary.GetRecordByIndex(libIndex);
+    PerformImageParallelProcessing();
 
-        if (imageRecord == nullptr) {
-            PrintWarning("Index " + std::to_string(libIndex) + " couldn't be found in library...");
-            continue;
-        }
-
-        // todo: what about error handling??
-
-        asyncFilters.emplace_back(std::async(&ApplyFilterOptionBase::ApplyFilterOnImage, this, std::ref(*(imageRecord->Data))));
-    }
-
-    for (auto & t : asyncFilters) {
-        t.wait();
-    }
-
-    for (auto & t : asyncFilters) {
-        _processedImageIndexes.emplace_back(t.get());
-    }
-
-    std::cout << "Done!" << std::endl;
+    PrintLine("Done!");
 
     // call image store command
     (StoreImageDataOption (_processedImageIndexes)).Execute();

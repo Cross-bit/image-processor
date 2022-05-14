@@ -57,7 +57,6 @@ bool ApplyGaussianBlurOption::InitializeFilterProperties() {
 std::unique_ptr<ImageData> ApplyGaussianBlurOption::ApplyFilterOnImage(ImageData& imageToProcess) {
     ImageEffectFactory imageFactory(imageToProcess);
     auto effect = imageFactory.CreateGaussianBlurConvolution(_kernelSize, _standardDeviation);
-    std::cout << imageToProcess.Name << std::endl;
     effect->ProcessImageData();
 
     return std::move(effect->GetProcessedImageData());
