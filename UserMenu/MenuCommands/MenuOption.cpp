@@ -36,6 +36,7 @@ void MenuOption::PrintInputFallback(const T& fallbackValue) {
 // ff declaration for fallback prints (add if some more needed in the future)
 template void MenuOption::PrintInputFallback<int>(const int&);
 template void MenuOption::PrintInputFallback<double>(const double&);
+template void MenuOption::PrintInputFallback<float>(const float&);
 
 // -- static helper functions
 const std::string MenuOption::WHITESPACE = " \n\r\t\f\v";
