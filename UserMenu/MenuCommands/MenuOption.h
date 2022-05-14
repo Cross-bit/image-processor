@@ -27,6 +27,7 @@ public:
 
 	virtual std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & groupFactory)= 0;
 
+    static const std::string WHITESPACE;
 protected:
     std::string _itemContent = "Item content is not filled";
 
@@ -36,10 +37,12 @@ protected:
     template <typename T>
     void PrintInputFallback(const T& fallbackValue);
 
-    static bool CheckEmptyString(const std::string& inputToCheck);
+    static bool CheckStringIsEmpty(const std::string& inputToCheck);
+    static std::string TrimInputWhiteSpaces(const std::string& inputToTrim);
+    static std::string TrimInputWhiteSpacesFront(const std::string& inputToTrim);
+    static std::string TrimInputWhiteSpacesBack(const std::string& inputToTrim);
 
     virtual std::string ReadUserInput() const;
-
 };
 
 #endif //IMAGEPROCESSOR_MENUOPTION_H
