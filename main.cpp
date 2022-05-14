@@ -42,7 +42,6 @@ int main() {
 
     ImageFormatFactory formatFactory;
 
-
     auto jpgFormat = formatFactory.CreateImageFormat("JPG");
 
     std::string file = "../Resources/cube.jpg";
