@@ -7,9 +7,20 @@
 
 
 
+#include <unordered_set>
+#include "ApplyFilterOptionBase.h"
 
-class ApplyBoxBlurOption {
+class ApplyBoxBlurOption : public ApplyFilterOptionBase
+{
+public:
+    ApplyBoxBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
+protected:
+    std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
+
+    bool InitializeFilterProperties() override;
+private:
+    int _repetitions = 1;
 };
 
 
