@@ -36,15 +36,16 @@ void MenuGroup::AddMenuOptions(std::vector<std::unique_ptr<MenuOption>> &options
 
     switch (bulletType) {
         case NUMERIC:
-
-            break;
-
+            for(auto it = options.begin(); it != options.end(); ++it){
+                _menuOptions.insert(std::make_pair(std::to_string(1 + std::distance(options.begin(),it)), std::move(*it)));
+            }
+        break;
         default:
         case ALPHABET:
             for(auto it = options.begin(); it != options.end(); ++it){
                 _menuOptions.insert(std::make_pair(FindOptionAlphaName(1 + std::distance(options.begin(),it)), std::move(*it)));
             }
-            break;
+        break;
     }
 }
 

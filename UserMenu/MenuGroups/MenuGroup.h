@@ -11,7 +11,7 @@ class UserMenu;
 class MenuGroup {
 public:
 
-    enum BulletPointType { ALPHABET, NUMERIC };
+    enum BulletPointType { ALPHABET, NUMERIC, BLABLA };
 
     BulletPointType bulletType = MenuGroup::ALPHABET;
 
