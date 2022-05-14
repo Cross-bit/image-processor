@@ -8,8 +8,44 @@
 //public
 
 void MenuGroup::AddMenuOption(std::string indentificator, std::unique_ptr<MenuOption> option) {
-    //auto valueTuple = std::make_tuple(std::move(option), std::move(groupToTransitionIn));
     _menuOptions.insert(std::make_pair(indentificator, std::move(option)));
+}
+
+std::string MenuGroup::FindOptionAlphaName(int index) {
+    // basically excel column like mapping
+
+    std::string result;
+
+    while (index > 0) {
+        int rem = index % 26;
+
+        if (rem == 0) {
+            result += 'Z';
+            index = (index / 26) - 1;
+        }
+        else {
+            result += (rem - 1) + 'A';
+            index /= 26;
+        }
+    }
+
+    return result;
+}
+
+void MenuGroup::AddMenuOptions(std::vector<std::unique_ptr<MenuOption>> &options, MenuGroup::BulletPointType bulletType) {
+
+    switch (bulletType) {
+        case NUMERIC:
+
+            break;
+
+        default:
+        case ALPHABET:
+            for(auto it = options.begin(); it != options.end(); ++it){
+                _menuOptions.insert(std::make_pair(FindOptionAlphaName(1 + std::distance(options.begin(),it)), std::move(*it)));
+            }
+            break;
+    }
 }
 
 

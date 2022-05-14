@@ -11,10 +11,12 @@
 
 #include "FiltersMenuGroup/FiltersMenuGroup.h"
 #include "FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h"
+#include "FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h"
 #include "FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h"
 #include "FiltersMenuGroup/Comands/ApplyBoxBlurOption.h"
 #include "FiltersMenuGroup/Comands/ApplyNegativeOption.h"
 #include "FiltersMenuGroup/Comands/ApplyFlipTransformOption.h"
+
 
 #include "LibraryMenuGroup/Commands/ListAllImagesOption.h"
 #include "LibraryMenuGroup/Commands/AddImageToLibrary.h"
@@ -35,13 +37,25 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
 
 std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::unordered_set<int> &&libraryIndexesToWorkWith) {
     auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
-    newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
-    newFiltersMenuGroup->AddMenuOption("a", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
+    /*newFiltersMenuGroup->AddMenuOption("a", std::make_unique<GoMainMenuOption>());
+    newFiltersMenuGroup->AddMenuOption("1", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
+    newFiltersMenuGroup->AddMenuOption("2", std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
     newFiltersMenuGroup->AddMenuOption("b", std::make_unique<ApplyGaussianBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
-    newFiltersMenuGroup->AddMenuOption("c", std::make_unique<ApplyBoxBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
-    newFiltersMenuGroup->AddMenuOption("d", std::make_unique<ApplyNegativeOption>(libraryIndexesToWorkWith, ImageLibrary));
-    newFiltersMenuGroup->AddMenuOption("e", std::make_unique<ApplyFlipTransformOption>(libraryIndexesToWorkWith, ImageLibrary));
-    newFiltersMenuGroup->AddMenuOption("f", std::make_unique<GoMainMenuOption>());
+    newFiltersMenuGroup->AddMenuOption("4", std::make_unique<ApplyBoxBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
+    newFiltersMenuGroup->AddMenuOption("5", std::make_unique<ApplyNegativeOption>(libraryIndexesToWorkWith, ImageLibrary));
+    newFiltersMenuGroup->AddMenuOption("6", std::make_unique<ApplyFlipTransformOption>(libraryIndexesToWorkWith, ImageLibrary));*/
+
+    std::vector<std::unique_ptr<MenuOption>> options;
+
+    options.emplace_back(std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplyAverageGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplyGaussianBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplyBoxBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplyNegativeOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplyFlipTransformOption>(libraryIndexesToWorkWith, ImageLibrary));
+
+    newFiltersMenuGroup->AddMenuOptions(options);
 
     return std::move(newFiltersMenuGroup);
 }

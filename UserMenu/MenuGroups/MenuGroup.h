@@ -10,9 +10,28 @@ class UserMenu;
 
 class MenuGroup {
 public:
+
+    enum BulletPointType { ALPHABET, NUMERIC };
+
+    BulletPointType bulletType = MenuGroup::ALPHABET;
+
+    /**
+     * Adds new menu option to the menu group.
+     * @param bulletPoint
+     * @param option
+     */
     void AddMenuOption(
-        std::string indentificator,
+        std::string bulletPoint,
         std::unique_ptr<MenuOption> option
+    );
+
+    /**
+     * Adds new menu options to the menu group, with automatically generated bullet points(based on the bullet type enum).
+     * @param options
+     */
+    void AddMenuOptions(
+            std::vector<std::unique_ptr<MenuOption>> &options,
+            BulletPointType bulletType = BulletPointType::ALPHABET
     );
 
     void Render();
@@ -30,6 +49,9 @@ protected:
     virtual void RenderBulletPoint(std::string innerText);
 
     virtual void RenderMenuItems();
+private:
+    std::string FindOptionAlphaName(int index);
+
 };
 
 #endif //IMAGEPROCESSOR_MENUGROUP_H

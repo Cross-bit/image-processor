@@ -10,7 +10,6 @@
 class FiltersMenuGroup : public MenuGroup {
 public:
     FiltersMenuGroup();
-
 };
 
 
