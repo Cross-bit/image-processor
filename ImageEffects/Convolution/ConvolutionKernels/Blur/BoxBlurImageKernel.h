@@ -15,7 +15,8 @@ class BoxBlurImageKernel : public ImageKernel
 public:
     BoxBlurImageKernel();
     double GetKernelValueOnCoords(int x, int y) const override;
-
+protected:
+    int _dimension = 3; // make sure kernel size is 3
 };
 
 

@@ -20,6 +20,7 @@ public:
     void Execute() override;
 
     std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & userMenu) override;
+
 protected:
     ImagesLibrary& _imagesLibrary;
     std::unordered_set<int> _libraryIndexesToWorkWith;

@@ -15,7 +15,7 @@ bool ApplyGaussianBlurOption::ReadKernelSize(){
     std::cout << "Please enter odd positive integer representing Gaussian kernel size(def.: 3):" << std::endl;
     auto kernelInput = ReadUserInput();
 
-    if (CheckEmptyString(kernelInput)) {
+    if (CheckStringIsEmpty(kernelInput)) {
         _kernelSize = 3;
         PrintInputFallback<int>(_kernelSize);
         return true;
