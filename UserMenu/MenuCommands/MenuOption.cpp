@@ -22,7 +22,7 @@ std::string MenuOption::ReadUserInput() const {
     std::string input;
     getline(std::cin, input);
 
-    return std::move(input);
+    return std::move(MenuOption::TrimInputWhiteSpaces(input));
 }
 
 template <typename T>
