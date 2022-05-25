@@ -66,6 +66,7 @@ bool MenuOption::ReadUserYesNo(bool& result) const {
 template <typename T>
 void MenuOption::PrintInputFallback(const T& fallbackValue) const {
     // it is up to user to specify all value types convertible to string(by to_string) in fallback arg, in ff declaration below
+
     std::cout << "No input provided, or the input is invalid. "
                  "Default value will be used instead. (def.:"
                   << std::to_string(fallbackValue) << ")" << std::endl;
@@ -75,8 +76,13 @@ void MenuOption::PrintInputFallback(const T& fallbackValue) const {
 template void MenuOption::PrintInputFallback<int>(const int&) const;
 template void MenuOption::PrintInputFallback<double>(const double&) const;
 template void MenuOption::PrintInputFallback<float>(const float&) const;
-template void MenuOption::PrintInputFallback<char>(const char&) const;
-template void MenuOption::PrintInputFallback<bool>(const bool&) const;
+
+void MenuOption::PrintInputFallback(const char& fallbackValue) const {
+
+    std::cout << "No input provided, or the input is invalid. "
+                 "Default value will be used instead. (def.:"
+              << fallbackValue << ")" << std::endl;
+}
 
 // -- static helper functions
 const std::string MenuOption::WHITESPACE = " \n\r\t\f\v";

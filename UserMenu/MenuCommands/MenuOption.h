@@ -42,6 +42,8 @@ protected:
     template <typename T>
     void PrintInputFallback(const T& fallbackValue) const;
 
+    void PrintInputFallback(const char& fallbackValue) const;
+
     static bool CheckStringIsEmpty(const std::string& inputToCheck);
     static std::string TrimInputWhiteSpaces(const std::string& inputToTrim);
     static std::string TrimInputWhiteSpacesFront(const std::string& inputToTrim);
