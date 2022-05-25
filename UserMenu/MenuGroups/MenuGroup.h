@@ -11,9 +11,9 @@ class UserMenu;
 class MenuGroup {
 public:
 
-    enum BulletPointType { ALPHABET, NUMERIC, BLABLA };
+    enum BulletPointType { ALPHABET_LOWER, NUMERIC };
 
-    BulletPointType bulletType = MenuGroup::ALPHABET;
+    BulletPointType bulletType = MenuGroup::ALPHABET_LOWER;
 
     /**
      * Adds new menu option to the menu group.
@@ -21,7 +21,7 @@ public:
      * @param option
      */
     void AddMenuOption(
-        std::string bulletPoint,
+        const std::string& indentificator,
         std::unique_ptr<MenuOption> option
     );
 
@@ -31,7 +31,7 @@ public:
      */
     void AddMenuOptions(
             std::vector<std::unique_ptr<MenuOption>> &options,
-            BulletPointType bulletType = BulletPointType::ALPHABET
+            BulletPointType bulletType = BulletPointType::ALPHABET_LOWER
     );
 
     void Render();
@@ -50,7 +50,7 @@ protected:
 
     virtual void RenderMenuItems();
 private:
-    std::string FindOptionAlphaName(int index);
+    std::string FindOptionAlphaName(int index, bool capital = false);
 
 };
 

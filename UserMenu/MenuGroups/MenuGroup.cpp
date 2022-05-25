@@ -5,26 +5,25 @@
 #include "MenuGroup.h"
 
 #include "../UserMenu.h"
-//public
 
-void MenuGroup::AddMenuOption(std::string indentificator, std::unique_ptr<MenuOption> option) {
+void MenuGroup::AddMenuOption(const std::string& indentificator, std::unique_ptr<MenuOption> option) {
     _menuOptions.insert(std::make_pair(indentificator, std::move(option)));
 }
 
-std::string MenuGroup::FindOptionAlphaName(int index) {
-    // basically excel column like mapping
+std::string MenuGroup::FindOptionAlphaName(int index, bool capital) {
 
+    // basically excel column like mapping
     std::string result;
 
     while (index > 0) {
         int rem = index % 26;
 
         if (rem == 0) {
-            result += 'Z';
+            result += (capital ? 'Z' : 'z');
             index = (index / 26) - 1;
         }
         else {
-            result += (rem - 1) + 'A';
+            result += (rem - 1) + (capital ? 'A' : 'a');
             index /= 26;
         }
     }
@@ -41,14 +40,13 @@ void MenuGroup::AddMenuOptions(std::vector<std::unique_ptr<MenuOption>> &options
             }
         break;
         default:
-        case ALPHABET:
-            for(auto it = options.begin(); it != options.end(); ++it){
+        case ALPHABET_LOWER:
+            for(auto it = options.begin(); it != options.end(); ++it) {
                 _menuOptions.insert(std::make_pair(FindOptionAlphaName(1 + std::distance(options.begin(),it)), std::move(*it)));
             }
         break;
     }
 }
-
 
 void MenuGroup::Render() {
     RenderHeader();
@@ -73,7 +71,6 @@ void MenuGroup::OnUserChoice(UserMenu& userMenu, std::string choice) {
 void ChangeMenuGroup(UserMenu& userMenu, std::unique_ptr<MenuGroup> groupToChangeTo) {
    // userMenu.SetNewMenuItem(std::move(groupToChangeTo));
 }
-
 
 
 // protected

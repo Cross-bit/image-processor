@@ -29,8 +29,67 @@ add_executable(
         UserMenu/MenuGroups/FiltersMenuGroup/FiltersMenuGroup.h
         UserMenu/MenuCommands/GoFiltersMenuGroup.cpp
         UserMenu/MenuCommands/GoFiltersMenuGroup.h
-        UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h ImageLibrary/ImagesLibrary.cpp ImageLibrary/ImagesLibrary.h ImageLibrary/ImageFormat.cpp ImageLibrary/ImageFormat.h ImageLibrary/ImageFormat/ImageJPG.cpp ImageLibrary/ImageFormat/ImageJPG.h ImageLibrary/ImageFormatFactory.cpp ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp ImageLibrary/ImageFormat/ImagePNG.h
-        ImageLibrary/Image/ImageData.cpp ImageLibrary/Image/ImageData.h ImageEffects/GrayscaleEffect/GrayscaleEffect.cpp ImageEffects/GrayscaleEffect/GrayscaleEffect.h ImageEffects/ImageEffect.cpp ImageEffects/ImageEffect.h ImageEffects/ImageEffectFactory.cpp ImageEffects/ImageEffectFactory.h ImageEffects/GrayscaleEffect/Algorithms/GrayscaleStrategyBase.h ImageEffects/GrayscaleEffect/Algorithms/AverageGrayscaleStrategy.cpp ImageEffects/GrayscaleEffect/Algorithms/AverageGrayscaleStrategy.h ImageEffects/GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.cpp ImageEffects/GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.h ImageEffects/NegativeEffect/NegativeEffect.cpp ImageEffects/NegativeEffect/NegativeEffect.h ImageEffects/Convolution/ConvolutionKernels/ImageKernel.cpp ImageEffects/Convolution/ConvolutionKernels/ImageKernel.h ImageEffects/ASCII/AsciiArtEffect.cpp ImageEffects/ASCII/AsciiArtEffect.h ImageEffects/Convolution/ConvolutionProcessor.cpp ImageEffects/Convolution/ConvolutionProcessor.h ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.cpp ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.h ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.cpp ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h ImageEffects/Convolution/ConvolutionKernels/Sobel/SobelImageKernel.cpp ImageEffects/Convolution/ConvolutionKernels/Sobel/SobelImageKernel.h ImageEffects/Transformations/RegularRotation.cpp ImageEffects/Transformations/RegularRotation.h ImageEffects/Transformations/FlipTransform.cpp ImageEffects/Transformations/FlipTransform.h UserMenu/MenuGroups/LibraryMenuGroup/LibraryMenuGroup.cpp UserMenu/MenuGroups/LibraryMenuGroup/LibraryMenuGroup.h UserMenu/MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.cpp UserMenu/MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.h UserMenu/MenuCommands/GoLibraryMenuGroup.cpp UserMenu/MenuCommands/GoLibraryMenuGroup.h UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.cpp UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.h UserMenu/MenuGroups/OptionsMenuGroup/OptionsMenuGroup.cpp UserMenu/MenuGroups/OptionsMenuGroup/OptionsMenuGroup.h UserMenu/MenuGroups/OptionsMenuGroup/Commands/SetDefaultInputDirectory.cpp UserMenu/MenuGroups/OptionsMenuGroup/Commands/SetDefaultInputDirectory.h Configuration/ApplicationConfiguration.cpp Configuration/ApplicationConfiguration.h UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.cpp UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h UserMenu/GlobalMenuCommands/StoreImageDataOption.cpp UserMenu/GlobalMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h)
+        UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h
+        ImageLibrary/ImagesLibrary.cpp
+        ImageLibrary/ImagesLibrary.h
+        ImageLibrary/ImageFormat.cpp
+        ImageLibrary/ImageFormat.h
+        ImageLibrary/ImageFormat/ImageJPG.cpp
+        ImageLibrary/ImageFormat/ImageJPG.h
+        ImageLibrary/ImageFormatFactory.cpp
+        ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp
+        ImageLibrary/ImageFormat/ImagePNG.h
+        ImageLibrary/Image/ImageData.cpp
+        ImageLibrary/Image/ImageData.h
+        ImageEffects/GrayscaleEffect/GrayscaleEffect.cpp
+        ImageEffects/GrayscaleEffect/GrayscaleEffect.h
+        ImageEffects/ImageEffect.cpp ImageEffects/ImageEffect.h
+        ImageEffects/ImageEffectFactory.cpp
+        ImageEffects/ImageEffectFactory.h
+        ImageEffects/GrayscaleEffect/Algorithms/GrayscaleStrategyBase.h
+        ImageEffects/GrayscaleEffect/Algorithms/AverageGrayscaleStrategy.cpp
+        ImageEffects/GrayscaleEffect/Algorithms/AverageGrayscaleStrategy.h
+        ImageEffects/GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.cpp
+        ImageEffects/GrayscaleEffect/Algorithms/LinearGrayscaleStrategy.h
+        ImageEffects/NegativeEffect/NegativeEffect.cpp
+        ImageEffects/NegativeEffect/NegativeEffect.h
+        ImageEffects/Convolution/ConvolutionKernels/ImageKernel.cpp
+        ImageEffects/Convolution/ConvolutionKernels/ImageKernel.h
+        ImageEffects/ASCII/AsciiArtEffect.cpp
+        ImageEffects/ASCII/AsciiArtEffect.h
+        ImageEffects/Convolution/ConvolutionProcessor.cpp
+        ImageEffects/Convolution/ConvolutionProcessor.h
+        ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.cpp
+        ImageEffects/Convolution/ConvolutionKernels/Blur/BoxBlurImageKernel.h
+        ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.cpp
+        ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h
+        ImageEffects/Convolution/ConvolutionKernels/Sobel/SobelImageKernel.cpp
+        ImageEffects/Convolution/ConvolutionKernels/Sobel/SobelImageKernel.h
+        ImageEffects/Transformations/RegularRotation.cpp
+        ImageEffects/Transformations/RegularRotation.h
+        ImageEffects/Transformations/FlipTransform.cpp
+        ImageEffects/Transformations/FlipTransform.h
+        UserMenu/MenuGroups/LibraryMenuGroup/LibraryMenuGroup.cpp
+        UserMenu/MenuGroups/LibraryMenuGroup/LibraryMenuGroup.h
+        UserMenu/MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.cpp
+        UserMenu/MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.h
+        UserMenu/MenuCommands/GoLibraryMenuGroup.cpp
+        UserMenu/MenuCommands/GoLibraryMenuGroup.h
+        UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.cpp
+        UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.h
+        UserMenu/MenuGroups/OptionsMenuGroup/OptionsMenuGroup.cpp
+        UserMenu/MenuGroups/OptionsMenuGroup/OptionsMenuGroup.h
+        UserMenu/MenuGroups/OptionsMenuGroup/Commands/SetDefaultInputDirectory.cpp
+        UserMenu/MenuGroups/OptionsMenuGroup/Commands/SetDefaultInputDirectory.h
+        Configuration/ApplicationConfiguration.cpp
+        Configuration/ApplicationConfiguration.h
+        UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.cpp
+        UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.h
+        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.cpp
+        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.h
+        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.cpp
+        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.h
+        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h UserMenu/GlobalMenuCommands/StoreImageDataOption.cpp UserMenu/GlobalMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h )
 
 #find_package (jpeg REQUIRED)
 #find_package(libjpeg REQUIRED)

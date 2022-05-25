@@ -28,12 +28,6 @@ protected:
     std::unordered_set<int> _libraryIndexesToWorkWith;
 
     /**
-     * Implementation of other users input values needed for filter computation.
-     * @return
-     */
-    virtual bool InitializeFilterProperties();
-
-    /**
      * Stores index of processed image data in library.
      */
     std::vector<std::unique_ptr<ImageData>> _processedImageIndexes;
@@ -43,6 +37,16 @@ protected:
      */
     void AddFilteredDataToLibrary();
 
+    /**
+     * Implementation of other users input values needed for filter computation.
+     * @return
+     */
+    virtual bool InitializeFilterProperties();
+    /**
+     * Applies provided image effect on data.
+     * @param inputImage
+     * @return Copy of input data filtered.
+     */
     virtual std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData& inputImage) =0;
 
     /**

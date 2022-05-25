@@ -5,8 +5,7 @@
 #include "ApplyBoxBlurOption.h"
 
 ApplyBoxBlurOption::ApplyBoxBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
-ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
-{
+ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
     _itemContent = "Box blur";
 }
 

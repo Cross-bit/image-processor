@@ -29,8 +29,9 @@
 #include "ImageLibrary/ImagesLibrary.h"
 #include "UserMenu/MenuGroups/MenuGroupFactory.h"
 
-#include <cstdio>
+#include "UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.h"
 
+#include <cstdio>
 #include <filesystem>
 #include <unistd.h>
 void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
@@ -39,7 +40,6 @@ void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& 
 }
 
 int main() {
-
     ImageFormatFactory formatFactory;
 
     auto jpgFormat = formatFactory.CreateImageFormat("JPG");
