@@ -6,7 +6,7 @@
 
 ApplySobelOption::ApplySobelOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
 ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
-    _itemContent = "Bosel";
+    _itemContent = "Sobel";
 }
 
 bool ApplySobelOption::InitializeFilterProperties() {
@@ -16,7 +16,7 @@ bool ApplySobelOption::InitializeFilterProperties() {
 
     std::string userInput;
     if (!ReadUserChoices(std::vector<std::string> {"t", "b", "l", "r"}, userInput)){
-        PrintInputFallback<char>('b');
+        PrintInputFallback('b');
         userInput = "b";
     }
 
@@ -30,7 +30,7 @@ bool ApplySobelOption::InitializeFilterProperties() {
     PrintLine("Colored? (y/n): ");
     bool isColored;
     if (!ReadUserYesNo(isColored)){
-        PrintInputFallback<char>('n');
+        PrintInputFallback('n');
         _isColored = false;
     }
     else
