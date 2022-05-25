@@ -31,7 +31,8 @@ AsciiArtEffect::AsciiArtEffect(ImageData &imageData, std::string &inputAlphabet,
 
 void AsciiArtEffect::SetTileWidthByRowLen(int numOfCharsPerLine) {
     assert(("Too large number of letters per row!", numOfCharsPerLine <= _imageData.Width));
-    _tileWidth = (_imageData.Width - 1) / (numOfCharsPerLine + 1);
+    _tileWidth = (_imageData.Width + numOfCharsPerLine - 1) / (numOfCharsPerLine);
+
 }
 
 void AsciiArtEffect::SetTileHeightByScalingFactor(float scalingFactor) {

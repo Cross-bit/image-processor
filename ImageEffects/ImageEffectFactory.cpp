@@ -7,7 +7,7 @@
 /*
  *  Ascii art effect.
  */
-ImageEffectFactory::ImageEffectFactory(ImageData& imageData) : _imageData(imageData) {}
+ImageEffectFactory::ImageEffectFactory(ImageData& imageData) : _imageData(imageData) { }
 
 std::unique_ptr<ImageEffect> ImageEffectFactory::CreateAsciiArtEffectByScale(std::string& inputAlphabet, int colsX, float scale, std::ostream &outputStream) {
     return std::move(std::make_unique<AsciiArtEffect>(_imageData, inputAlphabet, colsX, scale, outputStream));

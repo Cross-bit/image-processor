@@ -35,14 +35,16 @@ bool ApplyGaussianBlurOption::ReadStandardDeviation(){
 
     auto stdDeviation = ReadUserInput();
 
-    if(stdDeviation == "" || !stdDeviation.find_first_not_of(" ") == std::string::npos) {
+    if(stdDeviation == "") {
         _standardDeviation = 1;
         PrintInputFallback<int>(_standardDeviation);
         return true;
     }
 
     if(stdDeviation.find_first_not_of("0123456789.") != std::string::npos || std::count(stdDeviation.begin(), stdDeviation.end(), '.') > 1) {
-        PrintError("Gaussian kernel size must be positive odd integer!");
+        _standardDeviation = 1;
+        PrintError("Gaussian standard deviation must be positive decimal value!");
+        PrintInputFallback<int>(_standardDeviation);
         return false;
     }
 

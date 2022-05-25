@@ -41,6 +41,24 @@ std::string MenuOption::ReadUserInput() const {
     return std::move(MenuOption::TrimInputWhiteSpaces(input));
 }
 
+bool MenuOption::ReadUserInputNaturalNum(unsigned& userInput, const unsigned int min, const unsigned int max) const{
+    userInput = -1;
+    std::string rawInput = ReadUserInput();
+
+    if (rawInput.find_first_not_of( "0123456789" ) != std::string::npos)
+        return false;
+
+    int converted = std::stoi(rawInput);
+
+    if (converted < min || converted > max)
+        return false;
+
+    userInput = converted;
+
+    return true;
+}
+
+
 bool MenuOption::ReadUserChoice(const std::string& expected, std::string& inputValue) const {
     inputValue = ReadUserInput();
     return (inputValue == expected);
@@ -78,6 +96,13 @@ template void MenuOption::PrintInputFallback<double>(const double&) const;
 template void MenuOption::PrintInputFallback<float>(const float&) const;
 
 void MenuOption::PrintInputFallback(const char& fallbackValue) const {
+
+    std::cout << "No input provided, or the input is invalid. "
+                 "Default value will be used instead. (def.:"
+              << fallbackValue << ")" << std::endl;
+}
+
+void MenuOption::PrintInputFallback(const std::string& fallbackValue) const {
 
     std::cout << "No input provided, or the input is invalid. "
                  "Default value will be used instead. (def.:"

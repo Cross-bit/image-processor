@@ -10,6 +10,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <limits.h>
 
 class MenuGroup;
 class MenuGroupFactory;
@@ -44,6 +45,8 @@ protected:
 
     void PrintInputFallback(const char& fallbackValue) const;
 
+    void PrintInputFallback(const std::string& fallbackValue) const;
+
     static bool CheckStringIsEmpty(const std::string& inputToCheck);
     static std::string TrimInputWhiteSpaces(const std::string& inputToTrim);
     static std::string TrimInputWhiteSpacesFront(const std::string& inputToTrim);
@@ -77,6 +80,16 @@ protected:
      * @return y/n based on user input. If input is invalid returns false and sets input value to "".
      */
     bool ReadUserYesNo(bool& result) const;
+
+     /**
+      * Tries to read users input and convert it to natural number.
+      * @param userInput Converted input. If not possible returns -1.
+      * @param min Minimal possible value def.: 0
+      * @param max Maximal possible value def.: 2147483647 (int max)
+      * @return true if conversion succeeded, false otherwise
+      */
+    bool ReadUserInputNaturalNum(unsigned& userInput, const unsigned int min = 0, const unsigned int max = INT_MAX) const;
+
 };
 
 #endif //IMAGEPROCESSOR_MENUOPTION_H

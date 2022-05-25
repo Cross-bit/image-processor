@@ -45,7 +45,7 @@ void GoFiltersMenuGroup::Execute() {
     while ( stringStream >> n ) {
 
         if (!_imagesLibrary.CheckIfIndexIsValid(n)) {
-            PrintWarning("Index " + std::to_string(n) + " is invalid and effect will be not applied!");
+            PrintWarning("Index " + std::to_string(n) + " is invalid and value will be ignored!");
         }
 
         // add to the queue

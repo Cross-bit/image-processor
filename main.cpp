@@ -34,17 +34,31 @@
 #include <cstdio>
 #include <filesystem>
 #include <unistd.h>
-void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
+
+#include <string>
+#include <memory>
+#include <iostream>
+#include <map>
+#include <vector>
+#include <limits.h>
+
+static void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
     data.Name = data.Name + "_" + name;
     format.SaveImageData(data, "../TestRes");
 }
 
 int main() {
+
+    auto a =  "--212";
+
+    int l = std::stoi(a);
+
+    return 1 ;
     ImageFormatFactory formatFactory;
 
     auto jpgFormat = formatFactory.CreateImageFormat("JPG");
 
-    std::string file = "../Resources/cube.jpg";
+    std::string file = "../Resources/lenna.jpg";
 
     auto res = jpgFormat->LoadImageData(file);
     if(res!= nullptr){
@@ -56,34 +70,31 @@ int main() {
     else
         std::cout << "does not work" << std::endl;
 
-    ImageEffectFactory imageFactory(*res);
-
-    //LinearGrayscaleStrategy algorithm;
-    auto effect1 = imageFactory.CreateLinearGrayScale();// grayscale linear
-    effect1->ProcessImageData();
-
     std::string inputAlpha = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,¨^`'. ";
     inputAlpha = "$@B%8&WM#;:,¨^`'. ";
 
-    ImageEffectFactory imageFactory2(effect1->GetProcessedImageDataReference());
 
-    //auto effect = imageFactory2.CreateAsciiArtEffectByScale(inputAlpha, 100, 0.4, std::cout); // grayscale avg*/
-   // auto effect = imageFactory.CreateBoxBlurConvolution(); // box blur
-    //auto effect = imageFactory.CreateGaussianBlurConvolution(11, 11); // gaussian blur
-   // auto effect = imageFactory.CreateColorInversion(1);
+   ImageEffectFactory imageFactory2(*res);
+    auto effectGrayscale = imageFactory2.CreateLinearGrayScale();
+    effectGrayscale->ProcessImageData();
+    //jpgFormat->SaveImageData(*effectGrayscale->GetProcessedImageData(), "../TestRes");
+    //
+    auto dat = effectGrayscale->GetProcessedImageData();
+    ImageEffectFactory imageFactory(*dat);
 
-   // -- tranformations --
- //   auto effect = imageFactory.CreateFlipTransform(FlipTransform::VERTICAL);
+    auto effect = imageFactory.CreateAsciiArtEffectByScale(inputAlpha, 1, 1 / (double)100, std::cout);
+    effect->ProcessImageData();
 
-    //effect->ProcessImageData();
 
-   // tmpStoreImg(effect->GetProcessedImageDataReference(), *jpgFormat, "tr");
+    return 1;
 
     ImagesLibrary imagesLibrary;
 
     MenuGroupFactory menuGroupsFactory(imagesLibrary);
 
     UserMenu userMenu(menuGroupsFactory);
+
+
 
     userMenu.Initialize("/mnt/c/Users/kriz/CLionProjects/ImageProcessor/Resources");
     userMenu.Update();
