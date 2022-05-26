@@ -54,6 +54,8 @@ protected:
      */
     void PerformImageParallelProcessing();
 
+    virtual void StoreProcessedImageData();
+
 private:
     std::vector<std::future<std::unique_ptr<ImageData>>> _asyncFilters;
 

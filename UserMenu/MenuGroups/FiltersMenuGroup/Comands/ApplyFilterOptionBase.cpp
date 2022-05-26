@@ -68,7 +68,7 @@ void ApplyFilterOptionBase::Execute() {
     PrintLine("Done!");
 
     // call image store command
-    (StoreImageDataOption (_processedImageIndexes)).Execute();
+    StoreProcessedImageData();
 }
 
 
@@ -78,4 +78,7 @@ std::unique_ptr<MenuGroup> ApplyFilterOptionBase::CreateNextGroup(UserMenu & use
 
 bool ApplyFilterOptionBase::InitializeFilterProperties() {
     return true;
+}
+void ApplyFilterOptionBase::StoreProcessedImageData() {
+    (StoreImageDataOption (_processedImageIndexes)).Execute();
 }
