@@ -23,7 +23,7 @@ void StoreImageDataOption::Execute() {
 
     std::unique_ptr<ImageFormat> imageFormat;
 
-    std::cout << "Enter format you wish to be used." << std::endl; // todo: add as selection menu...
+    PrintLine("Enter format you wish to be used.");
     auto formatExtension = ReadUserInput();
 
     imageFormat = formatFactory.CreateImageFormat(formatExtension);
@@ -33,10 +33,10 @@ void StoreImageDataOption::Execute() {
         imageFormat = formatFactory.CreateImageFormat("jpg");
     }
 
-    std::cout << "Enter full path to output directory(leave blank for default)." << std::endl;
+    PrintLine("Enter full path to output directory(leave blank for default).");
     auto outputDirectory = ReadUserInput();
 
-    if(outputDirectory == "")
+    if(CheckStringIsEmpty(outputDirectory))
         outputDirectory = _defaultOutputDir;
 
     if(!std::filesystem::exists(outputDirectory)){
@@ -49,7 +49,7 @@ void StoreImageDataOption::Execute() {
         imageFormat->SaveImageData(*img, outputDirectory);
     }
 
-    std::cout << "Images successfully saved!" << std::endl;
+    PrintLine("Images successfully saved!");
 }
 
 
