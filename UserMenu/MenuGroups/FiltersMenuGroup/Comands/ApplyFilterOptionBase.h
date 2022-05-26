@@ -30,7 +30,7 @@ protected:
     /**
      * Stores index of processed image data in library.
      */
-    std::vector<std::unique_ptr<ImageData>> _processedImageIndexes;
+    std::vector<std::unique_ptr<ImageData>> _processedImagesData;
 
     /**
      * Adds filtered data to image library and returns pointer to the data.
@@ -54,7 +54,16 @@ protected:
      */
     void PerformImageParallelProcessing();
 
+    /**
+     * Takes care for storing filtered image data.
+     */
     virtual void StoreProcessedImageData();
+
+    /**
+     * Definition for default file name appendinx, specific to each filter.
+     * @return
+     */
+    virtual std::string GetNewFileNameAppendix() const;
 
 private:
     std::vector<std::future<std::unique_ptr<ImageData>>> _asyncFilters;
@@ -75,6 +84,11 @@ private:
      * Waits until all async computations finishes image processing and joins them into main thread.
      */
     void WaitForParallelImageComputation();
+
+    /**
+     * After processing is done, adds appendix to every image file name specific to current filter.
+     */
+    void AddSpecificFilterAppendix();
 };
 
 

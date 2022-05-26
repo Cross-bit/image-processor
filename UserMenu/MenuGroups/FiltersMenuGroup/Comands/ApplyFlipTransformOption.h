@@ -17,9 +17,14 @@ public:
 
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
+
     bool InitializeFilterProperties() override;
+
+    std::string GetNewFileNameAppendix() const override;
 private:
     FlipTransform::Direction _flipDirection;
+
+    char _flipChar = '.';
 };
 
 

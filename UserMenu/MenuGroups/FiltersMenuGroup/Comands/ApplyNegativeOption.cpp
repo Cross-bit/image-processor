@@ -17,3 +17,7 @@ std::unique_ptr<ImageData> ApplyNegativeOption::ApplyFilterOnImage(ImageData& im
 
     return std::move(effect->GetProcessedImageData());
 }
+
+std::string  ApplyNegativeOption::GetNewFileNameAppendix() const {
+    return "_negative";
+}

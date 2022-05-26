@@ -15,3 +15,7 @@ std::unique_ptr<ImageData> ApplyLinearGrayscaleOption::ApplyFilterOnImage(ImageD
     effect->ProcessImageData();
     return std::move(effect->GetProcessedImageData());
 }
+
+std::string ApplyLinearGrayscaleOption::GetNewFileNameAppendix() const {
+    return "_grayscale_l";
+}

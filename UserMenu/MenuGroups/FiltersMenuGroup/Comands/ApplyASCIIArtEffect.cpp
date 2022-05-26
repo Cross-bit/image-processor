@@ -33,10 +33,6 @@ std::unique_ptr<ImageData> ApplyASCIIArtEffect::ApplyFilterOnImage(ImageData &im
     return std::move(effect->GetProcessedImageData());
 }
 
-std::string ApplyASCIIArtEffect::GetNewFileNameAppendix() const{
-    return "_ascii";
-}
-
 std::string ApplyASCIIArtEffect::GetFullFileDirName(const std::string& fileName) const{
     std::string res = _outputDir;
     res += _outputDir[_outputDir.length() - 1] == '/' ? "" : "/";
@@ -88,11 +84,11 @@ bool ApplyASCIIArtEffect::InitializeFilterProperties() {
         PrintInputFallback<double>(_scalingFactor);
     }
 
-    PrintLine("Enter output file path:");
+    PrintLine("Enter output file directory:");
 
     std::string outputPath = ReadUserInput();
 
-    // if provided dir does not exsist use default
+    // if provided dir does not exsists use default
     if (!std::filesystem::exists(outputPath)) {
         // todo: refactor:
         _outputDir = "/mnt/c/Users/kriz/CLionProjects/ImageProcessor/DefaultOutput";
@@ -106,5 +102,9 @@ bool ApplyASCIIArtEffect::InitializeFilterProperties() {
 }
 
 void ApplyASCIIArtEffect::StoreProcessedImageData() {
-    std::cout << "done!";
+    PrintLine("ASCII art done and saved!");
+}
+
+std::string ApplyASCIIArtEffect::GetNewFileNameAppendix() const {
+    return "_ascii";
 }

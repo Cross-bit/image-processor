@@ -21,15 +21,16 @@ bool ApplyFlipTransformOption::InitializeFilterProperties() {
         PrintError("Invalid input given!");
         return false;
     }
+    _flipChar = userInput.c_str()[0];
 
-    switch (userInput.c_str()[0]) {
+    switch (_flipChar) {
         case 'h':
             _flipDirection = FlipTransform::HORIZONTAL; break;
         case 'v':
             _flipDirection = FlipTransform::VERTICAL;
             break;
         default:
-            PrintError("Invalid input given!");
+            PrintError("Invalid input provided!");
             return false;
 
     }
@@ -43,4 +44,8 @@ std::unique_ptr<ImageData> ApplyFlipTransformOption::ApplyFilterOnImage(ImageDat
     effect->ProcessImageData();
 
     return std::move(effect->GetProcessedImageData());
+}
+
+std::string ApplyFlipTransformOption::GetNewFileNameAppendix() const {
+    return ("_flipped_" + _flipChar);
 }

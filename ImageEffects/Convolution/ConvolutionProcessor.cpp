@@ -15,7 +15,7 @@ ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, std::unique_ptr
         _kernelStepVertically(1)
     {
         _processedImage = std::make_unique<ImageData>(
-                    imageData.Name + "_conv",
+                    imageData.Name,
                     imageData.Width,
                     imageData.Height,
                     imageData.Channels,

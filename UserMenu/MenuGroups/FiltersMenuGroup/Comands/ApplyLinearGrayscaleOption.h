@@ -14,6 +14,7 @@ class ApplyLinearGrayscaleOption : public ApplyFilterOptionBase
 public:
     ApplyLinearGrayscaleOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
+    std::string GetNewFileNameAppendix() const override;
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
 };

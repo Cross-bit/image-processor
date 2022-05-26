@@ -16,6 +16,8 @@ public:
 
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
+
+    std::string GetNewFileNameAppendix() const override;
 private:
     int _repetitions = 1;
 };

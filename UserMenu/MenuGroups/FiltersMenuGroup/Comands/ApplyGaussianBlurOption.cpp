@@ -64,3 +64,6 @@ std::unique_ptr<ImageData> ApplyGaussianBlurOption::ApplyFilterOnImage(ImageData
     return std::move(effect->GetProcessedImageData());
 }
 
+std::string ApplyGaussianBlurOption::GetNewFileNameAppendix() const {
+    return "_gauss_blur";
+}

@@ -18,7 +18,10 @@ public:
 
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData& inputImage) override;
+
     bool InitializeFilterProperties() override;
+
+    std::string GetNewFileNameAppendix() const override;
 private:
     /**
      * Direction of sobel.

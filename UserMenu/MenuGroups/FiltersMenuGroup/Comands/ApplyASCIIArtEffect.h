@@ -21,7 +21,7 @@ protected:
 
     void StoreProcessedImageData() override;
 
-    std::string GetNewFileNameAppendix() const;
+    std::string GetNewFileNameAppendix() const override;
 
 private:
 

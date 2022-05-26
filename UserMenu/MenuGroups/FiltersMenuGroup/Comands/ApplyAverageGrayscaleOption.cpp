@@ -15,3 +15,7 @@ std::unique_ptr<ImageData> ApplyAverageGrayscaleOption::ApplyFilterOnImage(Image
     effect->ProcessImageData();
     return std::move(effect->GetProcessedImageData());
 }
+
+std::string ApplyAverageGrayscaleOption::GetNewFileNameAppendix() const {
+    return "_grayscale_avg";
+}

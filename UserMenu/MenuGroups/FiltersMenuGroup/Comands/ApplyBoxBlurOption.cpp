@@ -39,3 +39,7 @@ std::unique_ptr<ImageData> ApplyBoxBlurOption::ApplyFilterOnImage(ImageData& ima
 
     return std::move(result);
 }
+
+std::string ApplyBoxBlurOption::GetNewFileNameAppendix() const {
+    return "_box_blur";
+}

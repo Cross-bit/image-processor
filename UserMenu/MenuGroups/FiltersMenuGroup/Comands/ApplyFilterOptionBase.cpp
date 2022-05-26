@@ -40,7 +40,7 @@ void ApplyFilterOptionBase::WaitForParallelImageComputation() {
 
 void ApplyFilterOptionBase::FinalizeParallelImageProcessing() {
     for (auto & t : _asyncFilters) {
-        _processedImageIndexes.emplace_back(t.get());
+        _processedImagesData.emplace_back(t.get());
     }
 }
 
@@ -79,6 +79,22 @@ std::unique_ptr<MenuGroup> ApplyFilterOptionBase::CreateNextGroup(UserMenu & use
 bool ApplyFilterOptionBase::InitializeFilterProperties() {
     return true;
 }
+
+void ApplyFilterOptionBase::AddSpecificFilterAppendix() {
+    for (auto& imageData : _processedImagesData) {
+        imageData->Name += GetNewFileNameAppendix();
+    }
+}
+
+
 void ApplyFilterOptionBase::StoreProcessedImageData() {
-    (StoreImageDataOption (_processedImageIndexes)).Execute();
+
+    // alter processed images name
+    AddSpecificFilterAppendix();
+
+    (StoreImageDataOption (_processedImagesData)).Execute();
+}
+
+std::string ApplyFilterOptionBase::GetNewFileNameAppendix() const{
+    return "_out";
 }

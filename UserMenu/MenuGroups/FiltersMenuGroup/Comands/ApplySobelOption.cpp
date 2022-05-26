@@ -56,3 +56,7 @@ std::unique_ptr<ImageData> ApplySobelOption::ApplyGrayScale(ImageData &inputImag
     grayScale->ProcessImageData();
     return std::move(grayScale->GetProcessedImageData());
 }
+
+std::string ApplySobelOption::GetNewFileNameAppendix() const {
+    return "_sobel";
+}
