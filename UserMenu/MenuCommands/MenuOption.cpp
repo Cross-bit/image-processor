@@ -4,6 +4,9 @@
 
 #include "MenuOption.h"
 #include <algorithm>
+#include <string>
+#include <memory>
+#include <iostream>
 
 void MenuOption::Render(){
     std::cout << _itemContent;
@@ -41,11 +44,11 @@ std::string MenuOption::ReadUserInput() const {
     return std::move(MenuOption::TrimInputWhiteSpaces(input));
 }
 
-bool MenuOption::ReadUserInputNaturalNum(unsigned& userInput, const unsigned int min, const unsigned int max) const{
+bool MenuOption::ReadUserInputNaturalNum(int& userInput, const unsigned int min, const unsigned int max) const {
     userInput = -1;
     std::string rawInput = ReadUserInput();
 
-    if (rawInput.find_first_not_of( "0123456789" ) != std::string::npos)
+    if (rawInput.find_first_not_of( "0123456789" ) != std::string::npos || rawInput.length() < 1)
         return false;
 
     int converted = std::stoi(rawInput);
@@ -54,6 +57,23 @@ bool MenuOption::ReadUserInputNaturalNum(unsigned& userInput, const unsigned int
         return false;
 
     userInput = converted;
+
+    return true;
+}
+
+bool MenuOption::ReadUserInputDecimal(double& userInput, const double min, const double max) const {
+
+    auto rawInput = ReadUserInput();
+    char* endptr = 0;
+
+    double converted = strtod(&rawInput[0], &endptr);
+
+    if (*endptr != '\0' || endptr == rawInput) {
+        return false;
+    }
+
+    if (converted < min || converted > max)
+        return false;
 
     return true;
 }

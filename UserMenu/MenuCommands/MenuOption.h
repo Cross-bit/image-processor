@@ -10,6 +10,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <float.h>
 #include <limits.h>
 
 class MenuGroup;
@@ -83,12 +84,21 @@ protected:
 
      /**
       * Tries to read users input and convert it to natural number.
-      * @param userInput Converted input. If not possible returns -1.
+      * @param userInput Converted input. If not possible sets to -1
       * @param min Minimal possible value def.: 0
       * @param max Maximal possible value def.: 2147483647 (int max)
       * @return true if conversion succeeded, false otherwise
       */
-    bool ReadUserInputNaturalNum(unsigned& userInput, const unsigned int min = 0, const unsigned int max = INT_MAX) const;
+    bool ReadUserInputNaturalNum(int& userInput, const unsigned int min = 0, const unsigned int max = INT_MAX) const;
+
+    /**
+     * Tries to read users input and convert it to real number.
+     * @param userInput Converted input. If not possible sets to 0
+     * @param min Minimal possible value def.: DBL_MIN
+     * @param max Maximal possible value def.: DBL_MAX
+     * @return true if conversion succeeded, false otherwise
+     */
+    bool ReadUserInputDecimal(double& userInput, const double min = DBL_MIN, const double max = DBL_MAX) const;
 
 };
 
