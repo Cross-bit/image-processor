@@ -89,7 +89,7 @@ add_executable(
         UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.h
         UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.cpp
         UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.h
-        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h UserMenu/GlobalMenuCommands/StoreImageDataOption.cpp UserMenu/GlobalMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.h)
+        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h UserMenu/GlobalMenuCommands/StoreImageDataOption.cpp UserMenu/GlobalMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.h Services/ConfigurationLoader.cpp Services/ConfigurationLoader.h Services/yamlConfigurationLoader.cpp Services/yamlConfigurationLoader.h)
 
 #find_package (jpeg REQUIRED)
 #find_package(libjpeg REQUIRED)
@@ -104,7 +104,7 @@ add_executable(
 #find_library(JPEG_LIB External/lib/)
 #${JPEG_LIB}
 #target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libturbojpeg.a)
-
+target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libyaml-cpp.a)
 #target_link_libraries(ImageProcessor  /mnt/c/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
 target_link_libraries(ImageProcessor ${JPEG_LIB})
 
