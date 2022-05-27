@@ -16,12 +16,9 @@ public:
 
     std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &groupFactory) override;
 
-    void Execute() override;
+    void Execute(UserMenu& userMenu) override;
 private:
     std::vector<std::unique_ptr<ImageData>>& _imagesToStore;
-
-    const std::string _defaultOutputDir = "/mnt/c/Users/kriz/CLionProjects/ImageProcessor/DefaultOutput";
-    // todo: ... really bad hardcoded... just for now ...
 };
 
 

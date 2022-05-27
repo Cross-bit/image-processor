@@ -17,39 +17,43 @@ _imagesToStore(imagesToStore)
     _itemContent = "Save image data.";
 }
 
-void StoreImageDataOption::Execute() {
+void StoreImageDataOption::Execute(UserMenu& userMenu) {
 
     ImageFormatFactory formatFactory;
 
     std::unique_ptr<ImageFormat> imageFormat;
 
-    PrintLine("Enter format you wish to be used.");
+    PrintLine("Enter format you wish to be used:");
     auto formatExtension = ReadUserInput();
 
     imageFormat = formatFactory.CreateImageFormat(formatExtension);
 
-    if(imageFormat == nullptr) {
+    if (imageFormat == nullptr) {
         PrintWarning("Unfortunately your format is not supported. jpg will be used instead ...");
         imageFormat = formatFactory.CreateImageFormat("jpg");
     }
 
-    PrintLine("Enter full path to output directory(leave blank for default).");
+    PrintLine("Enter full path to output directory(leave blank for default):");
     auto outputDirectory = ReadUserInput();
 
-    if(CheckStringIsEmpty(outputDirectory))
-        outputDirectory = _defaultOutputDir;
+    if (CheckStringIsEmpty(outputDirectory))
+        outputDirectory = userMenu.ConfigurationCtx.DefaultOutputDir;
 
-    if(!std::filesystem::exists(outputDirectory)){
-        PrintWarning("Provided dir does not exist! Default directory will be used instead ...");
-        outputDirectory = _defaultOutputDir;
+    if (!std::filesystem::exists(outputDirectory)) {
+        PrintError("Provided directory does not exist! Saving failed...");
+        return;
     }
 
     // save image data
     for (auto & img : _imagesToStore) {
-        imageFormat->SaveImageData(*img, outputDirectory);
+        if(!imageFormat->SaveImageData(*img, outputDirectory)){
+            PrintWarning("Image: " + img->Name + " couldn't be saved.");
+        }
+        else
+            PrintSuccess("Image " + img->Name + imageFormat->GetExtension() + " saved.");
     }
 
-    PrintLine("Images successfully saved!");
+    PrintSuccess("Saving completed!");
 }
 
 
