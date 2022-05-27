@@ -19,36 +19,77 @@ _imagesLibrary(imagesLibrary)
 }
 
 std::unique_ptr<MenuGroup> GoFiltersMenuGroup::CreateNextGroup(UserMenu &userMenu) {
-    return std::move(userMenu.GroupsFac.CreateFiltersMenuGroup(std::move(_imagesToFilter)));
+    return _executionSucceeded ? std::move(userMenu.GroupsFac.CreateFiltersMenuGroup(std::move(_imagesToFilter))) : nullptr;
 }
 
 
-void GoFiltersMenuGroup::Execute() {
+void GoFiltersMenuGroup::Execute(UserMenu& userMenu) {
 
     // first list all available images
     ListAllImagesOption listAllImagesCommand(_imagesLibrary);
-    listAllImagesCommand.Execute();
+    listAllImagesCommand.Execute(userMenu);
 
-    std::cout << "Enter numbers of images that you wish to modify(separated by space):" << std::endl;
+    PrintLine("Enter indexes of images that you wish to modify(separated by space):");
 
-    auto dataToModify = ReadUserInput();
+    auto rawImgIndexes = ReadUserInput();
 
-    if(dataToModify.find_first_not_of("0123456789 ") != std::string::npos){
-        PrintError("Invalid input!");
+    // special value
+    if (rawImgIndexes == allIndexesSpecial){
+        AddAllIndexes();
+        _executionSucceeded = !_imagesToFilter.empty();
         return;
     }
 
+    if (rawImgIndexes.find_first_not_of("0123456789" + WHITESPACE) != std::string::npos){
+        PrintError("Invalid input!");
+        _executionSucceeded = false;
+        return;
+    }
 
-    std::istringstream stringStream( dataToModify );
+    if (CheckStringIsEmpty(rawImgIndexes)) {
+        _executionSucceeded = false;
+        PrintError("Input provided is empty!");
+        return;
+    }
 
-    int n;
-    while ( stringStream >> n ) {
+    ParseIndexes(rawImgIndexes);
 
-        if (!_imagesLibrary.CheckIfIndexIsValid(n)) {
-            PrintWarning("Index " + std::to_string(n) + " is invalid and value will be ignored!");
+    if (_imagesToFilter.empty()) {
+        PrintError("All provided inputs are invalid!");
+        return;
+    }
+
+    _executionSucceeded = true;
+}
+
+void GoFiltersMenuGroup::AddAllIndexes() {
+    auto beginIterator = _imagesLibrary.Begin();
+    for (auto it = beginIterator; it != _imagesLibrary.End(); ++it) {
+        int indexVal = std::distance(_imagesLibrary.Begin(), it);
+        _imagesToFilter.emplace(indexVal);
+    }
+}
+
+void GoFiltersMenuGroup::ParseIndexes(std::string toParseFrom) {
+    size_t pos = 0;
+    while (!CheckStringIsEmpty(toParseFrom)) {
+
+        size_t tmpPos = toParseFrom.find_first_of(WHITESPACE);
+        pos = (tmpPos == std::string::npos ? toParseFrom.length() : tmpPos);
+
+        std::string imgIndex = toParseFrom.substr(0, pos);
+        toParseFrom.erase(0, pos + 1);
+
+        if (CheckStringIsEmpty(imgIndex))
+            continue;
+        else {
+            if (!CheckIfStringIsNaturalNumber(imgIndex)) {
+                PrintWarning("Index " + imgIndex + " is invalid and value will be ignored!");
+                continue;
+            }
+
+            int indexValue = std::stoi(imgIndex);
+            _imagesToFilter.emplace(indexValue);
         }
-
-        // add to the queue
-        _imagesToFilter.emplace(n);
     }
 }

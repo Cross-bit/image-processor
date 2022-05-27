@@ -19,7 +19,7 @@ protected:
 
     bool InitializeFilterProperties() override;
 
-    void StoreProcessedImageData() override;
+    void StoreProcessedImageData(UserMenu& userMenu) override;
 
     std::string GetNewFileNameAppendix() const override;
 

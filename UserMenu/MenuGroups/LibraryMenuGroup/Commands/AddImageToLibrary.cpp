@@ -19,7 +19,7 @@ std::unique_ptr<MenuGroup> AddImageToLibrary::CreateNextGroup(UserMenu & userMen
     return std::move(userMenu.GroupsFac.CreateLibraryMenuGroup());
 }
 
-void AddImageToLibrary::Execute()
+void AddImageToLibrary::Execute(UserMenu& userMenu)
 {
     _imagesLibrary.UpdateRecords();
 

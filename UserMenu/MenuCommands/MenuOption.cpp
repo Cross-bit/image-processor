@@ -12,18 +12,22 @@ void MenuOption::Render(){
     std::cout << _itemContent;
 }
 
-void MenuOption::Execute() { }
+void MenuOption::Execute(UserMenu& userMenu) { }
 
 void MenuOption::PrintError(const std::string& callbackMessage) {
-    std::cout << "Error: " << callbackMessage << std::endl;
+    std::cout << red << "Error: " << callbackMessage << std::endl << reset;
 }
 
 void MenuOption::PrintWarning(const std::string& callbackMessage) {
-    std::cout << "Warning: " << callbackMessage << std::endl;
+    std::cout << yellow << "Warning: " << callbackMessage << std::endl << reset;
 }
 
 void MenuOption::Print(const std::string& messageToPrint) {
     std::cout << messageToPrint;
+}
+
+void MenuOption::PrintSuccess(const std::string& messageToPrint) {
+    std::cout << green << messageToPrint << std::endl << reset;
 }
 
 void MenuOption::PrintLine(const std::string& messageToPrint) {
@@ -48,7 +52,7 @@ bool MenuOption::ReadUserInputNaturalNum(int& userInput, const unsigned int min,
     userInput = -1;
     std::string rawInput = ReadUserInput();
 
-    if (rawInput.find_first_not_of( "0123456789" ) != std::string::npos || rawInput.length() < 1)
+    if (!CheckIfStringIsNaturalNumber(rawInput))
         return false;
 
     int converted = std::stoi(rawInput);
@@ -59,6 +63,10 @@ bool MenuOption::ReadUserInputNaturalNum(int& userInput, const unsigned int min,
     userInput = converted;
 
     return true;
+}
+
+bool MenuOption::CheckIfStringIsNaturalNumber(std::string& stringToCheck) {
+    return (stringToCheck.find_first_not_of("0123456789" ) == std::string::npos && stringToCheck.length() >= 1);
 }
 
 bool MenuOption::ReadUserInputDecimal(double& userInput, const double min, const double max) const {
@@ -104,10 +112,7 @@ bool MenuOption::ReadUserYesNo(bool& result) const {
 template <typename T>
 void MenuOption::PrintInputFallback(const T& fallbackValue) const {
     // it is up to user to specify all value types convertible to string(by to_string) in fallback arg, in ff declaration below
-
-    std::cout << "No input provided, or the input is invalid. "
-                 "Default value will be used instead. (def.:"
-                  << std::to_string(fallbackValue) << ")" << std::endl;
+    std::cout << GetFallbackMessage(std::to_string(fallbackValue)) << std::endl;
 }
 
 // ff declaration for fallback prints (add if some more needed in the future)
@@ -116,19 +121,18 @@ template void MenuOption::PrintInputFallback<double>(const double&) const;
 template void MenuOption::PrintInputFallback<float>(const float&) const;
 
 void MenuOption::PrintInputFallback(const char& fallbackValue) const {
-
-    std::cout << "No input provided, or the input is invalid. "
-                 "Default value will be used instead. (def.:"
-              << fallbackValue << ")" << std::endl;
+    std::cout << GetFallbackMessage(std::string(1, fallbackValue)) << std::endl;
 }
 
 void MenuOption::PrintInputFallback(const std::string& fallbackValue) const {
-
-    std::cout << "No input provided, or the input is invalid. "
-                 "Default value will be used instead. (def.:"
-              << fallbackValue << ")" << std::endl;
+    std::cout << GetFallbackMessage(fallbackValue) << std::endl;
 }
 
+std::string MenuOption::GetFallbackMessage(const std::string& defValue) const {
+    return cyan + "No input provided, or the input is invalid. "
+                  "Default value will be used instead. (def.: "
+           + defValue + ")" + reset;
+}
 // -- static helper functions
 const std::string MenuOption::WHITESPACE = " \n\r\t\f\v";
 

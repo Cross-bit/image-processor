@@ -57,7 +57,7 @@ void MenuGroup::OnUserChoice(UserMenu& userMenu, std::string choice) {
     auto optionSearched = _menuOptions.find(choice);
     if (optionSearched != _menuOptions.end()) {
         // 1) execute command
-        optionSearched->second->Execute();
+        optionSearched->second->Execute(userMenu);
 
         // 2) navigate to next menu group
         userMenu.SetNewMenuItem(std::move(optionSearched->second->CreateNextGroup(userMenu)));

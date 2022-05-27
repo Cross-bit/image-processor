@@ -28,6 +28,7 @@ private:
      */
     SobelImageKernel::Direction _sobelDirection = SobelImageKernel::BOTTOM;
     bool _isColored = false;
+    char _sobelDirectionChar;
 
     /**
      * Coverts image first to grayscale.

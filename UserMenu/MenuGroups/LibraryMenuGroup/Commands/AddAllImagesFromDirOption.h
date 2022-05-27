@@ -14,7 +14,7 @@ class AddAllImagesFromDirOption : public MenuOption
 public:
     AddAllImagesFromDirOption(ImagesLibrary& imagesLibrary, std::string sourceDir = "");
 
-    void Execute() override;
+    void Execute(UserMenu& userMenu) override;
 
     std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & userMenu) override;
 private:

@@ -19,7 +19,7 @@ NegativeEffect::NegativeEffect(ImageData &imageData, float intensityCoef) : Imag
 
 void NegativeEffect::SetIntensityCoef(float value){
     if(value < 0 || value > 1)
-        assert("Intensity of negativity must be in interval [0, 1]!");
+        assert("Intensity coefficient must be in interval [0, 1]!");
 
     _intensityCoef = value;
 }

@@ -16,7 +16,7 @@ _sourceDir(sourceDir)
     _itemContent = "Add all images from dir";
 }
 
-void AddAllImagesFromDirOption::Execute() {
+void AddAllImagesFromDirOption::Execute(UserMenu& userMenu) {
 
     std::cout << "Enter full path to directory: " << std::endl;
 

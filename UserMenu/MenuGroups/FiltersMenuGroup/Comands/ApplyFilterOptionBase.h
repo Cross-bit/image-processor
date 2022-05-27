@@ -19,7 +19,7 @@ class ApplyFilterOptionBase : public MenuOption {
 public:
     ApplyFilterOptionBase(std::unordered_set<int> libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary);
 
-    void Execute() override;
+    void Execute(UserMenu& userMenu) override;
 
     std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & userMenu) override;
 
@@ -57,7 +57,7 @@ protected:
     /**
      * Takes care for storing filtered image data.
      */
-    virtual void StoreProcessedImageData();
+    virtual void StoreProcessedImageData(UserMenu& userMenu);
 
     /**
      * Definition for default file name appendinx, specific to each filter.

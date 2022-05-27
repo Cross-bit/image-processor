@@ -37,8 +37,7 @@ add_executable(
         ImageLibrary/ImageFormat/ImageJPG.cpp
         ImageLibrary/ImageFormat/ImageJPG.h
         ImageLibrary/ImageFormatFactory.cpp
-        ImageLibrary/ImageFormatFactory.h ImageLibrary/ImageFormat/ImagePNG.cpp
-        ImageLibrary/ImageFormat/ImagePNG.h
+        ImageLibrary/ImageFormatFactory.h
         ImageLibrary/Image/ImageData.cpp
         ImageLibrary/Image/ImageData.h
         ImageEffects/GrayscaleEffect/GrayscaleEffect.cpp

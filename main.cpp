@@ -45,58 +45,31 @@
 #include <iostream>
 #include <fstream>
 
-static void tmpStoreImg(ImageData& data, const ImageFormat& format, const std::string& name){
-    data.Name = data.Name + "_" + name;
-    format.SaveImageData(data, "../TestRes");
-}
+#include "Services/ConfigurationLoader.h"
+#include "Services/yamlConfigurationLoader.h"
 
 int main() {
 
+    // -- configuration loading --
+    std::string currentDir = std::filesystem::current_path();
+    std::string pathToConfig = currentDir + "/config.yaml";
 
+    yamlConfigurationLoader configurationLoader(pathToConfig);
 
-    ImageFormatFactory formatFactory;
+    ConfigurationContext config;
 
-    auto jpgFormat = formatFactory.CreateImageFormat("JPG");
-
-    std::string file = "../Resources/lenna.jpg";
-
-    auto res = jpgFormat->LoadImageData(file);
-    if(res!= nullptr){
-        std::cout << "image: " << std::endl;
-        std::cout << "\tname: " << res->Name << std::endl;
-        std::cout << "\tW: " << res->Width << std::endl;
-        std::cout << "\tH: " << res->Height << std::endl;
+    if (configurationLoader.TryLoadConfiguration()){
+        config = configurationLoader.GetConfigurationContext();
     }
-    else
-        std::cout << "does not work" << std::endl;
 
-    /* std::string inputAlpha = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,¨^`'. ";
-     inputAlpha = "$@B%8&WM#;:,¨^`'. ";
-
-
-    ImageEffectFactory imageFactory2(*res);
-     auto effectGrayscale = imageFactory2.CreateLinearGrayScale();
-     effectGrayscale->ProcessImageData();
-     //jpgFormat->SaveImageData(*effectGrayscale->GetProcessedImageData(), "../TestRes");
-     //
-     auto dat = effectGrayscale->GetProcessedImageData();
-     ImageEffectFactory imageFactory(*dat);
-
-     auto effect = imageFactory.CreateAsciiArtEffectByScale(inputAlpha, 1, 1 / (double)100, std::cout);
-     effect->ProcessImageData();*/
-
-
-    //return 1;
-
+    // -- user menu initialisation --
     ImagesLibrary imagesLibrary;
 
     MenuGroupFactory menuGroupsFactory(imagesLibrary);
 
-    UserMenu userMenu(menuGroupsFactory);
+    UserMenu userMenu(menuGroupsFactory, config);
 
-
-
-    userMenu.Initialize("/mnt/c/Users/kriz/CLionProjects/ImageProcessor/Resources");
+    userMenu.Initialize();
     userMenu.Update();
 
     return 0;

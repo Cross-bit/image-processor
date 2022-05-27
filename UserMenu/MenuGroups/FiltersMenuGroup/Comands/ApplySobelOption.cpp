@@ -20,7 +20,9 @@ bool ApplySobelOption::InitializeFilterProperties() {
         userInput = "b";
     }
 
-    switch (userInput[0]) {
+    _sobelDirectionChar = userInput[0];
+
+    switch (_sobelDirectionChar) {
         case 't': _sobelDirection = SobelImageKernel::Direction::TOP; break;
         case 'b': _sobelDirection = SobelImageKernel::Direction::BOTTOM; break;
         case 'l': _sobelDirection = SobelImageKernel::Direction::LEFT; break;
@@ -58,5 +60,9 @@ std::unique_ptr<ImageData> ApplySobelOption::ApplyGrayScale(ImageData &inputImag
 }
 
 std::string ApplySobelOption::GetNewFileNameAppendix() const {
-    return "_sobel";
+
+    std::string newFileName = "_sobel_";
+    newFileName += (_isColored ? "colored" : "");
+    newFileName += _sobelDirectionChar;
+    return newFileName;
 }

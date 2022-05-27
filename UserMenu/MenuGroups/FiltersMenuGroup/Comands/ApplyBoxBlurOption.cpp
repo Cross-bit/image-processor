@@ -12,16 +12,10 @@ ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
 bool ApplyBoxBlurOption::InitializeFilterProperties() {
     PrintLine("Enter number of cycles in range 1 to n (def.: 1):");
 
-    auto repetitionsInput = ReadUserInput();
-
-    if (CheckStringIsEmpty(repetitionsInput) ||
-    repetitionsInput.find_first_not_of("123456789") != std::string::npos) {
+    if (!ReadUserInputNaturalNum(_repetitions)) {
         _repetitions = 1;
         PrintInputFallback<int>(_repetitions);
-        return true;
     }
-
-    _repetitions = std::stoi(repetitionsInput);
 
     return true;
 }

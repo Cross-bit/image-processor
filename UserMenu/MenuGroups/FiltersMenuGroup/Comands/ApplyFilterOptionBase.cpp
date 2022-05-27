@@ -56,7 +56,7 @@ void ApplyFilterOptionBase::PerformImageParallelProcessing() {
 }
 
 
-void ApplyFilterOptionBase::Execute() {
+void ApplyFilterOptionBase::Execute(UserMenu& userMenu) {
 
     if (!InitializeFilterProperties())
         return;
@@ -65,10 +65,10 @@ void ApplyFilterOptionBase::Execute() {
 
     PerformImageParallelProcessing();
 
-    PrintLine("Done!");
+    PrintSuccess("Done!");
 
     // call image store command
-    StoreProcessedImageData();
+    StoreProcessedImageData(userMenu);
 }
 
 
@@ -86,13 +86,12 @@ void ApplyFilterOptionBase::AddSpecificFilterAppendix() {
     }
 }
 
-
-void ApplyFilterOptionBase::StoreProcessedImageData() {
+void ApplyFilterOptionBase::StoreProcessedImageData(UserMenu& userMenu) {
 
     // alter processed images name
     AddSpecificFilterAppendix();
 
-    (StoreImageDataOption (_processedImagesData)).Execute();
+    (StoreImageDataOption (_processedImagesData)).Execute(userMenu);
 }
 
 std::string ApplyFilterOptionBase::GetNewFileNameAppendix() const{

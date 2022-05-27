@@ -6,49 +6,28 @@
 #include <sstream>
 
 ApplyGaussianBlurOption::ApplyGaussianBlurOption(std::unordered_set<int> &libraryIndexesToWorkWith, ImagesLibrary& imagesLibrary) :
-ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary)
-{
+ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
     _itemContent = "Gaussian blur";
 }
 
-bool ApplyGaussianBlurOption::ReadKernelSize(){
-    std::cout << "Please enter odd positive integer representing Gaussian kernel size(def.: 3):" << std::endl;
-    auto kernelInput = ReadUserInput();
+bool ApplyGaussianBlurOption::ReadKernelSize() {
+    PrintLine("Please enter odd positive integer representing Gaussian kernel size(def.: 3):");
 
-    if (CheckStringIsEmpty(kernelInput)) {
+    if (!ReadUserInputNaturalNum(_kernelSize, 2) || (_kernelSize & 1) == 0) {
         _kernelSize = 3;
         PrintInputFallback<int>(_kernelSize);
         return true;
     }
-
-    if (kernelInput.find_first_not_of("0123456789") != std::string::npos || (stoi(kernelInput) & 1) == 0) {
-        PrintError("Gaussian kernel size must be positive odd integer!");
-        return false;
-    }
-
-    _kernelSize = stoi(kernelInput);
     return true;
 }
 
-bool ApplyGaussianBlurOption::ReadStandardDeviation(){
-    std::cout << "Please enter standard deviation(positive double, def.: 1):" << std::endl;
+bool ApplyGaussianBlurOption::ReadStandardDeviation() {
+    PrintLine("Please enter standard deviation(positive double >= 0.1, def.: 1.0):");
 
-    auto stdDeviation = ReadUserInput();
-
-    if (CheckStringIsEmpty(stdDeviation)) {
-        _standardDeviation = 1;
-        PrintInputFallback<int>(_standardDeviation);
-        return true;
+    if (!ReadUserInputDecimal(_standardDeviation, 0.1)) {
+        _standardDeviation = 1.0;
+        PrintInputFallback<double>(_standardDeviation);
     }
-
-    if (stdDeviation.find_first_not_of("0123456789.") != std::string::npos || std::count(stdDeviation.begin(), stdDeviation.end(), '.') > 1) {
-        _standardDeviation = 1;
-        PrintError("Gaussian standard deviation must be positive decimal value!");
-        PrintInputFallback<int>(_standardDeviation);
-        return false;
-    }
-
-    _standardDeviation = stod(stdDeviation);
     return true;
 }
 

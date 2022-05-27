@@ -17,8 +17,8 @@ bool ApplyFlipTransformOption::InitializeFilterProperties() {
 
     auto userInput = ReadUserInput();
 
-    if(userInput.length() > 1 || userInput.length() <= 0){
-        PrintError("Invalid input given!");
+    if(userInput.length() > 1){
+        PrintError("Invalid input provided!");
         return false;
     }
     _flipChar = userInput.c_str()[0];

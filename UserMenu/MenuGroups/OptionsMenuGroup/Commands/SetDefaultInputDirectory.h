@@ -13,7 +13,7 @@ class SetDefaultInputDirectory : MenuOption
 public:
     SetDefaultInputDirectory();
 
-    void Execute() override;
+    void Execute(UserMenu& userMenu) override;
 };
 
 

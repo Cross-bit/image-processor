@@ -24,7 +24,7 @@ std::unique_ptr<ImageData> ApplyASCIIArtEffect::ApplyFilterOnImage(ImageData &im
     ImageEffectFactory imageFactoryASCII(*grayScaled);
 
     std::ofstream outputFile;
-    outputFile.open(GetFullFileDirName(imageToProcess.Name));// todo:
+    outputFile.open(GetFullFileDirName(imageToProcess.Name));
 
     auto effect = imageFactoryASCII.CreateAsciiArtEffectByScale(_inputAlphabet, (_colsCount < 0 ? imageToProcess.Width : _colsCount), _scalingFactor, outputFile);
     effect->ProcessImageData();
@@ -101,7 +101,7 @@ bool ApplyASCIIArtEffect::InitializeFilterProperties() {
     return true;
 }
 
-void ApplyASCIIArtEffect::StoreProcessedImageData() {
+void ApplyASCIIArtEffect::StoreProcessedImageData(UserMenu& userMenu) {
     PrintLine("ASCII art done and saved!");
 }
 

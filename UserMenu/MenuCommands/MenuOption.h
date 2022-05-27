@@ -17,6 +17,15 @@ class MenuGroup;
 class MenuGroupFactory;
 
 class UserMenu;
+
+// basic text foreground colors
+const std::string red("\033[0;31m");
+const std::string green("\033[1;32m");
+const std::string yellow("\033[1;33m");
+const std::string cyan("\033[0;36m");
+const std::string magenta("\033[0;35m");
+const std::string reset("\033[0m");
+
 /**
  * Base class for menu option command.
  */
@@ -26,7 +35,7 @@ public:
 
     virtual ~MenuOption();
 
-    virtual void Execute();
+    virtual void Execute(UserMenu& userMenu);
 
 	virtual std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu & groupFactory)= 0;
 
@@ -40,6 +49,8 @@ protected:
     virtual void Print(const std::string& messageToPrint);
     virtual void PrintLine(const std::string& messageToPrint);
     virtual void PrintList(const std::vector<std::string>& messagesToPrint, std::string optionalBullet = "->");
+    virtual void PrintSuccess(const std::string& messageToPrint);
+
 
     template <typename T>
     void PrintInputFallback(const T& fallbackValue) const;
@@ -49,6 +60,9 @@ protected:
     void PrintInputFallback(const std::string& fallbackValue) const;
 
     static bool CheckStringIsEmpty(const std::string& inputToCheck);
+
+    static bool CheckIfStringIsNaturalNumber(std::string& stringToCheck);
+
     static std::string TrimInputWhiteSpaces(const std::string& inputToTrim);
     static std::string TrimInputWhiteSpacesFront(const std::string& inputToTrim);
     static std::string TrimInputWhiteSpacesBack(const std::string& inputToTrim);
@@ -100,6 +114,7 @@ protected:
      */
     bool ReadUserInputDecimal(double& userInput, const double min = DBL_MIN, const double max = DBL_MAX) const;
 
+    std::string GetFallbackMessage(const std::string& defValue) const;
 };
 
 #endif //IMAGEPROCESSOR_MENUOPTION_H

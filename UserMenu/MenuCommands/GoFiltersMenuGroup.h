@@ -18,11 +18,20 @@ public:
 
     std::unique_ptr<MenuGroup> CreateNextGroup(UserMenu &userMenu) override;
 
-    void Execute() override;
+    void Execute(UserMenu& userMenu) override;
 
 private:
     ImagesLibrary& _imagesLibrary;
     std::unordered_set<int> _imagesToFilter;
+
+    void ParseIndexes(std::string toParseFrom);
+
+    void AddAllIndexes();
+
+    bool _executionSucceeded = false;
+
+    const std::string allIndexesSpecial = "-1";
+
 };
 
 
