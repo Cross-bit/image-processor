@@ -17,6 +17,8 @@ public:
     std::unique_ptr<ImageData> LoadImageData(const std::string &inpFileName) const override;
     bool SaveImageData(const ImageData &dataToSave, const std::string &outFileDir) const override;
 
+    std::string GetExtension() const override;
+
     virtual ~ImageJPG() = default;
 
 protected:

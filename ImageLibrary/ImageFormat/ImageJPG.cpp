@@ -36,6 +36,7 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
 
         jpeg_destroy_decompress ( &cinfo );
         fclose ( fp );
+
         return nullptr;
     }
 
@@ -101,6 +102,7 @@ bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &out
         jpeg_destroy_compress( &cinfo );
 
         fclose ( fp );
+
         return false;
     }
 
@@ -136,6 +138,10 @@ bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &out
     fclose(fp);
 
     return true;
+}
+
+std::string ImageJPG::GetExtension() const {
+    return ".jpg";
 }
 
 void ImageJPG::ErrorExit(j_common_ptr cinfo) {
