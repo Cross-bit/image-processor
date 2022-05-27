@@ -6,11 +6,12 @@
 #define MAIN_CPP_IMAGEJPG_H
 
 
+#include <csetjmp>
 #include "../ImageFormat.h"
-#include <jpeglib.h>
-#include <setjmp.h>
+/*#include <jpeglib.h>
+#include <setjmp.h>*/
 
-//#include "../../External/includes/turbojpeg.h" todo: recreate with faster turbojpeg
+#include "../../External/includes/jpeglib/jpeglib.h"
 
 class ImageJPG : public ImageFormat {
 public:

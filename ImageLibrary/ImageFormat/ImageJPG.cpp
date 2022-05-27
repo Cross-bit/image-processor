@@ -8,7 +8,7 @@
 
 #include <fstream>
 #include <cstring>
-#include <jpeglib.h>
+//#include <jpeglib.h>
 #include <filesystem>
 #include <iostream>
 #include <fstream>
