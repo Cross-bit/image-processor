@@ -15,7 +15,7 @@ std::unique_ptr<MenuGroup> ListAllImagesOption::CreateNextGroup(UserMenu &userMe
     return nullptr;
 }
 
-void ListAllImagesOption::Execute() {
+void ListAllImagesOption::Execute(UserMenu& userMenu) {
 
     _imagesLibrary.UpdateRecords();
 
