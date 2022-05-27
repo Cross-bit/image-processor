@@ -16,7 +16,7 @@
 #include "cassert"
 
 std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileName) const {
-    // todo: add error handling of some api functions (e. g. jpeg_read_header ...)
+
     struct jpeg_decompress_struct cinfo;
     struct ErrorManager errorManager;
 
@@ -133,6 +133,7 @@ bool ImageJPG::SaveImageData(const ImageData &dataToSave, const std::string &out
 
     jpeg_finish_compress ( &cinfo );
     jpeg_destroy_compress ( &cinfo );
+    fclose(fp);
 
     return true;
 }
@@ -143,7 +144,7 @@ void ImageJPG::ErrorExit(j_common_ptr cinfo) {
     ErrorManager * myerr = (ErrorManager*) cinfo -> err;
 
     /* Display error message */
-    //(*cinfo->err->output_message)(cinfo); // todo:
+    (*cinfo->err->output_message)(cinfo);
 
     /* Return control to the setjmp point */
     longjmp ( myerr->jumpBuffer, 1 );
