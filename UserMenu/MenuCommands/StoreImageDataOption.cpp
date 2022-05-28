@@ -4,7 +4,7 @@
 
 #include "StoreImageDataOption.h"
 
-#include "../../UserMenu/UserMenu.h"
+#include "../UserMenu.h"
 #include "../MenuGroups/MenuGroupFactory.h"
 #include "../../ImageLibrary/ImageFormat.h"
 #include "../../ImageLibrary/ImageFormatFactory.h"

@@ -6,7 +6,7 @@
 #define MAIN_CPP_STOREIMAGEDATAOPTION_H
 
 
-#include "../MenuCommands/MenuOption.h"
+#include "MenuOption.h"
 #include "../../ImageLibrary/Image/ImageData.h"
 
 #include <vector>
