@@ -43,8 +43,8 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::unorder
     options.emplace_back(std::make_unique<ApplyLinearGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyAverageGrayscaleOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyGaussianBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
-    options.emplace_back(std::make_unique<ApplySobelOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyBoxBlurOption>(libraryIndexesToWorkWith, ImageLibrary));
+    options.emplace_back(std::make_unique<ApplySobelOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyNegativeOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyFlipTransformOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyASCIIArtEffect>(libraryIndexesToWorkWith, ImageLibrary));

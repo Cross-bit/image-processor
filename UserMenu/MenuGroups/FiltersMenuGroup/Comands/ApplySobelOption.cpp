@@ -61,8 +61,8 @@ std::unique_ptr<ImageData> ApplySobelOption::ApplyGrayScale(ImageData &inputImag
 
 std::string ApplySobelOption::GetNewFileNameAppendix() const {
 
-    std::string newFileName = "_sobel_";
-    newFileName += (_isColored ? "colored_" : "_");
+    std::string newFileName = "_sobel";
+    newFileName += (_isColored ? "_colored_" : "_");
     newFileName += _sobelDirectionChar;
     return newFileName;
 }
