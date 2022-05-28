@@ -47,12 +47,15 @@ bool ImagesLibrary::CheckIfIndexIsValid(int index) const {
     return index < _loadedImages.size() && index >= 0;
 }
 
-
+#include <vector>
 void ImagesLibrary::UpdateRecords() {
-
-    for (auto it = _loadedImages.begin(); it != _loadedImages.end() ; ++it) {
-        if (!std::filesystem::exists((*it)->FilePath))
-            _loadedImages.erase(it);
+    std::vector<std::shared_ptr<LibraryRecord>>::iterator it = _loadedImages.begin();
+    while (it != _loadedImages.end()) {
+        if (!std::filesystem::exists((*it)->FilePath)) {
+            it = _loadedImages.erase(it);
+        } else {
+            ++it;
+        }
     }
 }
 
