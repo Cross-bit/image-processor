@@ -26,8 +26,8 @@ App can be build with provided **CMakeLists.txt** file as follows:
 **ImageProcessor** executable will be created in the {name_of_build_dir} directory.
 
 # Additional configuration
-It is also possible to provide start up configuration by creating config.yaml file in {name_of_build_dir}. In this file you can then set following properties:
-default_input_directory: [full path to directory, from which the app loads images at the start]
-default_output_directory: [full path to default fallback directory, which will be used when saving processed img data (if you wont specify)]
+It is also possible to provide start up configuration by creating **config.yaml** file in {name_of_build_dir}. In this file you can then set following properties:
+- default_input_directory: [full path to directory, from which the app loads images at the start]
+- default_output_directory: [full path to default fallback directory, which will be used when saving processed img data (if you wont specify)]
 
 More detailed documentation about the software(czech only): TODO:
