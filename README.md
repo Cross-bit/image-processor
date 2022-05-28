@@ -23,7 +23,7 @@ App can be build with provided **CMakeLists.txt** file as follows:
 4. cmake ..
 5. make
 
-The build ImageProcessor executable will be created in the {name_of_build_dir} directory.
+**ImageProcessor** executable will be created in the {name_of_build_dir} directory.
 
 # Additional configuration
 It is also possible to provide start up configuration by creating config.yaml file in {name_of_build_dir}. In this file you can then set following properties:
