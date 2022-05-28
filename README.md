@@ -30,4 +30,6 @@ It is also possible to provide start up configuration by creating **config.yaml*
 - default_input_directory: [full path to directory, from which the app loads images at the start (not recursive)]
 - default_output_directory: [full path to default fallback directory, which will be used when saving processed img data (if you wont specify)]
 
+It is recommended to set up these directories before you start using the app (It makes it easier). 
+
 More detailed documentation about the software(czech only): TODO:
