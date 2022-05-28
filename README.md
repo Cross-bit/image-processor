@@ -17,7 +17,7 @@ Image processor currently supports only **.jpg** and **.jpeg** image files. Also
 
 # Build and run on Linux
 App can be build with provided **CMakeLists.txt** file as follows:
-1. Go into cloned repository
+1. cd {cloned_repository}
 2. mkdir {name_of_build_dir}
 3. cd {name_of_build_dir}
 4. cmake ..
