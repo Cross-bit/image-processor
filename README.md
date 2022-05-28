@@ -18,7 +18,7 @@ Image processor currently supports only .jpg and .jpeg image files.
 Currently application supprots only sRGB color space.
 
 # Build and run on Linux
-App can be build with provided CmakeLists file as follows:
+App can be build with provided CMakeLists file as follows:
 1. Go into cloned repository
 2. mkdir {name_of_build_dir}
 3. cd {name_of_build_dir}
