@@ -8,6 +8,7 @@
 #include <cctype>
 ImageFormatFactory::ImageFormatFactory() noexcept {
     RegisterFormat<ImageJPG>("jpg");
+    RegisterFormat<ImageJPG>("jpeg");
 }
 
 std::unique_ptr<ImageFormat> ImageFormatFactory::CreateImageFormat(std::string imgExtension) {

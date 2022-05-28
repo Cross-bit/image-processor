@@ -25,7 +25,7 @@ public:
     std::string Name;
 
     /**
-     * Image (pixel) widht.
+     * Image (pixel) width.
      */
     int Width;
 

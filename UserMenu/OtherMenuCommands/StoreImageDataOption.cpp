@@ -23,7 +23,7 @@ void StoreImageDataOption::Execute(UserMenu& userMenu) {
 
     std::unique_ptr<ImageFormat> imageFormat;
 
-    PrintLine("Enter format you wish to be used:");
+    PrintLine("Enter format you wish to be used for saving:");
     auto formatExtension = ReadUserInput();
 
     imageFormat = formatFactory.CreateImageFormat(formatExtension);
