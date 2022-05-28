@@ -18,7 +18,7 @@
 #include "FiltersMenuGroup/Comands/ApplyFlipTransformOption.h"
 #include "FiltersMenuGroup/Comands/ApplySobelOption.h"
 #include "FiltersMenuGroup/Comands/ApplyASCIIArtEffect.h"
-
+#include "../MenuCommands/EndApplicationOption.cpp"
 
 #include "LibraryMenuGroup/Commands/ListAllImagesOption.h"
 #include "LibraryMenuGroup/Commands/AddImageToLibrary.h"
@@ -33,7 +33,7 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateMainMenuGroup() {
     auto newMainMenuGroup = std::make_unique<MainMenuGroup>();
     newMainMenuGroup->AddMenuOption("a", std::make_unique<GoLibraryMenuGroup>());
     newMainMenuGroup->AddMenuOption("b", std::make_unique<GoFiltersMenuGroup>(ImageLibrary));
-
+    newMainMenuGroup->AddMenuOption("c", std::make_unique<EndApplicationOption>());
     return std::move(newMainMenuGroup);
 }
 
