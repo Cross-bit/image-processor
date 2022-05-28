@@ -57,8 +57,6 @@ add_executable(
         ImageEffects/Convolution/ConvolutionKernels/Blur/GaussianBlurImageKernel.h
         ImageEffects/Convolution/ConvolutionKernels/Sobel/SobelImageKernel.cpp
         ImageEffects/Convolution/ConvolutionKernels/Sobel/SobelImageKernel.h
-        ImageEffects/Transformations/RegularRotation.cpp
-        ImageEffects/Transformations/RegularRotation.h
         ImageEffects/Transformations/FlipTransform.cpp
         ImageEffects/Transformations/FlipTransform.h
         UserMenu/MenuGroups/LibraryMenuGroup/LibraryMenuGroup.cpp
