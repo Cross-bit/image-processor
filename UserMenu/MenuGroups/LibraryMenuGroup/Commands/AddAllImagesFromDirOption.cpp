@@ -38,8 +38,6 @@ void AddAllImagesFromDirOption::Execute(UserMenu& userMenu) {
         auto imgFormat = _formatFactory.CreateImageFormat(fileExtension);
         std::string imgName = ImageFormat::ParseFileName(entry.path());
 
-        PrintLine("Image: ");
-        Print(imgName);
         if (imgFormat == nullptr){
             PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()));
             continue;
@@ -48,13 +46,13 @@ void AddAllImagesFromDirOption::Execute(UserMenu& userMenu) {
         auto imageData = imgFormat->LoadImageData(entry.path());
 
         if (imageData == nullptr) {
-            PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()) + " image...");
+            PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()));
             continue;
         }
 
         _imagesLibrary.AddRecord(std::move(entry.path()), std::move(imageData));
 
-        PrintSuccess(" OK ");
+        PrintSuccess("Img:" + imgName + " OK ");
     }
 
     PrintSuccess("Loading done.");

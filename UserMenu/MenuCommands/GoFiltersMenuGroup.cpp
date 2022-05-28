@@ -89,7 +89,11 @@ void GoFiltersMenuGroup::ParseIndexes(std::string toParseFrom) {
             }
 
             int indexValue = std::stoi(imgIndex);
-            _imagesToFilter.emplace(indexValue);
+
+            if (indexValue <= std::distance(_imagesLibrary.Begin(), _imagesLibrary.End()))
+                _imagesToFilter.emplace(indexValue);
+            else
+                PrintWarning("Index " + imgIndex + " is invalid and value will be ignored!");
         }
     }
 }
