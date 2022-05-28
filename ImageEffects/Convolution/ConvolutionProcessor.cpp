@@ -26,11 +26,12 @@ ConvolutionProcessor::ConvolutionProcessor(ImageData& imageData, std::unique_ptr
 void ConvolutionProcessor::ProcessImageData() {
 
     int totalDataCtr = 0; //
+    int kOffset = (_imageKernel->GetDimension() / 2);
 
     // per img rows
-    for (int i = 0; i < _imageData.Height; i += _kernelStepVertically) {
+    for (int i = -(kOffset*_kernelStepVertically); i < _imageData.Height - kOffset; i += _kernelStepVertically) {
         // per img line
-        for (int j = 0; j < _valuesPerLine; j += _kernelStepHorizontal * _imageData.Channels) {
+        for (int j = -(kOffset * _kernelStepHorizontal * _imageData.Channels); j < _valuesPerLine - (kOffset * _kernelStepHorizontal * _imageData.Channels); j += _kernelStepHorizontal * _imageData.Channels) {
 
             // convolute data of matrix starting(top left value is) at j, i
             ProcessImageKernel(j, i);
@@ -46,7 +47,6 @@ void ConvolutionProcessor::ProcessImageData() {
 void ConvolutionProcessor::StoreConvolutedPixelBuffer(int outDataOffset) {
 
     int scalingConst = _useGammaExspantion ? _processedImage->MaxChannelValue : 1;
-    // maan i do not like this! todo: !!
 
     for (auto & channelData : _convolutedPixelBuffer) {
 
@@ -106,12 +106,17 @@ void ConvolutionProcessor::UpdateConvolutedPixelBuffer(int pixelX, int pixelY, i
 
 int ConvolutionProcessor::GetValidXCoord(int x) const{
     // if out of bounds return boundary pixel
-    return x <= _imageData.Width*_imageData.Channels-6 ? x : _imageData.Width*_imageData.Channels-6;
+    if (x <= 0)
+        return 0;
+    return  x <= _imageData.Width*_imageData.Channels-6 ? x : _imageData.Width*_imageData.Channels-6;
+
 }
 
 
 int ConvolutionProcessor::GetValidYCoord(int y) const{
     // if out of bounds return boundary pixel
+    if (y <= 0)
+        return 0;
     return y <= _imageData.Height-1 ? y : _imageData.Height-1;
 }
 
