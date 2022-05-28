@@ -1,6 +1,6 @@
 # Image processor
 
-Simple image processing software, with simple cli user interface for the Linux.
+Simple image processing software with simple cli user interface for Linux.
 
 # Supported filters
 - Linear grayscale (grayscale based on linear combination of channel values)
