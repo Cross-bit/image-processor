@@ -3,14 +3,7 @@ project(ImageProcessor)
 
 set(CMAKE_CXX_STANDARD 17)
 
-#set(CMAKE_STATIC_LINKER_FLAGS "-ljpeglib")
-#set(CMAKE_LIBRARY_PATH  /usr/local/lib)
-#include_directories(/usr/local/lib)
-#find_library(JPEG_LIB libjpeg.so.9)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-#if(NOT ${JPEG_LIB})
- #   message(FATAL_ERROR "libjpeg library not found")
-#endif()
 
 add_executable(
         ImageProcessor
@@ -76,10 +69,6 @@ add_executable(
         UserMenu/MenuCommands/GoLibraryMenuGroup.h
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.cpp
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.h
-        UserMenu/MenuGroups/OptionsMenuGroup/OptionsMenuGroup.cpp
-        UserMenu/MenuGroups/OptionsMenuGroup/OptionsMenuGroup.h
-        UserMenu/MenuGroups/OptionsMenuGroup/Commands/SetDefaultInputDirectory.cpp
-        UserMenu/MenuGroups/OptionsMenuGroup/Commands/SetDefaultInputDirectory.h
         Configuration/ApplicationConfiguration.cpp
         Configuration/ApplicationConfiguration.h
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.cpp
@@ -90,36 +79,9 @@ add_executable(
         UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.h
         UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h UserMenu/GlobalMenuCommands/StoreImageDataOption.cpp UserMenu/GlobalMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.h Services/ConfigurationLoader.cpp Services/ConfigurationLoader.h Services/yamlConfigurationLoader.cpp Services/yamlConfigurationLoader.h)
 
-#find_package (jpeg REQUIRED)
-#find_package(libjpeg REQUIRED)
-#find_library(JPEG_LIB libjpeg)
-#target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libjpeg.a)
-#set(LIB_AA C:/Users/kriz/CLionProjects/ImageProcessor/External/)
-#find_path(LIB_HEAD jpeglib.h PATH_SUFFIXES includes PATHS ${LIB_AA})
-#target_link_libraries(ImageProcessor C:/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
 
- #link_directories(${CMAKE_BINARY_DIR}/res)
-
-#find_library(JPEG_LIB External/lib/)
-#${JPEG_LIB}
-#target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libturbojpeg.a)
 target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libyaml-cpp.a)
 target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libjpeg.a)
-#target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libturbojpeg.a)
-#target_link_libraries(ImageProcessor  /mnt/c/Users/kriz/CLionProjects/ImageProcessor/External/lib/libjpeg.a)
-#target_link_libraries(ImageProcessor ${JPEG_LIB})
-
-
-#find_library(JPEG_LIB jpeg62)
-#target_link_libraries(ImageProcessor /External/lib/jpeg62.dll)
-#if(NOT ${JPEG_LIB})
-#    message(FATAL_ERROR "libjpeg library not found")
-#endif()
-#find_package (jpeg REQUIRED)
-#target_link_libraries(ImageProcessor jpeg::jpeg)
-#link_directories(${CMAKE_BINARY_DIR}/../External/lib)
-#target_link_libraries(ImageProcessor External/lib/libjpeg)
-#${JPEG_LIB}
 
 
 
