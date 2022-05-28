@@ -26,6 +26,9 @@ void StoreImageDataOption::Execute(UserMenu& userMenu) {
     PrintLine("Enter format you wish to be used for saving:");
     auto formatExtension = ReadUserInput();
 
+    // clean string from dots
+    formatExtension.erase(remove(formatExtension.begin(), formatExtension.end(), '.'), formatExtension.end());
+
     imageFormat = formatFactory.CreateImageFormat(formatExtension);
 
     if (imageFormat == nullptr) {
