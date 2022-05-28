@@ -32,4 +32,4 @@ It is also possible to provide start up configuration by creating **config.yaml*
 
 It is recommended to set up these directories before you start using the app (It makes it easier). 
 
-More detailed documentation about the software(czech only): TODO:
+More detailed documentation about the software(czech only): [Dokumentace](https://github.com/Cross-bit/image_processor/blob/5d416efb6607deb31c91495e4554ef54ffc4794d/Documentation/dokumentace_image_processor.pdf)
