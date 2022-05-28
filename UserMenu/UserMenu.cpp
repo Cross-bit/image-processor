@@ -33,14 +33,21 @@ void UserMenu::Initialize() {
 
     std::cout.setstate(std::ios_base::failbit); // turns off images
 
-    if (!std::filesystem::exists(ConfigurationCtx.DefaultInputDir)){
-        std::cout << "Invalid input directory in configuration provided." << std::endl;
+    if (ConfigurationCtx.DefaultInputDir == "") {
         std::cout.clear();
+        std::cout << "No images to load." << std::endl;
+        std::cout << "Done!" << std::endl;
         return;
     }
 
-    AddAllImagesFromDirOption allImagesFromDirCommand(GroupsFac.ImageLibrary, ConfigurationCtx.DefaultInputDir);
-    allImagesFromDirCommand.Execute(*this);
+    if (!std::filesystem::exists(ConfigurationCtx.DefaultInputDir)){
+        std::cout.clear();
+        std::cout << "Invalid input directory in configuration provided." << std::endl;
+    }
+    else{
+        AddAllImagesFromDirOption allImagesFromDirCommand(GroupsFac.ImageLibrary, ConfigurationCtx.DefaultInputDir);
+        allImagesFromDirCommand.Execute(*this);
+    }
 
     std::cout.clear();
     std::cout << "Done!" << std::endl;
@@ -51,8 +58,6 @@ void UserMenu::Update(){
 	while (_isAppRunning) {
 
 		_currentMenuGroup->Render();
-
-        // todo: handling of global commands/options
 
 		std::string userInput;
 		std::getline(std::cin, userInput);

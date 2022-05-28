@@ -36,6 +36,8 @@ private:
 	std::unique_ptr<MenuGroup> _currentMenuGroup;
 
 	bool _isAppRunning = true;
+
+    friend class EndApplicationOption;
 };
 
 #endif //IMAGEPROCESSOR_USERMENU_H
