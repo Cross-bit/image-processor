@@ -5,7 +5,7 @@
 #ifndef IMAGEPROCESSOR_MENUGROUP_H
 #define IMAGEPROCESSOR_MENUGROUP_H
 
-#include "../MenuCommands/MenuOption.h"
+#include "../OtherMenuCommands/MenuOption.h"
 class UserMenu;
 
 class MenuGroup {

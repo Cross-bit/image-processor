@@ -4,8 +4,8 @@
 
 #include "GoLibraryMenuGroup.h"
 
-#include "../MenuGroups/MenuGroupFactory.h"
-#include "../UserMenu.h"
+#include "../../MenuGroupFactory.h"
+#include "../../../UserMenu.h"
 GoLibraryMenuGroup::GoLibraryMenuGroup() {
     _itemContent = "Go to image library";
 }

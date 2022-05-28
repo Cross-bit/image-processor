@@ -9,19 +9,19 @@ add_executable(
         ImageProcessor
         main.cpp
         UserMenu/MenuGroups/MenuGroup.h
-        UserMenu/MenuCommands/MenuOption.h
+        UserMenu/OtherMenuCommands/MenuOption.h
         UserMenu/UserMenu.h
         UserMenu/UserMenu.cpp
         UserMenu/MenuGroups/MenuGroup.cpp
-        UserMenu/MenuCommands/MenuOption.cpp
-        UserMenu/MenuCommands/GoMainMenuOption.cpp
-        UserMenu/MenuCommands/GoMainMenuOption.h
+        UserMenu/OtherMenuCommands/MenuOption.cpp
+        UserMenu/MenuGroups/MainMenuGroup/Commands/GoMainMenuOption.cpp
+        UserMenu/MenuGroups/MainMenuGroup/Commands/GoMainMenuOption.h
         UserMenu/MenuGroups/MainMenuGroup/MainMenuGroup.cpp
         UserMenu/MenuGroups/MainMenuGroup/MainMenuGroup.h
         UserMenu/MenuGroups/FiltersMenuGroup/FiltersMenuGroup.cpp
         UserMenu/MenuGroups/FiltersMenuGroup/FiltersMenuGroup.h
-        UserMenu/MenuCommands/GoFiltersMenuGroup.cpp
-        UserMenu/MenuCommands/GoFiltersMenuGroup.h
+        UserMenu/MenuGroups/MainMenuGroup/Commands/GoFiltersMenuGroup.cpp
+        UserMenu/MenuGroups/MainMenuGroup/Commands/GoFiltersMenuGroup.h
         UserMenu/MenuGroups/MenuGroupFactory.cpp UserMenu/MenuGroups/MenuGroupFactory.h
         ImageLibrary/ImagesLibrary.cpp
         ImageLibrary/ImagesLibrary.h
@@ -65,17 +65,17 @@ add_executable(
         UserMenu/MenuGroups/LibraryMenuGroup/LibraryMenuGroup.h
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.cpp
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.h
-        UserMenu/MenuCommands/GoLibraryMenuGroup.cpp
-        UserMenu/MenuCommands/GoLibraryMenuGroup.h
+        UserMenu/MenuGroups/MainMenuGroup/Commands/GoLibraryMenuGroup.cpp
+        UserMenu/MenuGroups/MainMenuGroup/Commands/GoLibraryMenuGroup.h
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.cpp
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddImageToLibrary.h
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.cpp
         UserMenu/MenuGroups/LibraryMenuGroup/Commands/AddAllImagesFromDirOption.h
-        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.cpp
-        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFilterOptionBase.h
-        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.cpp
-        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplySobelOption.h
-        UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h UserMenu/GlobalMenuCommands/StoreImageDataOption.cpp UserMenu/GlobalMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.cpp UserMenu/MenuGroups/FiltersMenuGroup/Comands/ApplyASCIIArtEffect.h Services/ConfigurationLoader.cpp Services/ConfigurationLoader.h Services/yamlConfigurationLoader.cpp Services/yamlConfigurationLoader.h UserMenu/MenuCommands/EndApplicationOption.h)
+        UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyFilterOptionBase.cpp
+        UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyFilterOptionBase.h
+        UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplySobelOption.cpp
+        UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplySobelOption.h
+        UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyLinearGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyLinearGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyGaussianBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyGaussianBlurOption.h UserMenu/OtherMenuCommands/StoreImageDataOption.cpp UserMenu/OtherMenuCommands/StoreImageDataOption.h UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyBoxBlurOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyBoxBlurOption.h UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyNegativeOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyNegativeOption.h UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyFlipTransformOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyFlipTransformOption.h UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyAverageGrayscaleOption.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyAverageGrayscaleOption.h UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyASCIIArtEffect.cpp UserMenu/MenuGroups/FiltersMenuGroup/Commands/ApplyASCIIArtEffect.h Services/ConfigurationLoader.cpp Services/ConfigurationLoader.h Services/yamlConfigurationLoader.cpp Services/yamlConfigurationLoader.h UserMenu/OtherMenuCommands/EndApplicationOption.h)
 
 
 target_link_libraries(ImageProcessor ${CMAKE_SOURCE_DIR}/External/lib/libyaml-cpp.a)

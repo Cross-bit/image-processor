@@ -47,5 +47,7 @@ std::unique_ptr<ImageData> ApplyFlipTransformOption::ApplyFilterOnImage(ImageDat
 }
 
 std::string ApplyFlipTransformOption::GetNewFileNameAppendix() const {
-    return ("_flipped_" + _flipChar);
+    std::string result = "_flipped_";
+    result += _flipChar;
+    return result;
 }

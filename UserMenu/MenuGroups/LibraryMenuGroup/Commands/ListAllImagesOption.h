@@ -6,7 +6,7 @@
 #define MAIN_CPP_LISTALLIMAGESOPTION_H
 
 
-#include "../../../MenuCommands/MenuOption.h"
+#include "../../../OtherMenuCommands/MenuOption.h"
 
 #include "../../../../ImageLibrary/ImagesLibrary.h"
 

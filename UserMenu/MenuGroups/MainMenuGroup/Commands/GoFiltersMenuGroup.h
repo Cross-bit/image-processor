@@ -6,8 +6,8 @@
 #define IMAGEPROCESSOR_GOSECONDMENUOPTION_H
 
 
-#include "MenuOption.h"
-#include "../../ImageLibrary/ImagesLibrary.h"
+#include "../../../OtherMenuCommands/MenuOption.h"
+#include "../../../../ImageLibrary/ImagesLibrary.h"
 #include <queue>
 #include <unordered_set>
 

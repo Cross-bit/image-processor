@@ -28,9 +28,6 @@ void RegularRotation::ProcessImageData() {
     if(_rotationAngle / 360 == 0)
         return; // nothing to do
 
-    /* for (int i = 0; i < ; ++i) {
-
-    }*/
 }
 
 void RegularRotation::RotateImageRightAngle() {

@@ -6,7 +6,7 @@
 
 
 #include "../../../UserMenu.h"
-#include "../../../GlobalMenuCommands/StoreImageDataOption.h"
+#include "../../../OtherMenuCommands/StoreImageDataOption.h"
 #include "../../MenuGroupFactory.h"
 #include "thread"
 #include "future"

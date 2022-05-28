@@ -7,10 +7,10 @@
 #include <string>
 #include "GoFiltersMenuGroup.h"
 
-#include "../MenuGroups/MenuGroupFactory.h"
-#include "../UserMenu.h"
+#include "../../MenuGroupFactory.h"
+#include "../../../UserMenu.h"
 
-#include "../MenuGroups/LibraryMenuGroup/Commands/ListAllImagesOption.h"
+#include "../../LibraryMenuGroup/Commands/ListAllImagesOption.h"
 
 GoFiltersMenuGroup::GoFiltersMenuGroup(ImagesLibrary& imagesLibrary) :
 _imagesLibrary(imagesLibrary)

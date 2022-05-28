@@ -5,7 +5,7 @@
 #ifndef MAIN_CPP_APPLYFILTEROPTIONBASE_H
 #define MAIN_CPP_APPLYFILTEROPTIONBASE_H
 
-#include "../../../MenuCommands/MenuOption.h"
+#include "../../../OtherMenuCommands/MenuOption.h"
 #include "../../../../ImageLibrary/Image/ImageData.h"
 #include "../../../../ImageLibrary/ImagesLibrary.h"
 #include "../../../../ImageEffects/ImageEffectFactory.h"

@@ -5,7 +5,7 @@
 #ifndef MAIN_CPP_ADDIMAGETOLIBRARY_H
 #define MAIN_CPP_ADDIMAGETOLIBRARY_H
 
-#include "../../../MenuCommands/MenuOption.h"
+#include "../../../OtherMenuCommands/MenuOption.h"
 
 #include "../../../../ImageLibrary/ImagesLibrary.h"
 #include "../../../../ImageLibrary/ImageFormatFactory.h"

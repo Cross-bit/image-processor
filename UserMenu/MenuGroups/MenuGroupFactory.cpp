@@ -5,20 +5,21 @@
 #include <unordered_set>
 #include "MenuGroupFactory.h"
 
-#include "../MenuCommands/GoFiltersMenuGroup.h"
-#include "../MenuCommands/GoMainMenuOption.h"
-#include "../MenuCommands/GoLibraryMenuGroup.h"
+#include "MainMenuGroup/Commands/GoFiltersMenuGroup.h"
+#include "MainMenuGroup/Commands/GoMainMenuOption.h"
+#include "MainMenuGroup/Commands/GoLibraryMenuGroup.h"
+#include "../OtherMenuCommands/EndApplicationOption.cpp"
 
 #include "FiltersMenuGroup/FiltersMenuGroup.h"
-#include "FiltersMenuGroup/Comands/ApplyLinearGrayscaleOption.h"
-#include "FiltersMenuGroup/Comands/ApplyAverageGrayscaleOption.h"
-#include "FiltersMenuGroup/Comands/ApplyGaussianBlurOption.h"
-#include "FiltersMenuGroup/Comands/ApplyBoxBlurOption.h"
-#include "FiltersMenuGroup/Comands/ApplyNegativeOption.h"
-#include "FiltersMenuGroup/Comands/ApplyFlipTransformOption.h"
-#include "FiltersMenuGroup/Comands/ApplySobelOption.h"
-#include "FiltersMenuGroup/Comands/ApplyASCIIArtEffect.h"
-#include "../MenuCommands/EndApplicationOption.cpp"
+#include "FiltersMenuGroup/Commands/ApplyLinearGrayscaleOption.h"
+#include "FiltersMenuGroup/Commands/ApplyAverageGrayscaleOption.h"
+#include "FiltersMenuGroup/Commands/ApplyGaussianBlurOption.h"
+#include "FiltersMenuGroup/Commands/ApplyBoxBlurOption.h"
+#include "FiltersMenuGroup/Commands/ApplyNegativeOption.h"
+#include "FiltersMenuGroup/Commands/ApplyFlipTransformOption.h"
+#include "FiltersMenuGroup/Commands/ApplySobelOption.h"
+#include "FiltersMenuGroup/Commands/ApplyASCIIArtEffect.h"
+
 
 #include "LibraryMenuGroup/Commands/ListAllImagesOption.h"
 #include "LibraryMenuGroup/Commands/AddImageToLibrary.h"

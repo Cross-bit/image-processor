@@ -4,8 +4,8 @@
 
 #include "GoMainMenuOption.h"
 
-#include "../MenuGroups/MenuGroupFactory.h"
-#include "../UserMenu.h"
+#include "../../MenuGroupFactory.h"
+#include "../../../UserMenu.h"
 
 GoMainMenuOption::GoMainMenuOption() {
     _itemContent = "Go to main menu";

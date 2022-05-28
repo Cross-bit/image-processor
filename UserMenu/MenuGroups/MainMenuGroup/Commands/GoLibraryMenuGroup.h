@@ -6,7 +6,7 @@
 #define MAIN_CPP_GOLIBRARYMENUGROUP_H
 
 
-#include "MenuOption.h"
+#include "../../../OtherMenuCommands/MenuOption.h"
 
 class GoLibraryMenuGroup : public MenuOption {
 public:
