@@ -31,7 +31,7 @@ bool ApplyGaussianBlurOption::ReadStandardDeviation() {
     return true;
 }
 
-bool ApplyGaussianBlurOption::InitializeFilterProperties() {
+bool ApplyGaussianBlurOption::InitializeFilterProperties(UserMenu &userMenu) {
     return ReadKernelSize() && ReadStandardDeviation();
 }
 

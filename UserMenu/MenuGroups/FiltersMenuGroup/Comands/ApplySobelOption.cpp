@@ -9,7 +9,7 @@ ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
     _itemContent = "Sobel";
 }
 
-bool ApplySobelOption::InitializeFilterProperties() {
+bool ApplySobelOption::InitializeFilterProperties(UserMenu &userMenu) {
 
     PrintLine("Enter direction:");
     PrintLine("t - top, b - bottom, l - left, r - right:");

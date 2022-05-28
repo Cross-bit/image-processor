@@ -58,7 +58,7 @@ void ApplyFilterOptionBase::PerformImageParallelProcessing() {
 
 void ApplyFilterOptionBase::Execute(UserMenu& userMenu) {
 
-    if (!InitializeFilterProperties())
+    if (!InitializeFilterProperties(userMenu))
         return;
 
     PrintLine("Processing images data(this may take a while)...");
@@ -76,7 +76,7 @@ std::unique_ptr<MenuGroup> ApplyFilterOptionBase::CreateNextGroup(UserMenu & use
     return userMenu.GroupsFac.CreateMainMenuGroup();
 }
 
-bool ApplyFilterOptionBase::InitializeFilterProperties() {
+bool ApplyFilterOptionBase::InitializeFilterProperties(UserMenu &userMenu) {
     return true;
 }
 

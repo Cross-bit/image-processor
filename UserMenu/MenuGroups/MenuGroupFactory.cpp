@@ -48,12 +48,11 @@ std::unique_ptr<MenuGroup> MenuGroupFactory::CreateFiltersMenuGroup(std::unorder
     options.emplace_back(std::make_unique<ApplyNegativeOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyFlipTransformOption>(libraryIndexesToWorkWith, ImageLibrary));
     options.emplace_back(std::make_unique<ApplyASCIIArtEffect>(libraryIndexesToWorkWith, ImageLibrary));
-
+    options.emplace_back(std::make_unique<GoMainMenuOption>());
 
     auto newFiltersMenuGroup = std::make_unique<FiltersMenuGroup>();
 
     newFiltersMenuGroup->AddMenuOptions(options, MenuGroup::ALPHABET_LOWER);
-    newFiltersMenuGroup->AddMenuOption("ch", std::make_unique<GoMainMenuOption>());
     return std::move(newFiltersMenuGroup);
 }
 

@@ -9,7 +9,7 @@ ApplyFilterOptionBase(libraryIndexesToWorkWith, imagesLibrary) {
     _itemContent = "Box blur";
 }
 
-bool ApplyBoxBlurOption::InitializeFilterProperties() {
+bool ApplyBoxBlurOption::InitializeFilterProperties(UserMenu &userMenu) {
     PrintLine("Enter number of cycles in range 1 to n (def.: 1):");
 
     if (!ReadUserInputNaturalNum(_repetitions)) {

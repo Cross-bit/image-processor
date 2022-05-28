@@ -11,7 +11,7 @@ ApplyFlipTransformOption::ApplyFlipTransformOption(std::unordered_set<int> &libr
     _itemContent = "Flip transform";
 }
 
-bool ApplyFlipTransformOption::InitializeFilterProperties() {
+bool ApplyFlipTransformOption::InitializeFilterProperties(UserMenu &userMenu) {
 
     PrintLine("Write \"h\"(for horizontal), or \"v\"(vertical) for the specific transformation.");
 

@@ -41,7 +41,7 @@ protected:
      * Implementation of other users input values needed for filter computation.
      * @return
      */
-    virtual bool InitializeFilterProperties();
+    virtual bool InitializeFilterProperties(UserMenu &userMenu);
     /**
      * Applies provided image effect on data.
      * @param inputImage

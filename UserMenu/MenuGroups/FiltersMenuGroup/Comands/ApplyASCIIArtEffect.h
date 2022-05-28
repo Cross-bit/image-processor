@@ -17,7 +17,7 @@ public:
 protected:
     std::unique_ptr<ImageData> ApplyFilterOnImage(ImageData &imageToProcess) override;
 
-    bool InitializeFilterProperties() override;
+    bool InitializeFilterProperties(UserMenu &userMenu) override;
 
     void StoreProcessedImageData(UserMenu& userMenu) override;
 

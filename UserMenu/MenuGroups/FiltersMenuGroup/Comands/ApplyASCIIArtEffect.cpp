@@ -40,7 +40,7 @@ std::string ApplyASCIIArtEffect::GetFullFileDirName(const std::string& fileName)
     return res + fileName + GetNewFileNameAppendix() + ".txt";
 }
 
-bool ApplyASCIIArtEffect::InitializeFilterProperties() {
+bool ApplyASCIIArtEffect::InitializeFilterProperties(UserMenu &userMenu) {
 
     PrintLine("Select alphabet you want to use:");
     PrintLine("a) " + Alphabet1);
@@ -90,8 +90,7 @@ bool ApplyASCIIArtEffect::InitializeFilterProperties() {
 
     // if provided dir does not exsists use default
     if (!std::filesystem::exists(outputPath)) {
-        // todo: refactor:
-        _outputDir = "/mnt/c/Users/kriz/CLionProjects/ImageProcessor/DefaultOutput";
+        _outputDir = userMenu.ConfigurationCtx.DefaultOutputDir;
         PrintInputFallback(_outputDir);
     }
     else {
@@ -102,7 +101,7 @@ bool ApplyASCIIArtEffect::InitializeFilterProperties() {
 }
 
 void ApplyASCIIArtEffect::StoreProcessedImageData(UserMenu& userMenu) {
-    PrintLine("ASCII art done and saved!");
+
 }
 
 std::string ApplyASCIIArtEffect::GetNewFileNameAppendix() const {
