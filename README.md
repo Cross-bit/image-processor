@@ -4,7 +4,7 @@ Simple image processing software with simple cli user interface for Linux.
 
 # Supported filters
 - Linear grayscale (grayscale based on linear combination of channel values)
-- Averaged grayscale (takes simple arithmetical average of channel values – does not preserve color intensity!)
+- Averaged grayscale (takes simple arithmetical average of channel values – does not preserve color intensity)
 - Negative
 - Box blur effect
 - Gaussian blur effect
