@@ -34,6 +34,7 @@ std::unique_ptr<ImageData> ImageJPG::LoadImageData(const std::string &inpFileNam
     // Setting up jump for error handling
     if (setjmp(errorManager.jumpBuffer)){
 
+        std::cerr << inpFileName << std::endl;
         jpeg_destroy_decompress ( &cinfo );
         fclose ( fp );
 
@@ -161,6 +162,7 @@ void ImageJPG::OutputMessage(j_common_ptr cinfo){
     // disable error messages
     char buffer[JMSG_LENGTH_MAX];
     (*cinfo->err->format_message) (cinfo, buffer);
+
     fprintf(stderr, "-> %s !!!\n", buffer);
 }
 
