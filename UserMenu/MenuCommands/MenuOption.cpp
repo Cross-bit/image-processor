@@ -74,14 +74,18 @@ bool MenuOption::ReadUserInputDecimal(double& userInput, const double min, const
     auto rawInput = ReadUserInput();
     char* endptr = 0;
 
-    double converted = strtod(&rawInput[0], &endptr);
+    userInput = strtod(&rawInput[0], &endptr);
 
     if (*endptr != '\0' || endptr == rawInput) {
+        userInput = 0;
         return false;
     }
 
-    if (converted < min || converted > max)
+    if (userInput < min || userInput > max){
+        userInput = 0;
         return false;
+    }
+
 
     return true;
 }
