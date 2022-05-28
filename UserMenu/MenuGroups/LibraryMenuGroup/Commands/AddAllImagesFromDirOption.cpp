@@ -18,12 +18,12 @@ _sourceDir(sourceDir)
 
 void AddAllImagesFromDirOption::Execute(UserMenu& userMenu) {
 
-    std::cout << "Enter full path to directory: " << std::endl;
+    PrintLine("Enter full path to directory: ");
 
     _sourceDir = _sourceDir == "" ? ReadUserInput() : _sourceDir;
 
     if(!std::filesystem::is_directory(_sourceDir)){
-        std::cout << "Invalid directory!" << std::endl;
+        PrintError("Invalid directory!");
         return;
     }
 
@@ -38,8 +38,8 @@ void AddAllImagesFromDirOption::Execute(UserMenu& userMenu) {
         auto imgFormat = _formatFactory.CreateImageFormat(fileExtension);
         std::string imgName = ImageFormat::ParseFileName(entry.path());
 
-        std::cout << "Image: " << imgName << std::endl;
-
+        PrintLine("Image: ");
+        Print(imgName);
         if (imgFormat == nullptr){
             PrintError("Not able to load: " + ImageFormat::ParseFileName(entry.path()));
             continue;
@@ -54,10 +54,10 @@ void AddAllImagesFromDirOption::Execute(UserMenu& userMenu) {
 
         _imagesLibrary.AddRecord(std::move(entry.path()), std::move(imageData));
 
-        std::cout << " OK " << std::endl;
+        PrintSuccess(" OK ");
     }
 
-    std::cout << "Loading done." << std::endl;
+    PrintSuccess("Loading done.");
 }
 
 std::unique_ptr<MenuGroup> AddAllImagesFromDirOption::CreateNextGroup(UserMenu & userMenu) {
