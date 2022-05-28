@@ -11,7 +11,7 @@
 /**
  * Represent sobel convolution kernel. (e.g. for edge detection)
  */
-class SobelImageKernel : public ImageKernel // todo: make it generic
+class SobelImageKernel : public ImageKernel
 {
 public:
     enum Direction {LEFT, TOP, RIGHT, BOTTOM};

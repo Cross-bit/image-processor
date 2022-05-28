@@ -25,6 +25,18 @@ private:
      *
      */
     std::unique_ptr<GrayscaleStrategyBase> _effectStrategy;
+
+    float _redCoef;
+    float _greenCoef;
+    float _blueCoef;
+
+    void SetRedCoef(float value);
+
+    void SetGreenCoef(float value);
+
+    void SetBlueCoef(float value);
+
+    bool CheckCoef(float value);
 };
 
 

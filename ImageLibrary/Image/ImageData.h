@@ -10,10 +10,14 @@
 #include <vector>
 #include <math.h>
 
+/**
+ * Represents image data.
+ */
 class ImageData {
 public:
 
-    enum ColorSpaces { sRGB, GRAYSCALE }; // todo: fill in other spaces
+    // add other spaces here if needed
+    enum ColorSpaces { sRGB, GRAYSCALE };
 
     /**
      * Image name.
@@ -39,17 +43,17 @@ public:
     /**
      * All Image data buffer.
      */
-    std::unique_ptr<uint8_t[]> Data; // todo: if time do it generic => more than 8-bits color
+    std::unique_ptr<uint8_t[]> Data; // note: would be nice to make it generic, not only 8-bit
 
     /**
      * Maximal value per channel(depends on depth).
      */
-    const int MaxChannelValue = 255; // constant for now
+    const int MaxChannelValue = 255;
 
     /**
      * Minimal value per channel(typically zero)
      */
-    const int MinChannelValue = 0; // constant for now todo:
+    const int MinChannelValue = 0;
 
     /**
      * Total number of pixels, typically width * height * #channels. (i. e. data array len)
@@ -109,6 +113,5 @@ public:
     static double sRGBGammaCompression(double value_srgb);
 
 };
-
 
 #endif //MAIN_CPP_IMAGEDATA_H

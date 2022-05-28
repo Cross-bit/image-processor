@@ -15,7 +15,7 @@
 class ConvolutionProcessor : public ImageEffect
 {
 public:
-    ConvolutionProcessor(ImageData& imageData,std::unique_ptr<ImageKernel> imageKernel, bool useGammaExspantion = true); // todo remove this bool...
+    ConvolutionProcessor(ImageData& imageData,std::unique_ptr<ImageKernel> imageKernel, bool useGammaExspantion = true);
 
     void ProcessImageData() override;
 

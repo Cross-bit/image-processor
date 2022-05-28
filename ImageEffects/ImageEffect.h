@@ -32,22 +32,9 @@ public:
      */
     virtual std::unique_ptr<ImageData> GetProcessedImageData();
 
-    void SetRedCoef(float value);
-
-    void SetGreenCoef(float value);
-
-    void SetBlueCoef(float value);
-
-private:
-    bool CheckCoef(float value);
-
 protected:
     ImageData& _imageData;
     std::unique_ptr<ImageData> _processedImage;
-
-    float _redCoef; // todo: probably move to specific algoritm, but we will see if it makes sense here...
-    float _greenCoef;
-    float _blueCoef;
 };
 
 
