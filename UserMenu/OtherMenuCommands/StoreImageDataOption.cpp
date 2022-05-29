@@ -19,6 +19,9 @@ _imagesToStore(imagesToStore)
 
 void StoreImageDataOption::Execute(UserMenu& userMenu) {
 
+    if(_imagesToStore.empty())
+        return;
+
     ImageFormatFactory formatFactory;
 
     std::unique_ptr<ImageFormat> imageFormat;

@@ -29,6 +29,11 @@ void ApplyFilterOptionBase::StartProcessingImageData(int imageLibraryIndex) {
         return;
     }
 
+    if (imageRecord->Data->Height == 1 || imageRecord->Data->Width == 1) {
+        PrintWarning("Application does not support one dimensional data. Image " + imageRecord->Data->Name + " will be ignored.");
+        return;
+    }
+
     _asyncFilters.emplace_back(std::async(&ApplyFilterOptionBase::ApplyFilterOnImage, this, std::ref(*(imageRecord->Data))));
 }
 

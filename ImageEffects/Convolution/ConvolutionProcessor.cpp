@@ -108,7 +108,7 @@ int ConvolutionProcessor::GetValidXCoord(int x) const{
     // if out of bounds return boundary pixel
     if (x <= 0)
         return 0;
-    return  x <= _imageData.Width*_imageData.Channels-6 ? x : _imageData.Width*_imageData.Channels-6;
+    return  x <= _imageData.Width*_imageData.Channels-(_imageData.Channels*2) ? x : _imageData.Width*_imageData.Channels-(_imageData.Channels*2);
 
 }
 
