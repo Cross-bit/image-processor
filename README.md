@@ -26,10 +26,10 @@ App can be build with provided **CMakeLists.txt** file as follows:
 **ImageProcessor** executable will be created in the {name_of_build_dir} directory.
 
 # Additional configuration
-It is also possible to provide start up configuration by creating **config.yaml** file in {name_of_build_dir}. In this file you can then set following properties:
+It is also possible to provide start up configuration by creating **config.yaml** file in {name_of_build_dir}. In this file you can set following properties:
 - default_input_directory: [full path to directory, from which the app loads images at the start (not recursive)]
 - default_output_directory: [full path to default fallback directory, which will be used when saving processed img data (if you wont specify)]
 
 It is recommended to set up these directories before you start using the app (It makes it easier). 
 
-More detailed documentation about the software(czech only): TODO:
+More detailed documentation about the software(czech only): [Dokumentace](https://github.com/Cross-bit/image_processor/blob/5d416efb6607deb31c91495e4554ef54ffc4794d/Documentation/dokumentace_image_processor.pdf)
