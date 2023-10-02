@@ -14,7 +14,7 @@ Simple image processing software with simple CLI user interface for Linux.
 
 # Supported images
 Image processor currently supports only **.jpg** and **.jpeg** image formats. Also note that application supports only sRGB color space.<br>
-Images that has dimension of one in any direction will not be processed.
+Images must have dimensions greater than one in every axis.
 
 # Build and run on Linux
 App can be build with provided **CMakeLists.txt** file as follows:
