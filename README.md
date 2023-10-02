@@ -13,7 +13,7 @@ Simple image processing software with simple CLI user interface for Linux.
 - Conversion to ASCII art
 
 # Supported images
-Image processor currently supports only **.jpg** and **.jpeg** image files. Also note that application supports only sRGB color space.<br>
+Image processor currently supports only **.jpg** and **.jpeg** image formats. Also note that application supports only sRGB color space.<br>
 Images that has dimension of one in any direction will not be processed.
 
 # Build and run on Linux
