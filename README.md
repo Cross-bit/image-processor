@@ -1,7 +1,5 @@
 # Image Processor
 
-![Filter examples](docs/images/filter_examples.jpg)
-
 Simple image processing software with a CLI interface for Linux.
 
 The application allows loading images, managing them in an internal image
