@@ -1,36 +1,127 @@
-# Image processor
+# Image Processor
 
-Simple image processing software with simple CLI user interface for Linux.
+![Filter examples](docs/images/filter_examples.jpg)
 
-# Supported filters
-- Linear grayscale (grayscale based on linear combination of channel values)
-- Averaged grayscale (takes simple arithmetical average of channel values – does not preserve color intensity)
+Simple image processing software with a CLI interface for Linux.
+
+The application allows loading images, managing them in an internal image
+library and applying several image processing filters such as grayscale
+conversion, blur effects, edge detection or ASCII art generation.
+
+---
+
+## Features
+
+Supported filters:
+
+- Linear grayscale
+- Averaged grayscale
 - Negative
-- Box blur effect
-- Gaussian blur effect
-- Sobel effects
-- Flip transformation horizontal/vertical
-- Conversion to ASCII art
+- Box blur
+- Gaussian blur
+- Sobel edge detection
+- Flip transformation (horizontal / vertical)
+- ASCII art conversion
 
-# Supported images
-Image processor currently supports only **.jpg** and **.jpeg** image formats. Also note that application supports only sRGB color space.<br>
-Images must have dimensions greater than one in every axis.
+Some filters allow additional parameters (for example kernel size or sigma
+for Gaussian blur).
 
-# Build and run on Linux
-App can be build with provided **CMakeLists.txt** file as follows:
-1. cd {cloned_repository}
-2. mkdir {name_of_build_dir}
-3. cd {name_of_build_dir}
-4. cmake ..
-5. make
+---
 
-**ImageProcessor** executable will be created in the {name_of_build_dir} directory.
+## Example filters
 
-# Additional configuration
-It is also possible to provide start up configuration by creating **config.yaml** file in {name_of_build_dir}. In this file you can set following properties:
-- default_input_directory: [full path to directory, from which the app loads images at the start (not recursive)]
-- default_output_directory: [full path to default fallback directory, which will be used if saving fails while running]
+Example outputs of several filters applied to the same image.
 
-It is recommended to set up these directories before you start using the app (It makes it easier). 
+![Filter palette](docs/images/img_processor_showcase.png)
 
-More detailed documentation about the software(czech only): [Dokumentace](https://github.com/Cross-bit/image_processor/blob/5d416efb6607deb31c91495e4554ef54ffc4794d/Documentation/dokumentace_image_processor.pdf)
+---
+
+## ASCII Art example
+
+The application can also convert images into ASCII art.
+
+![ASCII example](docs/images/img_processor_ascii.png)
+
+---
+
+## Supported images
+
+Currently supported formats:
+
+- `.jpg`
+- `.jpeg`
+
+Limitations:
+
+- only **sRGB color space** is supported
+- image dimensions must be greater than **1×1 pixels**
+
+---
+
+## Build
+
+The project uses **CMake**.
+
+```bash
+git clone <repository_url>
+cd ImageProcessor
+mkdir build
+cd build
+cmake ..
+make
+```
+
+Executable will be created in the `build` directory.
+
+---
+
+## Configuration
+
+It is possible to provide startup configuration using `config.yaml`
+in the executable directory.
+
+Example:
+
+```yaml
+default_input_directory: /path/to/input/images
+default_output_directory: /path/to/output/images
+```
+
+Settings:
+
+- `default_input_directory` – directory from which images are loaded at startup
+- `default_output_directory` – fallback directory used when saving images
+
+---
+
+## Project structure
+
+Main components of the project:
+
+- `ImageEffects` – implementations of image filters
+- `ImageLibrary` – image loading and representation
+- `Services` – configuration loading and utilities
+- `UserMenu` – CLI user interface
+
+---
+
+## Documentation
+
+More detailed documentation (Czech):
+
+📄 [Documentation](docs/dokumentace_image_processor.pdf)
+
+---
+
+## License
+
+All rights reserved.
+
+This project is publicly visible for educational purposes only.  
+Use of this code requires explicit permission from the author.
+
+---
+
+## Author
+
+Ondřej Kříž
